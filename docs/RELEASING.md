@@ -30,7 +30,7 @@ The **Release checks** workflow validates changes but does not publish packages,
 
 ## Non-npm beta distribution
 
-The first beta distribution is a GitHub prerelease, not an npm publication. These commands are staged instructions; they do not claim that the tag, prerelease, or assets already exist.
+The first beta is available as [GitHub prerelease v0.1.0-beta.1](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1); see [the delivery receipt](validation/2026-10-21-beta-distribution.md). The commands below document its preparation process. For a later release, choose a new version and update the version-specific package guard, tests and filenames before preparing assets; never recreate this tag or overwrite its files.
 
 From a clean checkout of the reviewed `main` commit, using Node 24:
 
@@ -54,7 +54,7 @@ $env:SEREIN_PACKAGE_TARBALL = (Resolve-Path .\serein-ui-react-0.1.0-beta.1.tgz).
 npm --prefix trial run check:consumer
 ```
 
-After the exact `main` commit passes hosted release checks and the consumer check, create the annotated `v0.1.0-beta.1` tag and a **draft prerelease**. Attach the tarball, checksum and source metadata before publishing the prerelease. Never move an already published tag or replace released bytes. Re-download those exact assets, verify the checksum and source commit, and rerun the consumer check against the downloaded tarball before updating the authorized GitHub reviewer announcement. `SOURCE.json` records source metadata; it is not a signed provenance attestation.
+After the exact `main` commit passes hosted release checks and the consumer check, create the annotated tag for the new version and a **draft prerelease**. Attach the tarball, checksum and source metadata before publishing the prerelease. Never move an already published tag or replace released bytes. Re-download those exact assets, verify the checksum and source commit, and rerun the consumer check against the downloaded tarball before updating the authorized GitHub reviewer announcement. `SOURCE.json` records source metadata; it is not a signed provenance attestation.
 
 For the optional AI review packet, run `node trial/scripts/export-review-packet.mjs trial/.review/reviewer-packet-<commit>` from the repository root. It verifies frozen inputs and rebuilds playback without rescoring them. Inspect the export, smoke-test all four candidates, then ZIP only that directory as `serein-reviewer-packet-0.1.0-beta.1.zip`. Include its SHA-256 alongside the package archive in the release checksum file. The packet's internal checksum file covers its own files. Keep the original experiment untouched and distinguish playback checks from independent human review.
 

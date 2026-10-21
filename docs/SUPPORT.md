@@ -2,7 +2,7 @@
 
 Serein `0.1.0-beta.1` is a prerelease React web component library. Support covers the packaged JavaScript, type declarations, compiled CSS and documented React APIs. It does not cover React Native, native mobile or desktop widgets, other UI frameworks, an application backend, or the accessibility of a consuming product's complete process.
 
-The package is currently unpublished. Until npm publication is verified, use only the reviewed local tarball procedure in [BETA-EVALUATION.md](BETA-EVALUATION.md).
+The reviewed GitHub prerelease archive is available from [v0.1.0-beta.1](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1); verify its checksum and use the procedure in [BETA-EVALUATION.md](BETA-EVALUATION.md). npm publication remains deferred, with local tarballs available as a fallback.
 
 ## Package and toolchain
 
@@ -16,7 +16,7 @@ The lockfile currently resolves the following versions:
 | Base UI | `1.8.0` | Bundled implementation dependency |
 | StyleX | `0.19.1` | Styling dependency; consumers use precompiled CSS and need no StyleX compiler |
 | TypeScript | `6.0.3` | Tested declarations/build toolchain |
-| Vite | `8.3.0` | Tested reference consumer |
+| Vite | `8.3.5` | Tested library/reference lockfiles and release gate; library/reference minimum `^8.3.3`, generated starter pins `8.3.3` |
 | Next.js App Router | `16.4.0` | Internal installed-package production build, SSR/hydration and bounded Chromium workflow checks; see [consumer validation](validation/2026-10-14-next-consumer.md) |
 | Storybook | `10.6.0` | Documentation/development tool only |
 | Playwright | `1.63.0` | Automated browser-check driver |

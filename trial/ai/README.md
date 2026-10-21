@@ -1,6 +1,6 @@
 # Serein — AI integration
 
-Status: Serein is an MIT-licensed React web library preparing package `@serein-ui/react` version `0.1.0-beta.1`. The beta is not yet published. Use this exact package name and do not claim native mobile support.
+Status: Serein is an MIT-licensed React web library. GitHub prerelease `@serein-ui/react` version `0.1.0-beta.1` is available; npm publication is deferred. Use this exact package name and do not claim native mobile support.
 
 ## Quick start for any coding assistant
 
@@ -10,7 +10,7 @@ Resting cards are flat; menus and dialogs carry elevation. Secondary actions use
 
 Read `llms-full.txt` and `contract.json` in this directory. These are generated from the installed package's TypeScript declarations and CSS tokens on every build. Read `examples/README.md` when a local workflow recipe fits the task; those reviewed files are client-side demonstrations, not package exports or backend integrations. Read stories for usage, `docs/FOUNDATIONS.md` for the implemented visual system, and `docs/ACCESSIBILITY.md` for obligations and known limits. Never invent props or components.
 
-For a local checkout, run `npm ci`, `npm run build`, then `npm run storybook` from `trial`. Until the beta is published, run `npm pack` here and install the resulting tarball in another React 19 app. Import `@serein-ui/react/styles.css` once. Import `@fontsource-variable/plus-jakarta-sans` if using the brand font dependency. The consumer does not need a StyleX compiler.
+For the released candidate, download `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS` and unsigned `SOURCE.json` from the [GitHub prerelease](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1), verify the checksum, and follow [the evaluation installation instructions](https://github.com/deepak-hp/serein-ui/blob/main/docs/BETA-EVALUATION.md). For a local checkout, run `npm ci`, `npm run build`, then `npm run storybook` from `trial`; `npm pack` remains an optional local-package path. Import `@serein-ui/react/styles.css` once. Import `@fontsource-variable/plus-jakarta-sans` if using the brand font dependency. The consumer does not need a StyleX compiler.
 
 Set `data-dp-theme="light"` or `"dark"` on `<html>` and class `dp-theme` on `<body>`. The theme is document-wide, including portals. Do not apply the theme solely to a nested wrapper. Only use supported, documented props.
 

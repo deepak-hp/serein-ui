@@ -1,6 +1,6 @@
 # UI library integration
 
-Package: `@serein-ui/react`, installed from `vendor/serein-ui-react.tgz`. This is an unpublished React web library with precompiled styles, not a native component package.
+Package: `@serein-ui/react`, installed from the vendored `vendor/serein-ui-react.tgz` archive. npm publication is deferred. This is a React web library with precompiled styles; native mobile and desktop components are not included.
 
 ## Read before generating UI
 

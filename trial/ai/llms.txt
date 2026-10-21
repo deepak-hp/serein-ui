@@ -1,6 +1,6 @@
 # Serein
 
-MIT-licensed React web component library; beta package not yet published.
+MIT-licensed React web component library; GitHub beta archive available, npm registry publication deferred.
 
 - [Full integration guide and API](./llms-full.txt)
 - [Composition recipes](./COMPOSITION.md)
