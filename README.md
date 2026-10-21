@@ -4,11 +4,11 @@ A React component library and composition guide for building purposeful interfac
 
 Serein means fine rain from a clear evening sky. Its design pairs bright orange actions with clear white and deep evening surfaces, soft elevation, Plus Jakarta Sans, and restrained success green. It preserves the founder's Indian astrology-inspired direction; personal chart research is kept outside version control.
 
-Explore the [component catalogue](https://deepak-hp.github.io/serein-ui/?view=catalogue), [design studio](https://deepak-hp.github.io/serein-ui/?view=serein), and [Storybook](https://deepak-hp.github.io/serein-ui/storybook/). These are planned canonical beta destinations pending repository rename and Pages verification; npm publication and human accessibility review remain open.
+Explore the [component catalogue](https://deepak-hp.github.io/serein-ui/?view=catalogue), [design studio](https://deepak-hp.github.io/serein-ui/?view=serein), and [Storybook](https://deepak-hp.github.io/serein-ui/storybook/). These are the verified canonical Serein beta destinations; npm publication and human accessibility review remain open.
 
 ## Beta download
 
-The planned GitHub prerelease will provide `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS`, and unsigned `SOURCE.json` source metadata. Download all three assets from the same prerelease, verify the checksum, and install the exact tarball in a Node 24 test application using React and React DOM `^19.3.0`; import `@serein-ui/react/styles.css` once. npm publication is explicitly deferred.
+The GitHub prerelease [v0.1.0-beta.1](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) is available. Download `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS`, and unsigned `SOURCE.json` from that release, verify the checksum, and install the exact tarball in a Node 24 test application using React and React DOM `^19.3.0`; import `@serein-ui/react/styles.css` once. The downloaded archive passed the supplied consumer check; npm publication is explicitly deferred.
 
 To see the redesign locally, run `npm run reference:setup` then `npm run reference:dev` in `trial/`, and open [the Serein design studio](http://127.0.0.1:5174/?view=serein). The same real components appear in both themes. [DESIGN.md](DESIGN.md) records the visual language and [foundations](trial/docs/FOUNDATIONS.md) documents the tokens.
 
