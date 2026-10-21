@@ -25,11 +25,11 @@ async function fixture() {
 }
 
 test('normalizes repository and root deployment paths', () => {
-  assert.equal(normalizeBasePath('/ritam-ui'), '/ritam-ui/');
+  assert.equal(normalizeBasePath('/serein-ui'), '/serein-ui/');
   assert.equal(normalizeBasePath('/'), '/');
-  assert.throws(() => normalizeBasePath('https://example.com/ritam-ui/'), /URL path/);
-  assert.throws(() => normalizeBasePath('/ritam-ui/../private/'), /segments/);
-  for (const unsafePath of ['/ritam-ui/<script>/', '/ritam-ui\\private/', '/%2e%2e/private/', '/ritam ui/']) {
+  assert.throws(() => normalizeBasePath('https://example.com/serein-ui/'), /URL path/);
+  assert.throws(() => normalizeBasePath('/serein-ui/../private/'), /segments/);
+  for (const unsafePath of ['/serein-ui/<script>/', '/serein-ui\\private/', '/%2e%2e/private/', '/serein ui/']) {
     assert.throws(() => normalizeBasePath(unsafePath), /safe URL path segments/);
   }
 });
@@ -39,10 +39,10 @@ test('assembles catalogue and Storybook without retaining stale output', async (
   await mkdir(output, { recursive: true });
   await writeFile(join(output, 'private-notes.txt'), 'must disappear');
 
-  const result = await assembleSite({ referenceDirectory: reference, storybookDirectory: storybook, outputDirectory: output, basePath: '/ritam-ui/' });
+  const result = await assembleSite({ referenceDirectory: reference, storybookDirectory: storybook, outputDirectory: output, basePath: '/serein-ui/' });
 
-  assert.equal(result.catalogueUrl, '/ritam-ui/?view=catalogue');
-  assert.equal(result.storybookUrl, '/ritam-ui/storybook/');
+  assert.equal(result.catalogueUrl, '/serein-ui/?view=catalogue');
+  assert.equal(result.storybookUrl, '/serein-ui/storybook/');
   assert.equal(await readFile(join(output, '.nojekyll'), 'utf8'), '');
   assert.equal(await readFile(join(output, 'catalogue-assets', 'ai', 'llms-full.txt'), 'utf8'), 'reviewed AI guidance');
   assert.equal(await readFile(join(output, 'licenses', 'serein.txt'), 'utf8'), 'MIT');

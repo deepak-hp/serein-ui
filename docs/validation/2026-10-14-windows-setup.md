@@ -50,3 +50,7 @@ No alternate desktop automation was used to bypass that stop. Later, at the owne
 | VoiceOver + Safari | Deferred | A later macOS device review |
 
 Use the [native review protocol](../../trial/reference/ACCESSIBILITY-REVIEW.md) for the next run. Record a tarball hash, exact versions, theme, zoom, expected/actual results and announced words. Keep every native release gate open until that evidence exists. The headless follow-up in the [automated audit](2026-10-14-accessibility.md#background-keyboard-follow-up) does not close these gates.
+
+## Background-work retry — 21 October 2026
+
+The Windows computer-use integration initialized and listed the installed Firefox application as not running. Automatic approval review rejected launching it because the earlier request to avoid interrupting the owner's viewing remained active. A question requesting explicit permission for desktop focus and screen-reader audio is pending. No window opened, no input or NVDA speech was produced, and no alternate automation was used. This attempt provides no native accessibility result; all native review rows remain open.

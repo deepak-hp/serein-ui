@@ -47,7 +47,7 @@ Known non-blocking tooling notices at that baseline: Storybook preview annotatio
 ## External release gates
 
 - Verify the applied MIT license and dependency notices on each release candidate.
-- Confirm npm scope ownership and publication authentication, then publish and verify the exact beta in a clean registry consumer. Keep local tarball instructions until that succeeds.
+- Confirm npm scope ownership and publication authentication, then publish and verify the exact beta in a clean registry consumer. The owner deferred npm work on 21 October 2026; use verified GitHub beta archives or local tarballs meanwhile.
 - Perform native NVDA/Firefox and VoiceOver/Safari checks, actual browser zoom and complete-process accessibility evaluation; review EAA applicability for the consuming product.
 - Run the multi-task AI evaluation with independent human review before making improvement claims.
 - At launch, complete the requested repository rename and verify the new Pages paths using the [launch checklist](LAUNCH-DRAFTS.md#repository-name-at-launch). Additional announcement destinations require owner authorization; the GitHub beta reviewer call is already published.

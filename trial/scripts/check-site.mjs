@@ -160,9 +160,9 @@ async function main() {
     await manager.frameLocator('#storybook-preview-iframe').getByRole('heading', { name: /Button/ }).first().waitFor();
 
     for (const [docsId, linkName, expectedHref] of [
-      ['foundations-apple-guidance--docs', 'foundations', 'https://github.com/deepak-hp/ritam-ui/blob/main/trial/docs/FOUNDATIONS.md'],
-      ['start-here-accessibility--docs', 'VERIFICATION.md', 'https://github.com/deepak-hp/ritam-ui/blob/main/trial/docs/VERIFICATION.md'],
-      ['start-here-accessibility--docs', 'ACCESSIBILITY-EVIDENCE.md', 'https://github.com/deepak-hp/ritam-ui/blob/main/trial/docs/ACCESSIBILITY-EVIDENCE.md'],
+      ['foundations-apple-guidance--docs', 'foundations', 'https://github.com/deepak-hp/serein-ui/blob/main/trial/docs/FOUNDATIONS.md'],
+      ['start-here-accessibility--docs', 'VERIFICATION.md', 'https://github.com/deepak-hp/serein-ui/blob/main/trial/docs/VERIFICATION.md'],
+      ['start-here-accessibility--docs', 'ACCESSIBILITY-EVIDENCE.md', 'https://github.com/deepak-hp/serein-ui/blob/main/trial/docs/ACCESSIBILITY-EVIDENCE.md'],
     ]) {
       await story.goto(new URL(`storybook/iframe.html?id=${docsId}&viewMode=docs`, site.baseUrl).href);
       assert.equal(await story.getByRole('link', { name: linkName, exact: true }).getAttribute('href'), expectedHref);

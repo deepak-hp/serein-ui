@@ -6,6 +6,14 @@ The library exports 42 components (including ToastProvider) and 2 hooks. Start w
 
 ## Try it
 
+For a GitHub beta download, use the archive and checksum from the same [Serein prerelease](https://github.com/deepak-hp/serein-ui/releases). Verify the SHA-256 using the [beta instructions](https://github.com/deepak-hp/serein-ui/blob/main/docs/BETA-EVALUATION.md), then install the file in your existing application:
+
+```sh
+npm install /absolute/path/to/serein-ui-react-0.1.0-beta.1.tgz
+```
+
+Use Node 24 with React and React DOM `^19.3.0`. Import `@serein-ui/react/styles.css` and set the document theme as shown under Package contract below. npm registry publication is deferred; an archive release is a separate distribution path. The source-checkout commands below are for contributors and local development.
+
 To start a new app from this checkout, run `npm run create:app -- "../my-app"` from `trial`. The destination must be empty. This builds and vendors the unpublished package, creates a React/Vite app, and installs its dependencies. Use `--no-install` to generate the files and archive first. See [starter instructions](docs/STARTER.md).
 
 Use Node 24.19 or newer within the Node 24 major and npm:
