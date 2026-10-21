@@ -900,7 +900,7 @@
       "Don't add colored ambient glows, decorative gradients, or broad green accent areas.",
       "Don't place translucent material on forms, cards, fields, popups, or dialogs.",
       "Don't infer accessibility certification from automated checks; WCAG 2.2 AA remains the target pending manual review.",
-      "Don't describe `@serein-ui/react` as published or its package scope as verified; the prepared beta is unpublished, and the repository remains `deepak-hp/ritam-ui`."
+      "Don't describe `@serein-ui/react` as published on npm or its package scope as verified; npm publication is deferred, and the canonical repository is `deepak-hp/serein-ui`."
     ]
   }
 }

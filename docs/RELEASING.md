@@ -1,6 +1,6 @@
 # Release guide
 
-Serein `0.1.0-beta.1` is licensed under MIT and configured as a public npm package under the `beta` tag. It has not yet been published. Until registry publication is verified, installation guidance must use a locally produced tarball.
+Serein `0.1.0-beta.1` is licensed under MIT and configured as a public npm package under the `beta` tag. npm publication is deferred at the owner's request on 21 October 2026. The procedure below distributes a verified package archive through a GitHub prerelease; it does not publish to the registry.
 
 ## Local release gate
 
@@ -21,11 +21,44 @@ The gate checks source tests, types, library and playground builds, tarball cont
 1. Review `git status`, `CHANGELOG.md`, package metadata, package manifest output, and current audit results. Run `npm audit` from `trial`; the last inventory found zero findings across 401 dependencies, which must be rechecked rather than assumed.
 2. Run the local release gate and complete the manual accessibility and browser review recorded in `docs/RELEASE-READINESS.md`.
 3. Confirm the root and packaged MIT licenses are identical, the package contains `THIRD_PARTY_NOTICES.md`, and the package guard accepts only the approved beta version, public access, `beta` tag, license and attribution files.
-4. Verify private vulnerability reporting remains enabled and `SECURITY.md` links to the repository's private reporting form. Configure npm trusted publishing or another owner-approved credential method; do not put long-lived registry credentials in CI. The latest npm authentication check returned 401, so publication remains blocked until owner-controlled authentication is available.
-5. After the reviewed release commit and hosted checks pass, create an annotated `v0.1.0-beta.1` tag and publish manually from `trial` with `npm publish`. The manifest's `publishConfig` applies public access and the `beta` tag. Confirm the registry metadata and install the published beta in a clean consumer before changing documentation from local tarball installation.
-6. Promote the repository/site and send any announcement only after the prior checks and explicit owner authorization. Keep rollback material: the prior package version, tag, changelog, and documented deprecation or remediation plan.
+4. Verify private vulnerability reporting remains enabled and `SECURITY.md` links to the repository's private reporting form. Keep npm authentication and trusted-publishing setup deferred with npm publication; no registry credentials are needed for this GitHub beta workflow.
+5. Use the non-npm beta distribution procedure below: prepare from a clean Node 24 source checkout, create the reviewed GitHub prerelease assets, attach them to the exact tested `main` tag, and publish the prerelease only after the release gate passes.
+6. Re-download the prerelease tarball, verify `SHA256SUMS`, inspect unsigned `SOURCE.json`, and run the strict consumer check with `SEREIN_PACKAGE_TARBALL` set to that absolute tarball path before any announcement.
+7. Keep npm publication as a later, separately authorized procedure. Do not publish to npm or announce a stable release from this workflow. Keep rollback material: the prior package version, tag, changelog, and documented deprecation or remediation plan.
 
 The **Release checks** workflow validates changes but does not publish packages, deploy Pages, use registry secrets, or change repository settings. The separate **Deploy documentation site** workflow performs the gated Pages deployment described below.
+
+## Non-npm beta distribution
+
+The first beta distribution is a GitHub prerelease, not an npm publication. These commands are staged instructions; they do not claim that the tag, prerelease, or assets already exist.
+
+From a clean checkout of the reviewed `main` commit, using Node 24:
+
+```sh
+git status --short
+npm --prefix trial ci
+npm --prefix trial run check:release
+npm --prefix trial run release:prepare
+```
+
+Commit any reviewed reference-lockfile or generated-document changes from the gate, and verify that exact revision before preparation. `release:prepare` requires clean source, builds/checks the package, then writes the tarball, `SHA256SUMS` and unsigned `SOURCE.json` into a new `trial/.review/beta-release-<commit>` directory. Set `SEREIN_PACKAGE_TARBALL` to the absolute path of that exact tarball and run the strict consumer check:
+
+```sh
+SEREIN_PACKAGE_TARBALL=/absolute/path/to/serein-ui-react-0.1.0-beta.1.tgz npm --prefix trial run check:consumer
+```
+
+On PowerShell:
+
+```powershell
+$env:SEREIN_PACKAGE_TARBALL = (Resolve-Path .\serein-ui-react-0.1.0-beta.1.tgz).Path
+npm --prefix trial run check:consumer
+```
+
+After the exact `main` commit passes hosted release checks and the consumer check, create the annotated `v0.1.0-beta.1` tag and a **draft prerelease**. Attach the tarball, checksum and source metadata before publishing the prerelease. Never move an already published tag or replace released bytes. Re-download those exact assets, verify the checksum and source commit, and rerun the consumer check against the downloaded tarball before updating the authorized GitHub reviewer announcement. `SOURCE.json` records source metadata; it is not a signed provenance attestation.
+
+For the optional AI review packet, run `node trial/scripts/export-review-packet.mjs trial/.review/reviewer-packet-<commit>` from the repository root. It verifies frozen inputs and rebuilds playback without rescoring them. Inspect the export, smoke-test all four candidates, then ZIP only that directory as `serein-reviewer-packet-0.1.0-beta.1.zip`. Include its SHA-256 alongside the package archive in the release checksum file. The packet's internal checksum file covers its own files. Keep the original experiment untouched and distinguish playback checks from independent human review.
+
+The npm publication procedure remains deferred. If later authorized, authenticate through the owner-controlled npm account, publish the exact reviewed tag under the `beta` tag, verify registry metadata and a clean consumer install, and update installation documentation only after those checks pass.
 
 ## Serein publication access — 13 October 2026
 

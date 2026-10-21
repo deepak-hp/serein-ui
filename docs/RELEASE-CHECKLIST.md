@@ -27,7 +27,8 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Observe hosted Linux CI passing: [run 37526475891](https://github.com/deepak-hp/ritam-ui/actions/runs/37526475891) on `cd7280a`. Subsequent changes require their own passing run before merge.
 - [x] Audit direct/transitive dependency findings and document actionable residual risks.
 - [x] Establish versioning, changelog, supported environments and upgrade policy.
-- [ ] Publish a versioned npm package after ownership/authentication and release gates are satisfied.
+- [ ] Publish a versioned npm package after ownership/authentication and release gates are satisfied. Deferred at the owner's request on 21 October 2026; do not retry authentication or publication meanwhile.
+- [ ] Distribute the beta through a GitHub prerelease with an exact-source archive, checksum and unsigned source metadata; verify the downloaded archive in a clean consumer.
 
 ## 3. Professional discovery and examples
 
@@ -50,6 +51,7 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Generate and retain twelve independent in-domain attempts comparing plain React/CSS with the then-current Ritam package plus guidance, with compiler records, original and supplemental browser results, and a label-hidden review packet. These frozen artifacts predate the Serein rename. See [pilot observations](../trial/evaluation/RESULTS.md).
 - [x] Generate four fresh file-review attempts with frozen inputs and equal authored-line limits, retain initial/final compiler and browser records, and prepare another label-hidden review packet. A documented supplemental verifier corrects a pending-label lookup defect; original results remain preserved. See [the fresh trial](validation/2026-10-14-ai-trial.md).
 - [ ] Obtain independent human review and evaluate fresh tasks before claiming improved AI-generated design quality. The pilot's overlapping examples, small sample and corrected harness do not establish general superiority.
+- [ ] Distribute a portable playback packet for the four frozen file-review candidates, preserving original and supplemental results; playback checks do not count as human review.
 
 ## 5. Accessibility and inclusion
 
@@ -70,7 +72,7 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Apply the approved MIT license and package third-party attribution (7 October 2026).
 - [x] Verify GitHub administration access and review source/history for private research and credential patterns before public-source publication (13 October 2026; bounded scan, not a guarantee).
 - [x] Make the reviewed source public and enable a verified private vulnerability-reporting channel (GitHub settings verified 13 October 2026).
-- [ ] Confirm npm scope ownership and publication authentication (current identity check: HTTP 401).
+- [ ] Confirm npm scope ownership and publication authentication (last identity check: HTTP 401). Deferred with npm publication on 21 October 2026.
 - [x] Release notes, installation guide and rollback/release procedure.
 - [x] Prepare truthful README pitch, launch post drafts and demonstration outline.
 - [x] Update beta announcements and reviewer invitations with verified public destinations and current limits. The owner-selected GitHub call is published; other channels remain drafts. See [launch materials](LAUNCH-DRAFTS.md).

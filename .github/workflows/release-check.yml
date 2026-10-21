@@ -26,7 +26,8 @@ jobs:
           cache: npm
           cache-dependency-path: trial/package-lock.json
       - run: npm ci
-      - run: node --test scripts/build-site.test.mjs scripts/check-site.test.mjs
+      - name: Verify site, beta packaging and portable reviewer tooling
+        run: node --test scripts/build-site.test.mjs scripts/check-site.test.mjs scripts/prepare-beta-release.test.mjs scripts/export-review-packet.test.mjs
       - run: npm exec -- playwright install --with-deps chromium firefox webkit
       - run: npm run check:release
       - run: npm run check:workflows

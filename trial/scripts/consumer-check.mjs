@@ -1,18 +1,48 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { lstat, mkdir, readFile, readdir, realpath, rm, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const npmCli = process.env.npm_execpath;
-if (!npmCli) throw new Error('Run this check with npm run check:consumer.');
 const node = process.execPath;
 const consumerDirectory = join(root, '.consumer-check');
 const cacheDirectory = join(root, '.npm-cache');
 
+export function resolvePackageTarball(supplied = process.env.SEREIN_PACKAGE_TARBALL) {
+  if (!supplied) return null;
+  if (!isAbsolute(supplied)) throw new Error('SEREIN_PACKAGE_TARBALL must be an absolute archive path.');
+  return resolve(supplied);
+}
+
+export async function validateSuppliedTarball(packageTarball, cleanupDirectory = consumerDirectory) {
+  const archive = resolve(packageTarball);
+  const cleanup = resolve(cleanupDirectory);
+  const inside = (directory, file) => {
+    const path = relative(directory, file);
+    return !isAbsolute(path) && path !== '..' && !path.startsWith(`..${sep}`);
+  };
+  if (inside(cleanup, archive)) {
+    throw new Error('Supplied package archive must be outside the consumer cleanup directory.');
+  }
+  const details = await lstat(archive);
+  if (!details.isFile()) throw new Error('Supplied package archive must be a regular file, not a directory or symlink.');
+  try {
+    const cleanupDetails = await lstat(cleanup);
+    if (cleanupDetails.isSymbolicLink()) throw new Error('Consumer cleanup directory must not be a symlink.');
+    if (inside(await realpath(cleanup), await realpath(archive))) throw new Error('Supplied package archive must be outside the consumer cleanup directory.');
+  } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  return archive;
+}
+
+export async function cleanupPackageTarball(packageTarball, supplied) {
+  if (packageTarball && !supplied && existsSync(packageTarball)) await rm(packageTarball, { force: true });
+}
+
 function npm(args, cwd = root) {
+  if (!npmCli) throw new Error('Run this check with npm run check:consumer.');
   return execFileSync(node, [npmCli, ...args], {
     cwd,
     encoding: 'utf8',
@@ -29,11 +59,16 @@ async function cssFiles(directory) {
   return files.flat();
 }
 
-let packageTarball;
-
-try {
-  const packed = JSON.parse(npm(['pack', '--json']));
-  packageTarball = join(root, packed[0].filename);
+export async function runConsumerCheck() {
+  const suppliedTarball = resolvePackageTarball();
+  let packageTarball = suppliedTarball;
+  try {
+    if (!packageTarball) {
+      const packed = JSON.parse(npm(['pack', '--json']));
+      packageTarball = join(root, packed[0].filename);
+    }
+    if (!existsSync(packageTarball)) throw new Error(`Consumer archive does not exist: ${packageTarball}`);
+    if (suppliedTarball) await validateSuppliedTarball(packageTarball);
 
   await rm(consumerDirectory, { recursive: true, force: true });
   await mkdir(consumerDirectory, { recursive: true });
@@ -81,6 +116,9 @@ try {
     throw new Error('Consumer CSS does not contain the StatusIcon motion rules');
   }
   console.log('Packed consumer: strict public types, accessible-name contract and compiler-free JS/CSS bundle verified.');
-} finally {
-  if (packageTarball && existsSync(packageTarball)) await rm(packageTarball, { force: true });
+  } finally {
+    await cleanupPackageTarball(packageTarball, Boolean(suppliedTarball));
+  }
 }
+
+if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) await runConsumerCheck();
