@@ -46,3 +46,7 @@ The merged-source package was prepared from clean commit `c5c6e4f`. Its SHA-256 
 - [Reviewer announcement #5](https://github.com/deepak-hp/serein-ui/issues/5) was updated and read back at `2026-10-21T16:31:07Z`, with verified release/site links and explicit open review gates. No other channel was posted.
 
 The versioned beta assets describe source `c5c6e4f`; this subsequent documentation receipt does not replace those assets. npm publication, native accessibility checks and independent human review remain open.
+
+### Documentation follow-up
+
+[PR #10](https://github.com/deepak-hp/serein-ui/pull/10) records delivery and updates active source/generated guidance to distinguish available GitHub archives from deferred npm publication. During its checks, [run 39636521238](https://github.com/deepak-hp/serein-ui/actions/runs/39636521238) exposed an existing popup-test race: `user.click()` could finish before Base UI's next-animation-frame open state, leaving a force-mounted but hidden listbox. A temporary delayed-frame diagnostic reproduced that failure. The two popup assertions now wait for the named accessible listbox/dialog while retaining visibility checks; the diagnostic was removed. The accessibility suite passed ten consecutive runs, the focused interaction set passed 24 tests, and the full unit suite passed 87 tests. No component runtime behavior or released asset changed. Final hosted checks remain recorded on the PR.
