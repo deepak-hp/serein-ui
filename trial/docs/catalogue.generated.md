@@ -1,6 +1,6 @@
 # Component catalogue
 
-42 exported React components (including ToastProvider) and 2 hooks. All entries below are implemented and have Storybook examples. This is an MIT-licensed React web library; the beta package is not yet published and release accessibility review remains open.
+42 exported React components (including ToastProvider) and 2 hooks. All entries below are implemented and have Storybook examples. This is an MIT-licensed React web library; npm registry publication is deferred and release accessibility review remains open.
 
 ## Actions
 

@@ -58,6 +58,6 @@ Status icons communicate real pending, success, or error states; motion never de
 
 Apply `data-dp-theme="light|dark"` on `<html>` and `dp-theme` on `<body>` so portalled overlays inherit the same theme. The `dp-*` styling contract stays stable through the Serein rename. Existing demo storage keys stay stable too.
 
-The React package is now named `@serein-ui/react`; publication and scope ownership are not established by a source rename. The planned canonical repository is `deepak-hp/serein-ui`, pending the external rename and Pages verification. Existing persisted demo storage keys remain unchanged for compatibility.
+The React package is named `@serein-ui/react`, with a verified [GitHub beta download](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1). npm publication and scope verification remain deferred. The canonical repository is `deepak-hp/serein-ui`, and its [documentation site](https://deepak-hp.github.io/serein-ui/) is deployed. Existing persisted demo storage keys remain unchanged for compatibility.
 
 Keep visible labels, connected errors, keyboard operation, focus return, and semantic landmarks. Verify light/dark, narrow layouts, reduced motion, forced colours, and full user processes in the consuming app. Automated checks do not certify WCAG 2.2 AA or EAA conformance. See [accessibility guidance](ACCESSIBILITY.md) and [recorded evidence](ACCESSIBILITY-EVIDENCE.md).
