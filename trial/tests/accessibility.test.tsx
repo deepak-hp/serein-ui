@@ -35,10 +35,10 @@ test('select and dialog expose their popup content', async () => {
   );
 
   await user.click(screen.getByRole('combobox', { name: 'Workspace' }));
-  expect(screen.getByRole('listbox', { name: 'Workspace' })).toBeVisible();
+  expect(await screen.findByRole('listbox', { name: 'Workspace' })).toBeVisible();
 
   await user.click(screen.getByRole('button', { name: 'Open review' }));
-  expect(screen.getByRole('dialog', { name: 'Review' })).toBeVisible();
+  expect(await screen.findByRole('dialog', { name: 'Review' })).toBeVisible();
 });
 
 test('core controls have no automated WCAG 2.2 AA structural violations', async () => {

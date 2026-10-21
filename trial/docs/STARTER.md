@@ -11,7 +11,7 @@ npm run dev
 
 Choose a new directory or an existing empty one. The command refuses nonempty folders (including hidden files), files and direct symlink/junction targets. It never removes existing content. Relative paths are resolved from the directory where you run the command. Quote paths containing spaces.
 
-This is a repository-local command. The MIT-licensed beta package is not yet published; there is no public `npx` installer yet.
+This is a repository-local command. npm registry publication is deferred; there is no public `npx` installer yet. Installable beta archives are available from [GitHub Releases](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1).
 
 ## What is generated
 

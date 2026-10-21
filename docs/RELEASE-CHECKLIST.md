@@ -28,7 +28,7 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Audit direct/transitive dependency findings and document actionable residual risks.
 - [x] Establish versioning, changelog, supported environments and upgrade policy.
 - [ ] Publish a versioned npm package after ownership/authentication and release gates are satisfied. Deferred at the owner's request on 21 October 2026; do not retry authentication or publication meanwhile.
-- [ ] Distribute the beta through a GitHub prerelease with an exact-source archive, checksum and unsigned source metadata; verify the downloaded archive in a clean consumer.
+- [x] Distribute the beta through a [GitHub prerelease](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) with an exact-source archive, checksum and unsigned source metadata; the fresh download passed checksum and clean-consumer verification. See [the delivery receipt](validation/2026-10-21-beta-distribution.md).
 
 ## 3. Professional discovery and examples
 
@@ -51,7 +51,7 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Generate and retain twelve independent in-domain attempts comparing plain React/CSS with the then-current Ritam package plus guidance, with compiler records, original and supplemental browser results, and a label-hidden review packet. These frozen artifacts predate the Serein rename. See [pilot observations](../trial/evaluation/RESULTS.md).
 - [x] Generate four fresh file-review attempts with frozen inputs and equal authored-line limits, retain initial/final compiler and browser records, and prepare another label-hidden review packet. A documented supplemental verifier corrects a pending-label lookup defect; original results remain preserved. See [the fresh trial](validation/2026-10-14-ai-trial.md).
 - [ ] Obtain independent human review and evaluate fresh tasks before claiming improved AI-generated design quality. The pilot's overlapping examples, small sample and corrected harness do not establish general superiority.
-- [ ] Distribute a portable playback packet for the four frozen file-review candidates, preserving original and supplemental results; playback checks do not count as human review.
+- [x] Distribute a portable playback packet for the four frozen file-review candidates, preserving original and supplemental results; all 56 downloaded files verified and 16 playback checks passed. Playback checks do not count as human review; see [the delivery receipt](validation/2026-10-21-beta-distribution.md).
 
 ## 5. Accessibility and inclusion
 
@@ -77,8 +77,8 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Prepare truthful README pitch, launch post drafts and demonstration outline.
 - [x] Update beta announcements and reviewer invitations with verified public destinations and current limits. The owner-selected GitHub call is published; other channels remain drafts. See [launch materials](LAUNCH-DRAFTS.md).
 - [x] Owner approves/applies license and authorizes public package/site publication when release gates are met ("go ahead finish all", 7 October 2026). Authentication and actual publication remain separate open gates above.
-- [x] Publish the explicitly authorized [GitHub beta reviewer announcement](https://github.com/deepak-hp/ritam-ui/issues/5), 14 October 2026. No users, benchmarks or endorsements are claimed; no other channel has been posted.
-- [ ] At launch, rename `deepak-hp/ritam-ui` to `deepak-hp/serein-ui`, update active metadata/links and the origin remote, then verify the new Pages deployment. Requested 14 October 2026; see the [rename checklist](LAUNCH-DRAFTS.md#repository-name-at-launch). Frozen historical evidence retains its original identity.
+- [x] Publish the explicitly authorized [GitHub beta reviewer announcement](https://github.com/deepak-hp/serein-ui/issues/5), 14 October 2026; update it with verified beta downloads and Serein links on 21 October. No users, benchmarks or endorsements are claimed; no other channel has been posted.
+- [x] Rename `deepak-hp/ritam-ui` to `deepak-hp/serein-ui`, update active metadata/links and the origin remote, and verify the new Pages deployment (21 October 2026). The old repository resolves to the new identity; the old Pages URL returns 404, so use the new links. See the [rename checklist](LAUNCH-DRAFTS.md#repository-name-at-launch). Frozen historical evidence retains its original identity.
 
 ## 7. Longer-term commitments (retained, not claimed for React release)
 
@@ -95,4 +95,4 @@ This is the durable source of scope and progress. Checked items require evidence
 Completed local implementation plan: [release readiness](superpowers/plans/2026-09-28-release-readiness.md).
 Fresh evidence: [release candidate record](RELEASE-READINESS.md). Historical and current results: [verification](../trial/docs/VERIFICATION.md).
 
-Release status: **MIT-licensed React-web beta source and documentation public; npm package unpublished**. Local verification, revision-specific hosted checks and deployment evidence are recorded in the evidence document. npm publication access and manual/human gates remain open. No accessibility conformance or stable production-release claim is made.
+Release status: **MIT-licensed React-web beta source, documentation and verified GitHub downloads public; npm publication deferred**. Local verification, revision-specific hosted checks and deployment evidence are recorded in the evidence document. npm publication access and manual/human gates remain open. No accessibility conformance or stable production-release claim is made.

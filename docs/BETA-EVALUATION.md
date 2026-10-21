@@ -6,9 +6,9 @@ The 14 October maintainer work adds [focused browser accessibility checks](valid
 
 ## Candidate installation
 
-The npm package is not published. Do not run `npm install @serein-ui/react` until registry publication has been independently verified. The planned GitHub prerelease will provide `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS`, and unsigned `SOURCE.json` source metadata. These files are release metadata and a checksum, not a signed attestation; download them from the same prerelease and retain the source commit in the evaluation record.
+The npm package is not published. Do not run `npm install @serein-ui/react` until registry publication has been independently verified. The [GitHub prerelease page](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) provides `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS`, and unsigned `SOURCE.json` source metadata. These files are release metadata and a checksum, not a signed attestation; download them from the same prerelease and retain the source commit in the evaluation record. The downloaded archive matched the prepared SHA-256 and passed the supplied consumer check.
 
-If a downloadable candidate is not yet available, a maintainer can build a local candidate from source:
+For a local fallback, a maintainer can build a candidate from source:
 
 ```sh
 cd trial
@@ -17,7 +17,7 @@ npm run build
 npm pack
 ```
 
-For a planned prerelease download, verify `serein-ui-react-0.1.0-beta.1.tgz` against `SHA256SUMS` before installing the exact file. On PowerShell:
+For the downloaded prerelease, verify `serein-ui-react-0.1.0-beta.1.tgz` against `SHA256SUMS` before installing the exact file. On PowerShell:
 
 ```powershell
 $expected = ((Select-String .\SHA256SUMS -Pattern 'serein-ui-react-0.1.0-beta.1.tgz').Line -split '\s+')[0]
@@ -41,7 +41,7 @@ npm install /absolute/path/to/serein-ui-react-0.1.0-beta.1.tgz
 
 The consuming application must use React and React DOM `^19.3.0` (React 19.3 or later within major version 19). Import `@serein-ui/react/styles.css` once at the application entry point, and follow the package README for document theme attributes. Keep the tarball filename, checksum, `SOURCE.json`, source commit, lockfile change and install command in the evaluation record so every result identifies the exact reviewed candidate. Do not describe the package as published on npm until registry publication has been independently verified.
 
-An optional human-review packet may be downloaded as `serein-reviewer-packet-0.1.0-beta.1.zip`. Extract it and run `node serve.mjs` with Node 24, then open the displayed loopback address; no npm installation is needed. Record observations against each opaque candidate ID before inspecting the historical evidence or repository sources. Condition labels are hidden, but appearance can reveal identity and the candidate order is fixed. The packet is not a fully blind study and distributing it does not count as completed external review.
+An optional human-review packet may be downloaded as `serein-reviewer-packet-0.1.0-beta.1.zip`. Extract it and run `node serve.mjs` with Node 24, then open the displayed loopback address; no npm installation is needed. Delivered-packet playback passed all 16/16 checks. Record observations against each opaque candidate ID before inspecting the historical evidence or repository sources. Condition labels are hidden, but appearance can reveal identity and the candidate order is fixed. The packet is not a fully blind study and distributing it does not count as completed external review.
 
 Use a development or staging environment with fictional or sanitized data. Do not submit credentials, customer records, personal birth information or other sensitive data in an issue, screenshot, recording or fixture.
 
@@ -65,7 +65,7 @@ For every task, use keyboard-only input at desktop and narrow widths, light and 
 
 ## What to record
 
-Submit one [beta feedback issue](https://github.com/deepak-hp/serein-ui/issues/new?template=beta_feedback.yml) per task or defect. The form opens in the public repository after rename verification; omit private application data and use the [private security channel](https://github.com/deepak-hp/serein-ui/security/advisories/new) for vulnerabilities:
+Submit one [beta feedback issue](https://github.com/deepak-hp/serein-ui/issues/new?template=beta_feedback.yml) per task or defect. The form opens in the public Serein repository; omit private application data and use the [private security channel](https://github.com/deepak-hp/serein-ui/security/advisories/new) for vulnerabilities:
 
 - reviewer role and organization type, without personal identifiers;
 - consuming application's purpose and whether it is a prototype, staging system or production-bound system;

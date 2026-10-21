@@ -19,7 +19,7 @@ The gate checks source tests, types, library and playground builds, tarball cont
 ## Owner checklist
 
 1. Review `git status`, `CHANGELOG.md`, package metadata, package manifest output, and current audit results. Run `npm audit` from `trial`; the last inventory found zero findings across 401 dependencies, which must be rechecked rather than assumed.
-2. Run the local release gate and complete the manual accessibility and browser review recorded in `docs/RELEASE-READINESS.md`.
+2. Run the local release gate and record performed manual accessibility/browser checks and unresolved review gates in `docs/RELEASE-READINESS.md`. A beta for reviewers may retain explicitly disclosed manual/human gates; it must not be described as a stable or conformant release on that basis.
 3. Confirm the root and packaged MIT licenses are identical, the package contains `THIRD_PARTY_NOTICES.md`, and the package guard accepts only the approved beta version, public access, `beta` tag, license and attribution files.
 4. Verify private vulnerability reporting remains enabled and `SECURITY.md` links to the repository's private reporting form. Keep npm authentication and trusted-publishing setup deferred with npm publication; no registry credentials are needed for this GitHub beta workflow.
 5. Use the non-npm beta distribution procedure below: prepare from a clean Node 24 source checkout, create the reviewed GitHub prerelease assets, attach them to the exact tested `main` tag, and publish the prerelease only after the release gate passes.
@@ -30,7 +30,7 @@ The **Release checks** workflow validates changes but does not publish packages,
 
 ## Non-npm beta distribution
 
-The first beta distribution is a GitHub prerelease, not an npm publication. These commands are staged instructions; they do not claim that the tag, prerelease, or assets already exist.
+The first beta is available as [GitHub prerelease v0.1.0-beta.1](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1); see [the delivery receipt](validation/2026-10-21-beta-distribution.md). The commands below document its preparation process. For a later release, choose a new version and update the version-specific package guard, tests and filenames before preparing assets; never recreate this tag or overwrite its files.
 
 From a clean checkout of the reviewed `main` commit, using Node 24:
 
@@ -54,7 +54,7 @@ $env:SEREIN_PACKAGE_TARBALL = (Resolve-Path .\serein-ui-react-0.1.0-beta.1.tgz).
 npm --prefix trial run check:consumer
 ```
 
-After the exact `main` commit passes hosted release checks and the consumer check, create the annotated `v0.1.0-beta.1` tag and a **draft prerelease**. Attach the tarball, checksum and source metadata before publishing the prerelease. Never move an already published tag or replace released bytes. Re-download those exact assets, verify the checksum and source commit, and rerun the consumer check against the downloaded tarball before updating the authorized GitHub reviewer announcement. `SOURCE.json` records source metadata; it is not a signed provenance attestation.
+After the exact `main` commit passes hosted release checks and the consumer check, create the annotated tag for the new version and a **draft prerelease**. Attach the tarball, checksum and source metadata before publishing the prerelease. Never move an already published tag or replace released bytes. Re-download those exact assets, verify the checksum and source commit, and rerun the consumer check against the downloaded tarball before updating the authorized GitHub reviewer announcement. `SOURCE.json` records source metadata; it is not a signed provenance attestation.
 
 For the optional AI review packet, run `node trial/scripts/export-review-packet.mjs trial/.review/reviewer-packet-<commit>` from the repository root. It verifies frozen inputs and rebuilds playback without rescoring them. Inspect the export, smoke-test all four candidates, then ZIP only that directory as `serein-reviewer-packet-0.1.0-beta.1.zip`. Include its SHA-256 alongside the package archive in the release checksum file. The packet's internal checksum file covers its own files. Keep the original experiment untouched and distinguish playback checks from independent human review.
 

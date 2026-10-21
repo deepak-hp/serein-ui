@@ -2,7 +2,7 @@
 
 Current Serein work is recorded in [the redesign and frame audit](SEREIN-REDESIGN.md) and [the beta release plan](superpowers/plans/2026-10-13-serein-beta-release.md). Historical results below apply to their named revisions, not automatically to later changes.
 
-This record accompanies the [master checklist](RELEASE-CHECKLIST.md). The current milestone is a React-web beta with public MIT-licensed source and deployed documentation. npm publication and manual accessibility/human evaluation remain open; a public repository and site do not establish a stable production release.
+This record accompanies the [master checklist](RELEASE-CHECKLIST.md). The current milestone is a React-web beta with public MIT-licensed source, deployed documentation and verified GitHub downloads. npm publication is deferred and manual accessibility/human evaluation remains open; these deliveries do not establish a stable production release.
 
 ## Delivered scope
 
@@ -50,7 +50,7 @@ Known non-blocking tooling notices at that baseline: Storybook preview annotatio
 - Confirm npm scope ownership and publication authentication, then publish and verify the exact beta in a clean registry consumer. The owner deferred npm work on 21 October 2026; use verified GitHub beta archives or local tarballs meanwhile.
 - Perform native NVDA/Firefox and VoiceOver/Safari checks, actual browser zoom and complete-process accessibility evaluation; review EAA applicability for the consuming product.
 - Run the multi-task AI evaluation with independent human review before making improvement claims.
-- At launch, complete the requested repository rename and verify the new Pages paths using the [launch checklist](LAUNCH-DRAFTS.md#repository-name-at-launch). Additional announcement destinations require owner authorization; the GitHub beta reviewer call is already published.
+- Recheck active release/site links for each future launch using the [launch checklist](LAUNCH-DRAFTS.md#repository-name-at-launch). The Serein rename, new Pages deployment and authorized GitHub announcement update are verified below; additional announcement destinations still require owner authorization.
 
 Native adapters, desktop examples, Figma parity, RTL/localization and advanced modules remain visible in the master checklist. They are not represented as implemented React-release capabilities.
 
@@ -111,3 +111,15 @@ The [focused accessibility audit](validation/2026-10-14-accessibility.md) passed
 The [fresh file-review trial](validation/2026-10-14-ai-trial.md) retains four initial/final generated attempts. All four compiled without corrections. Primary browser records contain 10/12 passing scripted interactions and 10/16 passing initial renders. A separately documented label-lookup correction produced 12/12 passing interactions; render results remained 10/16, with contrast violations in the six failing cases. The original inputs, sources and results are preserved.
 
 Separate [agent visual observations](../trial/evaluation-next/AGENT-VISUAL-REVIEW.md) found mobile checkbox/text collisions in all four candidates, despite zero recorded page overflow. Both Serein attempts passed the bounded automated checks but still had material visual problems. This exposes the limits of the checks rather than establishing a design-quality winner. The follow-up adds an opt-in compact Checkbox label API and more explicit composition guidance; it does not repair or rescore the frozen candidates. Human review remains unperformed.
+
+## Non-npm distribution receipt — 21 October 2026
+
+PR [#9](https://github.com/deepak-hp/serein-ui/pull/9) merged into the renamed `deepak-hp/serein-ui` repository. The local `origin` now targets that repository, and the old repository API resolves to the new identity. GitHub private vulnerability reporting is enabled. Hosted PR run `39629944076` passed on `5f40d9c`; post-rename run `39631681188` passed on the same head. The full local release gate passed with Vite `8.3.5`. Fresh root and reference dependency audits reported zero findings across 401 and 69 dependencies.
+
+The merged-source package was prepared from clean commit `c5c6e4f`; the supplied archive SHA-256 is `edbb1fbcf45ed4b78bc6695bb0985f86b6a6e76130b6f6ac616cb41d461513d1`, and its supplied consumer check passed. The final reviewer packet contains 56 files, verifies 48 frozen input hashes, and passed all 16/16 headless playback checks. Candidate sources and historical failures remain preserved.
+
+[Main CI 39633424831](https://github.com/deepak-hp/serein-ui/actions/runs/39633424831) and [Pages run 39634992982](https://github.com/deepak-hp/serein-ui/actions/runs/39634992982) passed on the merged revision. Deployment `7231357980` reports success. Public headless checks passed catalogue, Storybook navigation/story/docs, metadata/license/AI assets, compact Checkbox keyboard behavior in both themes and the Serein studio. Use `https://deepak-hp.github.io/serein-ui/`; the old Pages URL returns 404.
+
+The [GitHub beta](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) is published with five assets. All freshly downloaded bytes matched the prepared files and all checksum entries verified. The exact downloaded `.tgz` passed the isolated consumer check without changing its hash. The downloaded reviewer ZIP verified all 56 files and passed 16/16 playback checks. [Reviewer announcement #5](https://github.com/deepak-hp/serein-ui/issues/5) now links the verified destinations. See [the complete delivery receipt](validation/2026-10-21-beta-distribution.md).
+
+The beta tag and published assets identify `c5c6e4f`; subsequent documentation does not replace them. npm publication, native accessibility checks and independent human review remain open. The packet does not count as completed human review.

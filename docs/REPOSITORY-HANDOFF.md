@@ -1,10 +1,10 @@
 # Repository handoff
 
-Display name: **Serein**. Unpublished package: `@serein-ui/react`. Repository: [deepak-hp/serein-ui](https://github.com/deepak-hp/serein-ui).
+Display name: **Serein**. GitHub prerelease package: `@serein-ui/react@0.1.0-beta.1`; npm publication remains deferred. Repository: [deepak-hp/serein-ui](https://github.com/deepak-hp/serein-ui).
 
 The active library and package were renamed from Ritam UI and `@ritam-ui/react` to Serein and `@serein-ui/react` on 13 October 2026. The repository is now `deepak-hp/serein-ui`; frozen evaluation materials and earlier verification entries retain the old name so their evidence remains accurate.
 
-No trademark, domain, npm scope or package-name availability is guaranteed. The local unpublished package, imports, examples and generated apps use the Serein identity.
+No trademark, domain, npm scope ownership or package-name availability is guaranteed. The GitHub prerelease package, imports, examples and generated apps use the Serein identity.
 
 ## Ready before push
 
@@ -14,9 +14,9 @@ No trademark, domain, npm scope or package-name availability is guaranteed. The 
 - Use `trial/README.md` for the actual build/setup commands. Rebuild the local tarball with `reference:setup` after cloning; the reference app's vendor archive is intentionally not committed.
 - The committed reference lockfile names a local archive generated from this source. Run `reference:setup` before installing/running that app; do not start with `npm ci` inside `reference`.
 - Before the first push, inspect the staged file list and contents for secrets/private data, confirm the intended remote and run the relevant checks. Do not force-push or overwrite existing remote history.
-- The MIT license is now applied. Public release still requires package/name ownership, working publication access and the documented release accessibility review. A source push does not publish a package or certify accessibility.
+- The MIT license is now applied. npm publication, scope ownership and the documented release accessibility review remain separate open gates. A source push does not publish to npm or certify accessibility.
 
-The repository is a source handoff. No npm package is published by pushing it to GitHub.
+The repository is a source handoff with a GitHub prerelease archive. Pushing it to GitHub does not publish an npm package.
 
 ## Release candidate handoff — 28 September 2026
 
