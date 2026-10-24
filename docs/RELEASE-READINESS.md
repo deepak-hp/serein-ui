@@ -4,6 +4,12 @@ Current Serein work is recorded in [the redesign and frame audit](SEREIN-REDESIG
 
 This record accompanies the [master checklist](RELEASE-CHECKLIST.md). The current milestone is a React-web beta with public MIT-licensed source, deployed documentation and verified GitHub downloads. npm publication is deferred and manual accessibility/human evaluation remains open; these deliveries do not establish a stable production release.
 
+## Customization review — 24 October 2026
+
+The accessibility checklist now separates Base UI's upstream primitives, Serein's styling/wrappers/custom compositions, and consuming-product responsibilities. Representative native review retains distinct custom recovery and focus outcomes without repeating every upstream component/device permutation.
+
+Fresh background checks passed on the unchanged runtime at `0b9a6c4`: library/reference tests, all four theme/motion story combinations, focused wrappers in three engines, compact checkbox targets, rendered theme/material checks, and invoice/settings/onboarding workflows in Chromium, Firefox and WebKit. See the [dated commands, environment and bounded results](validation/2026-10-24-customization-accessibility.md). No runtime fix was needed. npm publication, native screen readers/actual zoom and human review remain pending.
+
 ## Delivered scope
 
 - Searchable catalogue for all 42 components, with live previews, typed source, API links, themes and keyboard navigation.
@@ -48,7 +54,7 @@ Known non-blocking tooling notices at that baseline: Storybook preview annotatio
 
 - Verify the applied MIT license and dependency notices on each release candidate.
 - Confirm npm scope ownership and publication authentication, then publish and verify the exact beta in a clean registry consumer. The owner deferred npm work on 21 October 2026; use verified GitHub beta archives or local tarballs meanwhile.
-- Perform native NVDA/Firefox and VoiceOver/Safari checks, actual browser zoom and complete-process accessibility evaluation; review EAA applicability for the consuming product.
+- Perform representative native NVDA/Firefox and VoiceOver/Safari checks and actual browser zoom for Serein's styling, wrappers, custom components and composed flows using the [scoped protocol](../trial/reference/ACCESSIBILITY-REVIEW.md). Native review remains deferred during background-only work. Consuming products separately own complete-process evaluation and applicable EAA review.
 - Run the multi-task AI evaluation with independent human review before making improvement claims.
 - Recheck active release/site links for each future launch using the [launch checklist](LAUNCH-DRAFTS.md#repository-name-at-launch). The Serein rename, new Pages deployment and authorized GitHub announcement update are verified below; additional announcement destinations still require owner authorization.
 

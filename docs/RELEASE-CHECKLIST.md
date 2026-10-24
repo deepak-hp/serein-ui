@@ -55,16 +55,30 @@ This is the durable source of scope and progress. Checked items require evidence
 
 ## 5. Accessibility and inclusion
 
-- [x] WCAG 2.2 AA target and application-level/EAA responsibilities documented.
-- [x] Automated keyboard, axe, contrast, reflow, reduced-motion and forced-colour checks exist.
-- [x] Record fresh release-candidate automated results and unresolved limitations.
-- [x] Add focused Chromium, Firefox and WebKit checks for disabled controls, nested modal focus, error recovery, live-status DOM semantics, text spacing, bounded targets and forced-colour focus. All six scripted scenarios passed per engine; see [the focused audit](validation/2026-10-14-accessibility.md).
-- [x] Publish a criterion/evidence matrix and practical manual test protocol.
-- [x] Prepare complete-flow NVDA/Firefox, VoiceOver/Safari and real zoom procedures, a support matrix and a real-application beta feedback kit; results remain pending until performed.
-- [x] Install native Firefox `157.0.1` and NVDA `2026.2` on Windows and verify executable signatures. See [setup evidence and automation blocker](validation/2026-10-14-windows-setup.md); no native flow has passed.
-- [ ] Native NVDA + Firefox and VoiceOver + Safari evaluation of complete flows.
-- [ ] Actual browser zoom, text spacing, focus-obscuration and supported-browser review.
-- [ ] Evaluation with disabled users and applicable product/service EAA review before any conformance claim.
+Base UI supplies the underlying keyboard, ARIA and focus primitives. Serein's release review tests what our styling, wrappers and compositions add or could break; it does not reproduce Base UI's entire upstream platform matrix. DayPicker, native inputs and Serein's custom components require their own integration coverage.
+
+**Serein-owned automated checks**
+
+- [x] Document the WCAG 2.2 AA target, ownership boundaries and application-level/EAA responsibilities.
+- [x] Maintain checks for light/dark token contrast, enabled-control boundaries, visible focus, compact targets, reflow/text spacing, reduced motion and optional-material/forced-colour fallbacks.
+- [x] Maintain wrapper checks for names, labels, descriptions, invalid/error wiring, disabled options and focus restoration, including nested Drawer/Dialog composition.
+- [x] Maintain custom-component checks for table semantics/sorting, date/range adapters, status feedback and async cancellation/retry; keep distinct Projects, Invoices, Settings and Onboarding outcomes covered.
+- [x] Publish the [criterion/evidence matrix](../trial/docs/ACCESSIBILITY-EVIDENCE.md) and [representative native review protocol](../trial/reference/ACCESSIBILITY-REVIEW.md). Retain existing cross-engine integration regressions.
+- [x] Refresh the focused customization checks on the unchanged runtime at `0b9a6c4`: 87 library tests, 15 reference tests, 564 story cases, 18 cross-engine wrapper scenarios, compact controls, styling/materials and three-engine workflows passed on 24 October. See [commands, results and limits](validation/2026-10-24-customization-accessibility.md). Future candidates need their own results.
+
+**Representative native checks — deferred while work must remain in the background**
+
+- [x] Install native Firefox `157.0.1` and NVDA `2026.2` on Windows and verify executable signatures. See [setup evidence and automation blocker](validation/2026-10-14-windows-setup.md); installation is not a flow pass.
+- [ ] NVDA + Firefox: review Serein's composed labels/errors/status announcements, custom table/date interaction, and nested-layer/validation/recovery focus using the representative protocol. Windows first, once desktop interaction is permitted.
+- [ ] VoiceOver + Safari: review the same Serein-owned risks on macOS later; headless WebKit does not complete this item.
+- [ ] Actual 200%/400% zoom, native contrast/reduced-motion settings and visual focus-obscuration review on the representative layouts in both themes. Headless viewport/CSS/media emulation remains supporting evidence only.
+
+**Human feedback and consuming-product responsibilities**
+
+- [ ] Obtain usability feedback from disabled users on representative Serein flows; record findings and retests separately from automated results.
+- [ ] Each consuming product must assess its own content, localization, complete processes and applicable EAA obligations before making a conformance claim. Library checks cannot sign off an unrelated application.
+
+Reuse a recorded observation only for the same wrapper, composition and environment; keep distinct custom flow outcomes covered. Recheck affected paths after styling, wrapper, workflow or dependency changes. The public beta remains available with these documented limits; pending native/human work is not silently marked complete.
 
 ## 6. Open-source and launch readiness
 
