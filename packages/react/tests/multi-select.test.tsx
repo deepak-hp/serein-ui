@@ -39,8 +39,11 @@ test('removes chips with their named button and chip keyboard controls', async (
   await user.keyboard('{ArrowLeft}{Backspace}');
   expect(screen.queryByRole('button', { name: 'Remove Research' })).not.toBeInTheDocument();
   input.focus();
-  await user.keyboard('{ArrowLeft}{ArrowLeft}{Delete}');
+  await user.keyboard('{ArrowLeft}');
+  expect(screen.getByLabelText('Engineering')).toHaveFocus();
+  await user.keyboard('{Delete}');
   expect(screen.queryByRole('button', { name: 'Remove Engineering' })).not.toBeInTheDocument();
+  expect(input).toHaveFocus();
 });
 
 test('filters labels without discarding selections and announces empty results', async () => {

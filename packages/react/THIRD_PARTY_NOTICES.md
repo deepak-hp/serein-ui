@@ -4,7 +4,7 @@ Serein is built with dependencies declared in `package.json`; their license text
 
 | Dependency | Version | License | Upstream license |
 | --- | --- | --- | --- |
-| [Base UI](https://base-ui.com) | 1.8.0 | MIT | [MIT text](https://github.com/mui/base-ui/blob/master/LICENSE) |
+| [Base UI](https://base-ui.com) | 1.9.0 | MIT | [MIT text](https://github.com/mui/base-ui/blob/master/LICENSE) |
 | [DayPicker](https://daypicker.dev) | 10.0.1 | MIT | [MIT text](https://github.com/gpbl/react-day-picker/blob/main/LICENSE) |
 | [StyleX](https://stylexjs.com) | 0.19.1 | MIT | [MIT text](https://github.com/facebook/stylex/blob/main/LICENSE) |
 | [React](https://react.dev) peer dependency | 19.3.0 | MIT | [MIT text](https://github.com/facebook/react/blob/main/LICENSE) |
