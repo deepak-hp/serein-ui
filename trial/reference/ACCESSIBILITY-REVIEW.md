@@ -16,6 +16,22 @@ The separate `check:reference` flow covers search, date/status filtering, persis
 
 ## Manual checks still pending
 
+### Customization scope and selection
+
+Base UI owns its upstream keyboard, ARIA and focus primitives. Serein owns wrapper contracts and label/error wiring, composed focus flows, custom DataTable and status behavior, motion, calendar/date adapters, colours, targets, reflow, visible focus and optional materials when enabled. Retain bounded integration keyboard regressions, but do not repeat Base UI's upstream baseline across every component/device permutation.
+
+For native library review, select representative Serein-owned risk paths from the full scripts below:
+
+- Projects: nested Drawer and discard decision, calendar/date selection and return focus, custom table semantics, archive/restore and their resulting focus/status.
+- Invalid → corrected → failed → retry/success: error associations, retained context, pending/failure/success announcements and focus. Include distinct inline-details, completion/restart and storage-recovery outcomes where their behavior differs; one successful form does not cover them.
+- Actual zoom/reflow, rendered light/dark themes, Windows contrast themes, visible/unobscured focus, measured colours/targets and reduced motion on the selected compositions; include enabled optional materials.
+
+Reuse an observation for identical wrappers only with the same candidate, environment, configuration and state. Record the original evidence and exactly which identical uses it supports. Expand the selection when behavior, source or dependencies change, a distinct composition adds risk, or a failure suggests wider impact. Do not mark an untested distinct flow or environment passed by analogy.
+
+Native Windows/assistive-technology and actual-zoom work is deferred during the owner's background-only work restriction. Mac/VoiceOver review follows later. No native result is added by this scope update. The source decision record is [customization accessibility scope](../../docs/validation/2026-10-24-customization-accessibility.md).
+
+Disabled-user usability input is a separate human activity. Consuming-app content, localization, complete processes and product/EAA applicability review remain separate product responsibilities. Neither those reviews nor EAA certification are automated by this protocol.
+
 Record browser/OS/assistive-technology versions, expected behaviour, actual result and any evidence for every row. Do not mark a row passed based on the automated script.
 
 | Environment and flow | Expected result | Status |
@@ -64,11 +80,11 @@ Evidence link or issue URL:
 Notes and follow-up owner:
 ```
 
-Start every unperformed record at **Pending**. Use **Blocked** only when setup or the environment prevents the check, and state the blocker. A pass in one browser, theme, zoom level or assistive-technology pairing does not pass another row.
+Start every unperformed record at **Pending**. Use **Blocked** only when setup or the environment prevents the check, and state the blocker. Record selected scope and any observation reused under the rules above. A pass in one browser, theme, zoom level or assistive-technology pairing does not pass another row.
 
 ## Common task script
 
-Complete the Projects, Invoices, Settings and Onboarding flows with the mouse or trackpad put aside. In each flow, move through the page in both directions, activate controls, dismiss any popup with Escape, and confirm that the visible focus indicator is never fully covered by sticky content or an open layer. The focus check follows [W3C's focus-not-obscured guidance](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html).
+The complete Projects, Invoices, Settings and Onboarding scripts below are retained as reproducible references. Apply the selection rules above to native library review and record selected steps plus any explicit reuse; the consumer's complete-process review uses its own full flows. For each selected path, put the mouse or trackpad aside, move in both directions, activate controls, dismiss any popup with Escape, and confirm that the visible focus indicator is never fully covered by sticky content or an open layer. The focus check follows [W3C's focus-not-obscured guidance](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html).
 
 ### Projects
 
@@ -111,9 +127,9 @@ For a separate unreadable-storage scenario, confirm **Allow replacement on next 
 Use a current stable desktop Firefox and NVDA on Windows, and record both exact versions. Start NVDA before Firefox. Keep browse mode on for page reading and let NVDA switch modes for form controls; record any manual mode change needed to recover.
 
 1. Read the page title, landmarks and headings, then use `H`, `D`, `F`, `B` and `T` navigation where applicable. Use `NVDA+F7` to inspect elements and confirm the task can be understood without visual position.
-2. Complete the common task script with Tab, Shift+Tab, Enter, Space, arrow keys and Escape. In the invoice table, confirm headers and cell context are announced and the horizontal-scroll hint does not replace table semantics.
+2. Complete the selected common-script paths with Tab, Shift+Tab, Enter, Space, arrow keys and Escape. In a selected invoice-table check, confirm headers and cell context are announced and the horizontal-scroll hint does not replace table semantics.
 3. For every validation, pending, failure and success state, record the words NVDA announces, whether it interrupts unrelated speech, whether it repeats, and whether stale error text is announced after correction.
-4. Run once in the light theme and once in the dark theme. Repeat the failure and focus-return steps at 200% and 400% browser zoom.
+4. Review the selected visual risks in light and dark themes, and selected failure/focus-return risks at actual 200% and 400% browser zoom. Record which states were exercised; do not multiply identical wrapper checks without a distinct risk.
 
 Status: **Pending**. No native NVDA/Firefox run has been performed for this candidate.
 
@@ -122,9 +138,9 @@ Status: **Pending**. No native NVDA/Firefox run has been performed for this cand
 Use a current stable Safari and the built-in VoiceOver version supplied with the recorded macOS version. Turn VoiceOver on before opening the page. Apple documents the web rotor and `VO+U` in its [VoiceOver rotor guide](https://support.apple.com/guide/voiceover/voiceover-rotor-mchlp2719/mac).
 
 1. Use the rotor to inspect landmarks, headings, form controls, links and tables. Confirm the page structure and current step can be understood without visual position.
-2. Complete the common task script using VoiceOver navigation plus Tab, Shift+Tab, Space, Return, arrow keys and Escape. Record whether Quick Nav is on and any step that only works after changing it.
+2. Complete the selected common-script paths using VoiceOver navigation plus Tab, Shift+Tab, Space, Return, arrow keys and Escape. Record whether Quick Nav is on and any step that only works after changing it.
 3. Confirm popup boundaries, dialog context, expanded/collapsed state, selected options, validation, pending status, failure alerts, completion headings and return focus are announced in a useful order.
-4. Run once in the light theme and once in the dark theme. Repeat the failure and focus-return steps at 200% and 400% page zoom.
+4. Review selected visual risks in both themes and selected failure/focus-return risks at actual 200% and 400% page zoom. Record the exercised states and any same-setup wrapper observation reused.
 
 Status: **Pending**. No macOS/Safari/VoiceOver device run has been performed for this candidate. Playwright WebKit results on Windows are not Safari or VoiceOver evidence.
 
@@ -133,11 +149,11 @@ Status: **Pending**. No macOS/Safari/VoiceOver device run has been performed for
 These checks use the browser's own zoom command. Do not substitute DevTools viewport emulation, CSS transforms or the automated doubled-font test.
 
 1. Set the desktop browser window so its content area is 1280 CSS pixels wide at 100% zoom. Record the physical display, OS scaling, window size and browser zoom shown in the browser UI.
-2. Increase browser zoom to **200%**. Complete the common task script in both themes. Record clipped or overlapping text, lost content, two-dimensional page scrolling, obscured focus, unreachable actions and popups that extend outside the viewport.
-3. Return to 100%, restore the 1280 CSS-pixel starting width, then increase browser zoom to **400%**. Repeat all four flows, including each failure and recovery path. Ordinary page content must reflow to one dimension; data tables may scroll horizontally inside their labeled regions. The page itself, forms and editor actions must not require horizontal scrolling. This procedure exercises the relationship described in [W3C's reflow guidance](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html).
-4. At 100%, 200% and 400%, Tab and Shift+Tab through every interactive element. Confirm logical order, a visible focus indicator, no keyboard trap, Escape behavior, and that focused controls are not completely covered.
-5. With a pointer, inspect every non-inline control at 100% zoom. Record its rendered size and spacing when it appears smaller than 24 by 24 CSS pixels; assess exceptions using [W3C's target-size guidance](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).
-6. In both themes and every interactive state, measure text contrast and the boundaries or indicators needed to identify controls, selected state, validation and focus. Record colors, ratio, tool and result. Use the applicable text requirement and [W3C's non-text contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html); visual inspection alone is not a contrast measurement.
+2. Increase browser zoom to **200%**. Complete the selected common-script paths and visual risks in both themes. Record clipped or overlapping text, lost content, two-dimensional page scrolling, obscured focus, unreachable actions and popups that extend outside the viewport.
+3. Return to 100%, restore the 1280 CSS-pixel starting width, then increase browser zoom to **400%**. Repeat the selected composition/failure/recovery risks. Ordinary page content must reflow to one dimension; data tables may scroll horizontally inside their labeled regions. The page itself, forms and editor actions must not require horizontal scrolling. This procedure exercises the relationship described in [W3C's reflow guidance](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html).
+4. At 100%, 200% and 400%, Tab and Shift+Tab through the interactive elements in those paths. Confirm logical order, a visible focus indicator, no keyboard trap, Escape behavior, and that focused controls are not completely covered.
+5. With a pointer, inspect Serein-owned target sizes and spacing at 100% zoom, reusing identical wrapper observations under the selection rules. Record rendered size and spacing when a non-inline control appears smaller than 24 by 24 CSS pixels; assess exceptions using [W3C's target-size guidance](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).
+6. In both themes, measure text contrast and the boundaries or indicators needed to identify controls, selected state, validation and focus for the selected custom styles and states, including enabled optional materials. Record colors, ratio, tool and result. Use the applicable text requirement and [W3C's non-text contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html); visual inspection alone is not a contrast measurement.
 7. Enable the operating system's Reduce Motion preference before launching the browser. Repeat navigation, popup, save, error and completion interactions. Record any non-essential spatial movement or loss of status feedback. W3C describes interaction-triggered motion and preference support in its [animation guidance](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html).
 8. On Windows, repeat both themes with a light and a dark native contrast theme. Confirm text, control boundaries, selected/checked state, validation, disabled state and focus remain distinguishable. Record the exact OS theme names.
 
@@ -145,7 +161,7 @@ All actual 200%/400% zoom, contrast-theme, measured contrast, target-size, reduc
 
 ## Result summary
 
-Copy a row for each environment, theme and zoom level. Link failures to the beta feedback form or a bug issue; do not overwrite a failed result after a fix—add a dated retest row.
+Copy a row for each selected environment, theme and zoom level, recording selected paths and explicit reuse. The pairing rows below are unperformed reference slots, not a requirement to test the full script in every permutation. Link failures to the beta feedback form or a bug issue; do not overwrite a failed result after a fix—add a dated retest row.
 
 | Pairing or check | Candidate | Reviewer/date | Result | Evidence or issue |
 | --- | --- | --- | --- | --- |
