@@ -1,0 +1,27 @@
+{
+  "name": "@serein-ui/fonts",
+  "version": "0.0.0",
+  "description": "Self-hosted Serein fonts: Anek Latin (variable weight and width) and Chivo Mono. No third-party font CDN.",
+  "license": "OFL-1.1",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "OFL.txt"
+  ],
+  "exports": {
+    ".": "./dist/fonts.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./files/*": "./dist/files/*"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs --check"
+  },
+  "devDependencies": {
+    "@fontsource-variable/anek-latin": "5.3.0",
+    "@fontsource-variable/chivo-mono": "5.3.0"
+  }
+}

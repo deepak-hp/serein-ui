@@ -1,0 +1,124 @@
+name: Button
+status: draft
+phase: 1
+summary: A machined key that starts an action; the signal variant marks the one action a view exists for.
+platforms:
+  web: planned
+  native: planned
+anatomy:
+  - part: root
+    description: Native <button> (or Pressable on React Native). Keeps its width while busy.
+  - part: icon
+    description: Optional leading icon from @serein-ui/icons, 20px, aria-hidden.
+  - part: label
+    description: Verb plus object; states the amount whenever money moves.
+  - part: busy indicator
+    description: Drizzle, shown in place of the label while aria-busy is true.
+props:
+  - name: variant
+    type: "'primary' | 'secondary' | 'quiet' | 'danger'"
+    default: "'primary'"
+    required: false
+    description: primary is the signal fill; at most one per view.
+  - name: size
+    type: "'default' | 'compact'"
+    default: "'default'"
+    required: false
+    description: 48px default; 36px compact for desktop toolbars and inline actions.
+  - name: icon
+    type: IconName
+    required: false
+    description: Leading icon.
+  - name: busy
+    type: boolean
+    default: "false"
+    required: false
+    description: Shows Drizzle, sets aria-busy, ignores presses, keeps width.
+  - name: unavailableReason
+    type: string
+    required: false
+    description: Makes the button aria-disabled (still focusable) and is announced and shown as the reason.
+  - name: block
+    type: boolean
+    default: "false"
+    required: false
+    description: Full width; use for the primary action at the bottom of a phone flow.
+states:
+  - name: default
+    treatment: Primary is a color.signal fill with color.on-signal text; secondary is color.surface-raised with a color.line-strong border.
+  - name: hover
+    treatment: One step brighter (color.signal-hover, or color.surface-sunken for secondary and quiet) over duration.fast.
+  - name: pressed
+    treatment: Moves down 1px. No scale, no bounce.
+  - name: focus
+    treatment: 2px color.focus outline with 2px offset; never removed.
+  - name: busy
+    treatment: Label hidden, Drizzle visible, width unchanged, aria-busy="true".
+  - name: unavailable
+    treatment: color.surface-sunken fill, color.ink-muted text, aria-disabled="true", reason in the label or nearby.
+keyboard:
+  - keys: Enter, Space
+    action: Activates the button (native behaviour).
+  - keys: Tab
+    action: Moves focus; unavailable buttons stay in the tab order so their reason can be read.
+aria:
+  role: button
+  attributes:
+    - aria-busy (while busy)
+    - aria-disabled (when unavailable; never the disabled attribute on important actions)
+    - aria-label (icon-only buttons only)
+  notes: The label is the accessible name; icon-only buttons need aria-label and a visible tooltip.
+motion:
+  - moment: Press
+    motion: translateY(1px) over duration.fast with easing.standard.
+    reducedMotion: No movement; colour change only.
+  - moment: Success after busy
+    motion: A ring closes and a check draws in over duration.slow with easing.settle.
+    reducedMotion: The check appears complete.
+  - moment: Failure after busy
+    motion: Nudges ±3px twice over 300ms; focus moves to the recovery action.
+    reducedMotion: No nudge.
+content:
+  - Verb plus object, sentence case ("Send ₹2,400", "Save draft").
+  - State the amount whenever money moves.
+  - When the action cannot run, say why in the label ("Over daily limit").
+do:
+  - Use one primary button per view, at the end of the flow.
+  - Keep the busy button focusable and the same width.
+dont:
+  - Don't use two primary buttons side by side.
+  - Don't use danger for Cancel, or colour alone to signal destruction.
+  - Don't disable a button without saying why.
+tokens:
+  - color.signal
+  - color.signal-hover
+  - color.on-signal
+  - color.surface-raised
+  - color.surface-sunken
+  - color.line-strong
+  - color.ink
+  - color.ink-muted
+  - color.danger
+  - color.on-danger
+  - color.focus
+  - size.control
+  - size.control-compact
+  - size.focus-width
+  - size.focus-offset
+  - radius.control
+  - space.2
+  - space.5
+  - duration.fast
+  - duration.slow
+  - easing.standard
+  - easing.settle
+  - type.body
+wcag:
+  - "1.4.1"
+  - "1.4.3"
+  - "1.4.11"
+  - "2.1.1"
+  - "2.4.7"
+  - "2.5.8"
+  - "4.1.2"
+  - "4.1.3"

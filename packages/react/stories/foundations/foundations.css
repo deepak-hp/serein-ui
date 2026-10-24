@@ -1,0 +1,11 @@
+.sr-doc-scroll { overflow-x: auto; margin: var(--sr-space-4) 0; }
+.sr-doc-table { width: 100%; border-collapse: collapse; font: 400 14px/20px var(--sr-font-family-sans); color: var(--sr-color-ink); }
+.sr-doc-table th { text-align: left; font: 400 12px/16px var(--sr-font-family-mono); color: var(--sr-color-ink-muted); border-bottom: 1px solid var(--sr-color-line-strong); padding: 0 12px 8px 0; }
+.sr-doc-table td { border-bottom: 1px solid var(--sr-color-line); padding: 10px 12px 10px 0; vertical-align: top; }
+.sr-doc-table code { font: 400 12px/16px var(--sr-font-family-mono); white-space: nowrap; }
+.sr-doc-chip { display: inline-block; width: 36px; height: 20px; border-radius: var(--sr-radius-tag); border: 1px solid var(--sr-color-line); vertical-align: middle; margin-right: 8px; }
+.sr-doc-space { display: inline-block; height: 10px; background: var(--sr-color-signal); vertical-align: middle; margin-right: 8px; }
+.sr-doc-icons { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 8px; }
+.sr-doc-icons li { display: grid; justify-items: center; gap: 10px; padding: 16px 8px 10px; border: 1px solid var(--sr-color-line); border-radius: var(--sr-radius-control); background: var(--sr-color-surface-raised); color: var(--sr-color-ink); }
+.sr-doc-icons svg { width: 24px; height: 24px; }
+.sr-doc-icons code { font: 400 12px/16px var(--sr-font-family-mono); color: var(--sr-color-ink-muted); }

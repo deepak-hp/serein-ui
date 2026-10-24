@@ -13,38 +13,39 @@ jobs:
   release-gate:
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    defaults:
-      run:
-        working-directory: trial
     env:
-      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/trial/.playwright
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/packages/react/.playwright
     steps:
       - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v5
         with:
           node-version: 24
-          cache: npm
-          cache-dependency-path: trial/package-lock.json
-      - run: npm ci
-      - name: Verify site, beta packaging and portable reviewer tooling
-        run: node --test scripts/build-site.test.mjs scripts/check-site.test.mjs scripts/prepare-beta-release.test.mjs scripts/export-review-packet.test.mjs
-      - run: npm exec -- playwright install --with-deps chromium firefox webkit
-      - run: npm run check:release
-      - run: npm run check:workflows
-        env:
-          BROWSER: firefox
-      - run: npm run check:workflows
-        env:
-          BROWSER: webkit
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build every package
+        run: pnpm build
+      - name: Type-check
+        run: pnpm typecheck
+      - name: Unit, contrast, Tailwind and spec checks
+        run: pnpm test
+      - name: Verify beta packaging tooling
+        working-directory: packages/react
+        run: node --test scripts/prepare-beta-release.test.mjs
+      - run: pnpm --filter @serein-ui/react exec playwright install --with-deps chromium firefox webkit
+      - name: React release gate (package, SSR, consumer, AI, Storybook stories and UI checks)
+        run: pnpm --filter @serein-ui/react check:release
       - name: Check focused accessibility scenarios across browser engines
+        working-directory: packages/react
         run: |
           node scripts/check-accessibility-gaps.mjs chromium
           node scripts/check-accessibility-gaps.mjs firefox
           node scripts/check-accessibility-gaps.mjs webkit
       - name: Check compact checkbox layout and accessibility
+        working-directory: packages/react
         run: node scripts/check-compact-checkbox.mjs
       - name: Verify installed package in Next.js App Router
-        working-directory: trial/integration/next
+        working-directory: packages/react/integration/next
         env:
           NEXT_TELEMETRY_DISABLED: "1"
         run: |
@@ -52,9 +53,5 @@ jobs:
           npm ci --ignore-scripts
           npm run build
           npm run verify
-      - name: Build public documentation artifact
-        run: node scripts/build-site.mjs --base-path "$SITE_BASE"
-        env:
-          SITE_BASE: /${{ github.event.repository.name }}/
-      - name: Verify public documentation paths
-        run: node scripts/check-site.mjs
+      - name: Build documentation site (Storybook)
+        run: pnpm --filter @serein-ui/react build:storybook

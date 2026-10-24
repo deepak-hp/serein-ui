@@ -1,0 +1,9 @@
+body { margin: 0; }
+.story-frame { max-width: 760px; padding: 16px; font-family: var(--sr-font-family-sans); color: var(--sr-color-ink); background: var(--sr-color-surface); }
+.story-frame > * { max-width: 100%; }
+/* An explicit user-controlled preview only; distributed CSS keeps system defaults. */
+[data-motion-preview=full] .sr-status-icon--pending { animation: sr-status-icon-pending 1.1s ease-in-out infinite !important; }
+[data-motion-preview=full] .sr-status-icon--send.sr-status-icon--pending { animation: sr-status-icon-send 1.1s ease-in-out infinite !important; }
+[data-motion-preview=full] .sr-status-icon--loading.sr-status-icon--pending { animation: sr-status-icon-spin .8s linear infinite !important; }
+[data-motion-preview=full] .sr-status-icon--success { animation: sr-status-icon-success 360ms ease-out both !important; }
+[data-motion-preview=full] .sr-status-icon--error { animation: sr-status-icon-error 280ms ease-out both !important; }

@@ -1,0 +1,21 @@
+{
+  "name": "@serein-ui/format",
+  "version": "0.0.0",
+  "description": "Money and number formatting for Serein UIs: lakh/crore grouping, true minus sign, locale-aware.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": ["src"],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "5.0.3"
+  }
+}

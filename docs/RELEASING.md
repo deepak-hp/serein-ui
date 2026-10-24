@@ -4,21 +4,19 @@ Serein `0.1.0-beta.1` is licensed under MIT and configured as a public npm packa
 
 ## Local release gate
 
-Use Node 24 and a clean dependency install in `trial`:
+Use Node 24 and a clean dependency install in `packages/react`:
 
 ```sh
-npm ci
-npm run test:browser-install
-npm run check:release
+pnpm install --frozen-lockfile
+pnpm --filter @serein-ui/react test:browser-install
+pnpm --filter @serein-ui/react check:release
 ```
 
-The gate checks source tests, types, library and playground builds, tarball contents, a strict consumer, SSR/hydration, generated AI material and freshness, Storybook interactions, the installed reference workspace, starter generation, live Storybook documentation and UI checks, and reference/catalogue/workflow/material checks. It starts its own Storybook and reference preview on available loopback ports and stops those children on success or failure. It never kills an existing user server. Browser installation is separate so local users can choose when to download it; the script sets the same local Playwright path used by the checks.
-
-`npm run reference:setup` builds a fresh package tarball, installs it into the reference app, and updates the tracked reference manifest and lockfile hash. The generated `reference/vendor` archive is untracked. Every fresh clone must run setup before `npm run reference:build` or reference checks.
+The gate checks source tests, types, the library build, tarball contents, a strict consumer, SSR/hydration, generated AI material and freshness, Storybook interactions and accessibility, the Storybook build, starter generation, and live Storybook documentation and UI checks. It starts its own Storybook on an available loopback port and stops it on success or failure. It never kills an existing user server. Browser installation is separate so local users can choose when to download it; the script sets the same local Playwright path used by the checks. The repository-wide `pnpm test` also runs the token contrast tests and spec validation.
 
 ## Owner checklist
 
-1. Review `git status`, `CHANGELOG.md`, package metadata, package manifest output, and current audit results. Run `npm audit` from `trial`; the last inventory found zero findings across 401 dependencies, which must be rechecked rather than assumed.
+1. Review `git status`, `CHANGELOG.md`, package metadata, package manifest output, and current audit results. Run `npm audit` from `packages/react`; the last inventory found zero findings across 401 dependencies, which must be rechecked rather than assumed.
 2. Run the local release gate and record performed manual accessibility/browser checks and unresolved review gates in `docs/RELEASE-READINESS.md`. A beta for reviewers may retain explicitly disclosed manual/human gates; it must not be described as a stable or conformant release on that basis.
 3. Confirm the root and packaged MIT licenses are identical, the package contains `THIRD_PARTY_NOTICES.md`, and the package guard accepts only the approved beta version, public access, `beta` tag, license and attribution files.
 4. Verify private vulnerability reporting remains enabled and `SECURITY.md` links to the repository's private reporting form. Keep npm authentication and trusted-publishing setup deferred with npm publication; no registry credentials are needed for this GitHub beta workflow.
@@ -36,27 +34,27 @@ From a clean checkout of the reviewed `main` commit, using Node 24:
 
 ```sh
 git status --short
-npm --prefix trial ci
-npm --prefix trial run check:release
-npm --prefix trial run release:prepare
+pnpm install --frozen-lockfile
+pnpm --filter @serein-ui/react check:release
+pnpm --filter @serein-ui/react release:prepare
 ```
 
-Commit any reviewed reference-lockfile or generated-document changes from the gate, and verify that exact revision before preparation. `release:prepare` requires clean source, builds/checks the package, then writes the tarball, `SHA256SUMS` and unsigned `SOURCE.json` into a new `trial/.review/beta-release-<commit>` directory. Set `SEREIN_PACKAGE_TARBALL` to the absolute path of that exact tarball and run the strict consumer check:
+Commit any reviewed reference-lockfile or generated-document changes from the gate, and verify that exact revision before preparation. `release:prepare` requires clean source, builds/checks the package, then writes the tarball, `SHA256SUMS` and unsigned `SOURCE.json` into a new `packages/react/.review/beta-release-<commit>` directory. Set `SEREIN_PACKAGE_TARBALL` to the absolute path of that exact tarball and run the strict consumer check:
 
 ```sh
-SEREIN_PACKAGE_TARBALL=/absolute/path/to/serein-ui-react-0.1.0-beta.1.tgz npm --prefix trial run check:consumer
+SEREIN_PACKAGE_TARBALL=/absolute/path/to/serein-ui-react-0.1.0-beta.1.tgz pnpm --filter @serein-ui/react check:consumer
 ```
 
 On PowerShell:
 
 ```powershell
 $env:SEREIN_PACKAGE_TARBALL = (Resolve-Path .\serein-ui-react-0.1.0-beta.1.tgz).Path
-npm --prefix trial run check:consumer
+pnpm --filter @serein-ui/react check:consumer
 ```
 
 After the exact `main` commit passes hosted release checks and the consumer check, create the annotated tag for the new version and a **draft prerelease**. Attach the tarball, checksum and source metadata before publishing the prerelease. Never move an already published tag or replace released bytes. Re-download those exact assets, verify the checksum and source commit, and rerun the consumer check against the downloaded tarball before updating the authorized GitHub reviewer announcement. `SOURCE.json` records source metadata; it is not a signed provenance attestation.
 
-For the optional AI review packet, run `node trial/scripts/export-review-packet.mjs trial/.review/reviewer-packet-<commit>` from the repository root. It verifies frozen inputs and rebuilds playback without rescoring them. Inspect the export, smoke-test all four candidates, then ZIP only that directory as `serein-reviewer-packet-0.1.0-beta.1.zip`. Include its SHA-256 alongside the package archive in the release checksum file. The packet's internal checksum file covers its own files. Keep the original experiment untouched and distinguish playback checks from independent human review.
+For the optional AI review packet, run `node packages/react/scripts/export-review-packet.mjs packages/react/.review/reviewer-packet-<commit>` from the repository root. It verifies frozen inputs and rebuilds playback without rescoring them. Inspect the export, smoke-test all four candidates, then ZIP only that directory as `serein-reviewer-packet-0.1.0-beta.1.zip`. Include its SHA-256 alongside the package archive in the release checksum file. The packet's internal checksum file covers its own files. Keep the original experiment untouched and distinguish playback checks from independent human review.
 
 The npm publication procedure remains deferred. If later authorized, authenticate through the owner-controlled npm account, publish the exact reviewed tag under the `beta` tag, verify registry metadata and a clean consumer install, and update installation documentation only after those checks pass.
 

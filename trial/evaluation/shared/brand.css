@@ -1,5 +1,0 @@
-@import '@fontsource-variable/plus-jakarta-sans';
-:root { color-scheme: light; --eval-canvas:#fff; --eval-text:#111216; --eval-muted:#5b5d66; --eval-surface:#f4f4f6; --eval-border:#858b95; --eval-orange:#ff681f; --eval-on-orange:#141414; }
-[data-dp-theme="dark"] { color-scheme:dark; --eval-canvas:#090a0c; --eval-text:#f6f7f9; --eval-muted:#bec0c7; --eval-surface:#14161b; --eval-border:#788292; }
-*,*::before,*::after { box-sizing:border-box; }
-body { margin:0; font-family:'Plus Jakarta Sans Variable',sans-serif; background:var(--eval-canvas); color:var(--eval-text); }

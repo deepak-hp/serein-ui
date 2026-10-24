@@ -61,7 +61,7 @@ Build or migrate grouped settings with a required text field, a selection and a 
 
 Build or migrate a multi-step setup with progress, back navigation, review and completion. Connect completion to the application's test service or persistence layer. Exercise an empty required value, back/forward state retention, completion failure with retained choices, retry, reload after success and restart or equivalent recovery. Confirm the user's position and saved outcome remain understandable throughout.
 
-For every task, use keyboard-only input at desktop and narrow widths, light and dark themes, and at least one browser named in [SUPPORT.md](SUPPORT.md). If the reviewer uses assistive technology, follow the result fields in the [native accessibility protocol](../trial/reference/ACCESSIBILITY-REVIEW.md); do not infer accessibility support from an automated scan.
+For every task, use keyboard-only input at desktop and narrow widths, light and dark themes, and at least one browser named in [SUPPORT.md](SUPPORT.md). If the reviewer uses assistive technology, follow the result fields in the [native accessibility protocol](../packages/react/reference/ACCESSIBILITY-REVIEW.md); do not infer accessibility support from an automated scan.
 
 ## What to record
 

@@ -1,0 +1,55 @@
+{
+  "duration": {
+    "$type": "duration",
+    "$description": "Fast and exact. Reduced motion swaps movement for a fade of duration.fast.",
+    "fast": {
+      "$value": {
+        "value": 100,
+        "unit": "ms"
+      },
+      "$description": "Hover, press, focus."
+    },
+    "base": {
+      "$value": {
+        "value": 180,
+        "unit": "ms"
+      },
+      "$description": "State changes, enter and exit."
+    },
+    "slow": {
+      "$value": {
+        "value": 320,
+        "unit": "ms"
+      },
+      "$description": "Needle and tape travel, success marks."
+    },
+    "rain": {
+      "$value": {
+        "value": 1100,
+        "unit": "ms"
+      },
+      "$description": "One cycle of the Drizzle loader."
+    }
+  },
+  "easing": {
+    "$type": "cubicBezier",
+    "standard": {
+      "$value": [
+        0.2,
+        0,
+        0,
+        1
+      ],
+      "$description": "Every UI transition."
+    },
+    "settle": {
+      "$value": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
+      "$description": "Needles, tapes and readouts coming to rest."
+    }
+  }
+}

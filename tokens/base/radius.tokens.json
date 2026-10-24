@@ -1,0 +1,47 @@
+{
+  "radius": {
+    "$type": "dimension",
+    "tag": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$description": "Tags, the gauge tube, chart bar caps."
+    },
+    "control": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
+      "$description": "Buttons, inputs, segmented tracks, avatars."
+    },
+    "key": {
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$description": "Keypad and quick-action keys."
+    },
+    "popup": {
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$description": "Menus, popovers, tooltips, select lists."
+    },
+    "panel": {
+      "$value": {
+        "value": 14,
+        "unit": "px"
+      },
+      "$description": "Panels and notices."
+    },
+    "sheet": {
+      "$value": {
+        "value": 22,
+        "unit": "px"
+      },
+      "$description": "Sheets and dialogs."
+    }
+  }
+}

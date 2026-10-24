@@ -1,6 +1,0 @@
-.runtime/
-builds/
-condition-key.json
-evidence/**/screenshots/
-evidence-supplemental/**/screenshots/
-.smoke/

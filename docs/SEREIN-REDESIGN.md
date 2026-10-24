@@ -1,5 +1,7 @@
 # Serein rename and visual redesign
 
+> **Superseded (October 2026).** The visual direction described here was replaced by the precision-instrument language in [DESIGN.md](../DESIGN.md) during the Serein foundations merge. This page is kept as history.
+
 Implemented 13 October 2026 on `codex/serein-design`.
 
 The user selected Serein and requested a visual language informed by its meaning, while preserving the previously approved astrology-inspired foundation. The result uses clear white and evening-dark canvases, brighter dark-mode orange actions, layered opaque surfaces, shared corner/elevation tokens, and purposeful status motion. Plus Jakarta Sans and restrained success green remain.
@@ -10,7 +12,7 @@ The user selected Serein and requested a visual language informed by its meaning
 - [x] Preserve actual GitHub URLs, historical evaluation evidence, internal `dp-*` hooks, and existing demo storage keys.
 - [x] Apply shared geometry and elevation to the component library rather than preview-only overrides.
 - [x] Add an interactive studio at `?view=serein`, with identical examples in both themes.
-- [x] Document exact implemented tokens in `DESIGN.md`, `.impeccable/design.json`, and `trial/docs/FOUNDATIONS.md`.
+- [x] Document exact implemented tokens in `DESIGN.md`, `.impeccable/design.json`, and `packages/react/docs/FOUNDATIONS.md`.
 - [x] Regenerate and verify AI declarations, tokens, guidance, and workflow mirrors.
 - [x] Correct review findings: unclipped accordion focus rings and accurate local-demo action wording.
 
@@ -37,7 +39,7 @@ The user selected Serein and requested a visual language informed by its meaning
 
 The final library build and reference installation include the review fixes. The existing dev server needed a forced dependency refresh after reinstalling the tarball; final browser checks used that refreshed package. Full Storybook/catalogue/workflow matrices preceded the final removal of accordion clipping; the subsequent focused browser check verified that exact change in both themes.
 
-Local screenshots and results are in `.impeccable/review/`; generated test artifacts are intentionally untracked. Run `npm run reference:setup`, `npm run reference:dev`, then `npm run check:serein` from `trial/` to reproduce the studio checks. The release gate also includes this check.
+Local screenshots and results are in `.impeccable/review/`; generated test artifacts are intentionally untracked. Run `npm run reference:setup`, `npm run reference:dev`, then `npm run check:serein` from `packages/react/` to reproduce the studio checks. The release gate also includes this check.
 
 This record establishes the scoped rename/redesign verification. It does not establish npm scope ownership, publication, native platform support, manual assistive-technology conformance, or EAA certification. Earlier release evidence and the immutable AI pilot retain their original scope and dates.
 
@@ -90,4 +92,4 @@ Verification passed: library and reference production builds; TypeScript; 84 uni
 
 An intermittent Select test closed its popup during jsdom's pointer/positioning path. The disabled-option test now opens by keyboard and awaits the visible option; it still attempts the disabled click and checks that no value change occurs. Five isolated runs and the final full suite passed. Real-browser pointer selection remains covered by the studio and Storybook checks.
 
-Local screenshots are under `trial/.review/` and `.impeccable/review/`. This audit covers the observed frame, scrolling, corner, and focus issues; it is not a claim that every possible UI issue has been eliminated.
+Local screenshots are under `packages/react/.review/` and `.impeccable/review/`. This audit covers the observed frame, scrolling, corner, and focus issues; it is not a claim that every possible UI issue has been eliminated.

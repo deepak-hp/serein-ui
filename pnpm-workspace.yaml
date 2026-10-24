@@ -1,0 +1,13 @@
+packages:
+  - packages/*
+  - apps/*
+
+# Supply-chain cooldown: never install a version published less than 14 days ago.
+minimumReleaseAge: 20160
+
+# Install scripts are blocked by default in pnpm 10; list a package here only after reviewing it.
+onlyBuiltDependencies: []
+
+# Reviewed: esbuild ships prebuilt platform binaries; its postinstall is not needed.
+ignoredBuiltDependencies:
+  - esbuild

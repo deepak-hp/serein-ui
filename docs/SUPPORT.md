@@ -44,7 +44,7 @@ The beta target is current stable Chromium, Firefox and Safari for standards-bas
 
 ## Accessibility and user preferences
 
-Automated checks cover selected keyboard behavior, semantic states, axe rules, text spacing, 320 CSS-pixel reflow, forced-color emulation and reduced-motion behavior. They supplement human review. The [accessibility review protocol](../trial/reference/ACCESSIBILITY-REVIEW.md) focuses native review on Serein's styling, wrappers, custom components and composed flows, retaining bounded Base UI integration checks. Native screen-reader runs, actual 200%/400% browser zoom, measured rendered contrast, native Windows contrast themes and target-size assessment remain pending for those paths. Consuming applications own their content and complete-process evaluation.
+Automated checks cover selected keyboard behavior, semantic states, axe rules, text spacing, 320 CSS-pixel reflow, forced-color emulation and reduced-motion behavior. They supplement human review. The [accessibility review protocol](../packages/react/reference/ACCESSIBILITY-REVIEW.md) focuses native review on Serein's styling, wrappers, custom components and composed flows, retaining bounded Base UI integration checks. Native screen-reader runs, actual 200%/400% browser zoom, measured rendered contrast, native Windows contrast themes and target-size assessment remain pending for those paths. Consuming applications own their content and complete-process evaluation.
 
 Serein does not carry an accessibility certification or a WCAG/EAA conformance claim. Component behavior cannot establish conformance for a consuming application's content, routes, authentication, services, errors or support process.
 

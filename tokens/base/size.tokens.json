@@ -1,0 +1,82 @@
+{
+  "size": {
+    "$type": "dimension",
+    "target-min": {
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      },
+      "$description": "Smallest pointer target (WCAG 2.5.8)."
+    },
+    "control": {
+      "$value": {
+        "value": 48,
+        "unit": "px"
+      },
+      "$description": "Buttons and inputs."
+    },
+    "control-compact": {
+      "$value": {
+        "value": 36,
+        "unit": "px"
+      },
+      "$description": "Dense desktop toolbars and inline actions."
+    },
+    "key": {
+      "$value": {
+        "value": 56,
+        "unit": "px"
+      },
+      "$description": "Keypad keys."
+    },
+    "icon": {
+      "$value": {
+        "value": 20,
+        "unit": "px"
+      },
+      "$description": "Icon box; 1.5px stroke, square caps."
+    },
+    "focus-width": {
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
+      "$description": "Focus ring thickness."
+    },
+    "focus-offset": {
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
+      "$description": "Gap between a control and its focus ring."
+    },
+    "hairline": {
+      "$value": {
+        "value": 1,
+        "unit": "px"
+      },
+      "$description": "Borders, rules and graduations."
+    },
+    "tick-minor": {
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      },
+      "$description": "Tape: minor graduation pitch (₹100)."
+    },
+    "tick-major": {
+      "$value": {
+        "value": 60,
+        "unit": "px"
+      },
+      "$description": "Tape: major graduation pitch (₹1,000)."
+    },
+    "gauge-unit": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$description": "Gauge and meter: pixels per scale unit (₹1,000)."
+    }
+  }
+}

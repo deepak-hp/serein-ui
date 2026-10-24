@@ -1,0 +1,36 @@
+{
+  "name": "@serein-ui/tokens",
+  "version": "0.0.0",
+  "description": "Serein design tokens (DTCG 2025.10 source) as CSS variables, JS/TS, JSON, a Tailwind v4 theme, Swift and Kotlin.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/js/index.d.ts",
+      "default": "./dist/js/index.js"
+    },
+    "./css": "./dist/css/tokens.css",
+    "./type.css": "./dist/css/type.css",
+    "./tailwind.css": "./dist/tailwind/index.css",
+    "./tailwind-theme.css": "./dist/tailwind/theme.css",
+    "./json": "./dist/json/tokens.json",
+    "./swift": "./dist/swift/SereinTokens.swift",
+    "./kotlin": "./dist/kotlin/SereinTokens.kt"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@tailwindcss/node": "4.3.3",
+    "style-dictionary": "5.6.0",
+    "tailwindcss": "4.3.3",
+    "vitest": "5.0.3"
+  }
+}

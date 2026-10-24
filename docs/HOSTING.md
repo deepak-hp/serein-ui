@@ -1,47 +1,30 @@
 # Documentation hosting
 
-Documentation builds to one static GitHub Pages artifact, with these routes:
+The documentation site is the static Storybook build, deployed to GitHub Pages at `https://deepak-hp.github.io/serein-ui/`. It contains the Start here guides, Foundations (colour, typography, spacing and motion, icons), every component's docs and stories, and the patterns. Storybook also serves the AI material at `/ai/llms.txt`, `/ai/llms-full.txt` and `/ai/contract.json`.
 
-- `https://deepak-hp.github.io/serein-ui/?view=catalogue` opens the component catalogue.
-- `https://deepak-hp.github.io/serein-ui/storybook/` opens Storybook.
-- `https://deepak-hp.github.io/serein-ui/licenses/serein.txt` preserves the package license in the catalogue build.
-- `https://deepak-hp.github.io/serein-ui/catalogue-assets/ai/llms-full.txt` exposes the reviewed AI integration reference linked by the catalogue.
-
-The build uses relative Vite and Storybook asset URLs, so the same artifact also works at a root path or custom domain. `actions/configure-pages` supplies the repository's actual base path; `build-site.mjs` validates it, records the resolved catalogue and Storybook paths in `site-metadata.json`, removes stale output, and refuses to assemble an artifact missing the reviewed AI guidance or licenses.
+The earlier catalogue and reference app (`?view=catalogue`, `/storybook/` subpath) were retired when the repository became the Serein monorepo; Storybook is now the single documentation destination.
 
 ## Local build
 
-Use Node 24 from the repository root:
+From the repository root, with Node 22+ and pnpm:
 
-```powershell
-nvm use 24.11.1
-npm --prefix trial ci
-node trial/scripts/build-site.mjs --base-path /serein-ui/
-npm --prefix trial run test:browser-install
-node trial/scripts/check-site.mjs
+```sh
+pnpm install
+pnpm build
+pnpm --filter @serein-ui/react build:storybook
 ```
 
-The output is the ignored `trial/site-dist` directory. `check-site.mjs` serves it at the base path recorded in `site-metadata.json` and runs the bounded Chromium checks below. For a root deployment, build with `--base-path /`. The root page redirects to `?view=catalogue` only when there is no query string; direct component and workflow links keep their query parameters.
+The output is the ignored `packages/react/storybook-static` directory. Storybook uses relative asset URLs, so the same artifact works at the repository base path or a custom domain. Serve it locally (for example `npx http-server packages/react/storybook-static`) and check:
 
-Before deployment, verify all of these against the served artifact:
-
-1. The root URL resolves to `?view=catalogue`, component selection and permalinks work, and a reload keeps the selected component.
-2. `/storybook/` loads the manager, a component story and its docs page without missing assets.
-3. The license and AI reference URLs above return the expected text files.
-4. Browser developer tools show no requests escaping the configured repository path and no 404 responses.
-5. `site-metadata.json` reports `/serein-ui/?view=catalogue` and `/serein-ui/storybook/` for the repository deployment.
+1. The manager loads, a component story and its docs page render without missing assets, in both themes.
+2. Foundations pages show the token tables and icons.
+3. `/ai/llms-full.txt` and `/ai/contract.json` return the current files.
+4. Browser developer tools show no 404 responses.
 
 ## GitHub Pages setup and release gate
 
-On 13 October 2026, the reviewed MIT-licensed beta source was made public, private vulnerability reporting was enabled, Pages was configured with **GitHub Actions** as its source, and the `github-pages` environment was restricted to the `main` branch. Configuration alone does not establish a successful deployment; record and verify the actual deployment as described below.
+Pages uses **GitHub Actions** as its source, and the `github-pages` environment is restricted to `main`. The **Deploy documentation site** workflow starts only after **Release checks** succeeds for a `main` commit, checks out that exact SHA, builds the Storybook site and deploys it. A manual rerun from `main` is rejected unless Release checks succeeded for that SHA.
 
-After those gates pass:
+After a deployment, record the workflow run URL, deployed commit SHA and Pages URL in the release evidence, and re-run the four checks above against the live site.
 
-1. Confirm the default branch is `main` and the protected `github-pages` environment permits deployments only from `main`.
-2. Merge the reviewed workflow and site-builder changes to `main`. The documentation workflow starts only after **Release checks** succeeds for that `main` commit, checks out that exact commit SHA, then builds and deploys it.
-3. If a manual rerun is needed, run **Deploy documentation site** from `main`. The gate rejects other refs and rejects a `main` SHA without a successful completed **Release checks** run, so manual dispatch cannot bypass the release workflow.
-4. Confirm the workflow's release gate, `Build catalogue and Storybook`, artifact upload and deployment steps all succeed.
-5. Record the workflow run URL, deployed commit SHA and Pages URL in the release evidence.
-6. Re-run the five served-artifact checks above against `https://deepak-hp.github.io/serein-ui/`.
-
-The workflow follows GitHub's custom Pages flow: `actions/configure-pages@v6`, `actions/upload-pages-artifact@v5`, and `actions/deploy-pages@v5`, with `contents: read`, `pages: write`, and `id-token: write`. GitHub documents the setup and security-sensitive visibility behavior in [Configuring a publishing source for your GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site). The `base_path` output is defined by the official [`actions/configure-pages` action](https://github.com/actions/configure-pages/blob/v6/action.yml), and the current deployment contract by [`actions/deploy-pages`](https://github.com/actions/deploy-pages/blob/v5/action.yml).
+The workflow follows GitHub's custom Pages flow: `actions/configure-pages`, `actions/upload-pages-artifact` and `actions/deploy-pages`, with `contents: read`, `pages: write` and `id-token: write`. See [Configuring a publishing source for your GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).

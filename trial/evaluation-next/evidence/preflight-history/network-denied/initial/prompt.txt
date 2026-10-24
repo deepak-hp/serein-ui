@@ -1,1 +1,0 @@
-Harness smoke fixture, not an AI candidate.
