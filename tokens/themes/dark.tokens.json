@@ -50,6 +50,30 @@
       },
       "$description": "Menus, popovers, sheets and toasts (with shadow.overlay)."
     },
+    "surface-hover": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.1098,
+          0.1216,
+          0.1373
+        ],
+        "hex": "#1c1f23"
+      },
+      "$description": "Hover fill for neutral controls, rows and menu items."
+    },
+    "surface-pressed": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.1412,
+          0.1569,
+          0.1765
+        ],
+        "hex": "#24282d"
+      },
+      "$description": "Pressed fill for neutral controls and menu items."
+    },
     "ink": {
       "$value": {
         "colorSpace": "srgb",
@@ -133,6 +157,30 @@
         "hex": "#ff8752"
       },
       "$description": "Hover fill for signal buttons and keys."
+    },
+    "signal-pressed": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.6275,
+          0.4667
+        ],
+        "hex": "#ffa077"
+      },
+      "$description": "Pressed fill for signal buttons."
+    },
+    "signal-edge": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.4157,
+          0.1725
+        ],
+        "hex": "#ff6a2c"
+      },
+      "$description": "Edge of signal fills and checked controls; at least 3:1 on every surface."
     },
     "on-signal": {
       "$value": {

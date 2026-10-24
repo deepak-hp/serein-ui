@@ -28,7 +28,7 @@ export function SettingsForm({ initialName, initialTeam, initialSummary }: Setti
 
   function toggleTheme() {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
-    document.documentElement.dataset.dpTheme = nextTheme;
+    document.documentElement.dataset.theme = nextTheme;
     setTheme(nextTheme);
   }
 

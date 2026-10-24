@@ -4,22 +4,22 @@ import { Combobox as BaseCombobox } from '@base-ui/react/combobox';
 import { Dialog as BaseDialog } from '@base-ui/react/dialog';
 
 const s = stylex.create({
-  trigger: { minHeight: 48, padding: '11px 16px', backgroundColor: 'var(--dp-field)', color: 'var(--dp-text)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--dp-border)', borderRadius: 'var(--dp-radius-control)', fontFamily: 'inherit', fontSize: 14, fontWeight: 650, cursor: 'pointer' },
+  trigger: { minHeight: 48, padding: '11px 16px', backgroundColor: 'var(--sr-color-surface-raised)', color: 'var(--sr-color-ink)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line-strong)', borderRadius: 'var(--sr-radius-control)', fontFamily: 'inherit', fontSize: 14, fontWeight: 650, cursor: 'pointer' },
   disabled: { opacity: .5, cursor: 'not-allowed' },
   backdrop: { position: 'fixed', inset: 0, backgroundColor: '#00000085', zIndex: 70 },
-  dialog: { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 'min(640px, calc(100vw - 32px))', maxHeight: 'calc(100dvh - 32px)', overflowY: 'auto', padding: 24, backgroundColor: 'var(--dp-raised)', color: 'var(--dp-text)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--dp-divider)', borderRadius: 'var(--dp-radius-dialog)', zIndex: 71, boxShadow: 'var(--dp-shadow-dialog)' },
+  dialog: { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 'min(640px, calc(100vw - 32px))', maxHeight: 'calc(100dvh - 32px)', overflowY: 'auto', padding: 24, backgroundColor: 'var(--sr-color-surface-overlay)', color: 'var(--sr-color-ink)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line)', borderRadius: 'var(--sr-radius-sheet)', zIndex: 71, boxShadow: 'var(--sr-shadow-overlay)' },
   header: { display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: 20 },
-  title: { margin: 0, color: 'var(--dp-text)', fontSize: 24, fontWeight: 650, lineHeight: 1.3, letterSpacing: '-0.03em', overflowWrap: 'anywhere' },
-  description: { margin: '8px 0 0', color: 'var(--dp-muted)', fontSize: 14, lineHeight: 1.6, overflowWrap: 'anywhere' },
-  close: { width: 48, minWidth: 48, minHeight: 48, padding: 8, display: 'inline-grid', placeItems: 'center', backgroundColor: 'transparent', color: 'var(--dp-text)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--dp-border)', borderRadius: 'var(--dp-radius-control)', cursor: 'pointer' },
-  search: { width: '100%', minHeight: 48, padding: '11px 14px', backgroundColor: 'var(--dp-field)', color: 'var(--dp-text)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--dp-border)', borderRadius: 'var(--dp-radius-control)', fontFamily: 'inherit', fontSize: 16, lineHeight: 1.5 },
+  title: { margin: 0, color: 'var(--sr-color-ink)', fontSize: 24, fontWeight: 650, lineHeight: 1.3, letterSpacing: '-0.03em', overflowWrap: 'anywhere' },
+  description: { margin: '8px 0 0', color: 'var(--sr-color-ink-muted)', fontSize: 14, lineHeight: 1.6, overflowWrap: 'anywhere' },
+  close: { width: 48, minWidth: 48, minHeight: 48, padding: 8, display: 'inline-grid', placeItems: 'center', backgroundColor: 'transparent', color: 'var(--sr-color-ink)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line-strong)', borderRadius: 'var(--sr-radius-control)', cursor: 'pointer' },
+  search: { width: '100%', minHeight: 48, padding: '11px 14px', backgroundColor: 'var(--sr-color-surface-raised)', color: 'var(--sr-color-ink)', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line-strong)', borderRadius: 'var(--sr-radius-control)', fontFamily: 'inherit', fontSize: 16, lineHeight: 1.5 },
   list: { display: 'flex', flexDirection: 'column', gap: 4, marginTop: 12, maxHeight: 'min(360px, calc(100dvh - 250px))', overflowY: 'auto', outline: 'none' },
-  item: { minHeight: 48, padding: '10px 12px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, borderRadius: 'var(--dp-radius-small)', color: 'var(--dp-text)', cursor: 'pointer', outline: 'none' },
-  highlighted: { backgroundColor: 'var(--dp-selected)' },
-  itemDisabled: { color: 'var(--dp-muted)', cursor: 'not-allowed', opacity: .55 },
+  item: { minHeight: 48, padding: '10px 12px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 2, borderRadius: 'var(--sr-radius-tag)', color: 'var(--sr-color-ink)', cursor: 'pointer', outline: 'none' },
+  highlighted: { backgroundColor: 'var(--sr-color-signal-soft)' },
+  itemDisabled: { color: 'var(--sr-color-ink-muted)', cursor: 'not-allowed', opacity: .55 },
   itemLabel: { fontSize: 14, fontWeight: 650, lineHeight: 1.4, overflowWrap: 'anywhere' },
-  itemDescription: { color: 'var(--dp-muted)', fontSize: 13, lineHeight: 1.45, overflowWrap: 'anywhere' },
-  empty: { padding: '16px 12px', color: 'var(--dp-muted)', fontSize: 14, lineHeight: 1.5 },
+  itemDescription: { color: 'var(--sr-color-ink-muted)', fontSize: 13, lineHeight: 1.45, overflowWrap: 'anywhere' },
+  empty: { padding: '16px 12px', color: 'var(--sr-color-ink-muted)', fontSize: 14, lineHeight: 1.5 },
 });
 
 export type CommandItem = {

@@ -16,7 +16,7 @@ export function StatusIcon({
   className,
   ...props
 }: StatusIconProps) {
-  const classes = ['dp-status-icon', `dp-status-icon--${state}`, `dp-status-icon--${kind}`, className]
+  const classes = ['sr-status-icon', `sr-status-icon--${state}`, `sr-status-icon--${kind}`, className]
     .filter(Boolean)
     .join(' ');
 

@@ -98,8 +98,8 @@ async function main() {
     const cssResponses = await Promise.all(cssLinks.map((href) => fetch(new URL(href, origin))));
     cssResponses.forEach((cssResponse) => assert.equal(cssResponse.status, 200));
     const css = (await Promise.all(cssResponses.map((cssResponse) => cssResponse.text()))).join('\n');
-    assert.match(css, /--dp-orange:/, 'Serein design tokens are shipped');
-    assert.match(css, /\.dp-theme/, 'Serein base theme CSS is shipped');
+    assert.match(css, /--sr-color-signal:/, 'Serein design tokens are shipped');
+    assert.match(css, /\.sr-theme/, 'Serein base theme CSS is shipped');
 
     const invalidRouteResponse = await fetch(`${origin}/api/save`, {
       method: 'POST',
@@ -133,7 +133,7 @@ async function main() {
         true,
         '320px viewport has no horizontal overflow',
       );
-      assert.equal(await page.locator('html').getAttribute('data-dp-theme'), 'light');
+      assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
       const lightBackground = await page.locator('body').evaluate((element) => getComputedStyle(element).backgroundColor);
       assert.equal(lightBackground, 'rgb(255, 255, 255)');
       await runAxe(page, 'light');
@@ -141,7 +141,7 @@ async function main() {
       const themeButton = page.getByRole('button', { name: 'Use dark theme' });
       await themeButton.focus();
       await themeButton.press('Enter');
-      assert.equal(await page.locator('html').getAttribute('data-dp-theme'), 'dark');
+      assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
       const darkBackground = await page.locator('body').evaluate((element) => getComputedStyle(element).backgroundColor);
       assert.equal(darkBackground, 'rgb(16, 17, 19)');
       await runAxe(page, 'dark');

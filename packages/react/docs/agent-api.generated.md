@@ -12,7 +12,7 @@ Read `llms-full.txt` and `contract.json` in this directory. These are generated 
 
 For the released candidate, download `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS` and unsigned `SOURCE.json` from the [GitHub prerelease](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1), verify the checksum, and follow [the evaluation installation instructions](https://github.com/deepak-hp/serein-ui/blob/main/docs/BETA-EVALUATION.md). For a local checkout, run `npm ci`, `npm run build`, then `npm run storybook` from `trial`; `npm pack` remains an optional local-package path. Import `@serein-ui/react/styles.css` once. Import `@fontsource-variable/plus-jakarta-sans` if using the brand font dependency. The consumer does not need a StyleX compiler.
 
-Set `data-dp-theme="light"` or `"dark"` on `<html>` and class `dp-theme` on `<body>`. The theme is document-wide, including portals. Do not apply the theme solely to a nested wrapper. Only use supported, documented props.
+Set `data-theme="light"` or `"dark"` on `<html>` and class `sr-theme` on `<body>`. The theme is document-wide, including portals. Do not apply the theme solely to a nested wrapper. Only use supported, documented props.
 
 ## Live AI tools through MCP
 
@@ -46,7 +46,7 @@ Before composing a screen, read `ai/COMPOSITION.md` (also included in `llms-full
 
 Preserve Flame & Ink's approved palette, Plus Jakarta Sans, crisp controls and filled orange primary actions. Apple guidance refines navigation hierarchy, legibility and interaction within that identity; it is not a replacement theme. Read `docs/APPLE-DESIGN.md` for the source-to-design mapping.
 
-The compiled stylesheet provides `.dp-navigation-surface` with `data-dp-material="subtle"`, `"expressive"` or `"solid"` on a navigation container. It is a CSS utility, not an exported React component or a universal control prop. Omission uses subtle. Use one navigation plane; keep content/forms/tables and nested controls opaque/plain. The app owns positioning, padding and preference UI. Both glass finishes become opaque under supported reduced-transparency, increased-contrast or forced-colour preferences; offer an explicit Solid choice for browsers without preference support. No backdrop-filter support also means opaque fallback. Keep primary orange and dark labels unchanged. These web effects do not reproduce native Liquid Glass APIs or adaptive refraction.
+The compiled stylesheet provides `.sr-navigation-surface` with `data-sr-material="subtle"`, `"expressive"` or `"solid"` on a navigation container. It is a CSS utility, not an exported React component or a universal control prop. Omission uses subtle. Use one navigation plane; keep content/forms/tables and nested controls opaque/plain. The app owns positioning, padding and preference UI. Both glass finishes become opaque under supported reduced-transparency, increased-contrast or forced-colour preferences; offer an explicit Solid choice for browsers without preference support. No backdrop-filter support also means opaque fallback. Keep primary orange and dark labels unchanged. These web effects do not reproduce native Liquid Glass APIs or adaptive refraction.
 
 ## Component families and ownership
 
@@ -103,7 +103,7 @@ These are starting points, not mandatory templates. Document why the chosen layo
 - **Hierarchy:** lead with the task. Keep important content near its actions. Use heading size, weight and whitespace to express relationships; avoid making every section equally prominent.
 - **Containers:** use a card when an item is an independent unit. Use alignment and dividers for a continuous list or form. Explain the need before nesting surfaces.
 - **Density:** dense workspaces need compact, scannable rows; focused forms need comfortable reading width. Density must not reduce usable hit targets or hide focus.
-- **Colour:** retain Plus Jakarta Sans and shared tokens. Orange denotes priority; use dark text on the orange fill. For small orange text on a neutral surface, use `--dp-orange-text`, not the bright `--dp-orange` button fill. Use theme-aware semantic tokens or Badge for statuses, and green sparingly for actual success. Semantic meaning also needs text.
+- **Colour:** retain Plus Jakarta Sans and shared tokens. Orange denotes priority; use dark text on the orange fill. For small orange text on a neutral surface, use `--sr-color-signal-ink`, not the bright `--sr-color-signal` button fill. Use theme-aware semantic tokens or Badge for statuses, and green sparingly for actual success. Semantic meaning also needs text.
 - **Content:** use realistic field lengths, dates and quantities. Name actions specifically. Avoid empty slogans, invented performance numbers and charts that don't help the task.
 - **Typography:** use a small consistent hierarchy, readable line lengths and tabular numerals for amounts. Long labels must wrap or have an accessible full-text path.
 - **Responsive layout:** decide what stacks, wraps or stays in a scrollable region. A comparison table may scroll inside a labelled focusable region; the page itself must not overflow. Never silently drop essential data.
@@ -273,8 +273,8 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Button } from '@serein-ui/react';
 import './workflows.css';
 export default function Shell({ title, description, children }: { title: string; description: string; children: ReactNode }) {
-  const [dark, setDark] = useState(() => document.documentElement.dataset.dpTheme === 'dark');
-  useEffect(() => { document.documentElement.dataset.dpTheme = dark ? 'dark' : 'light'; document.title = `${title} · Serein`; }, [dark, title]);
+  const [dark, setDark] = useState(() => document.documentElement.dataset.theme === 'dark');
+  useEffect(() => { document.documentElement.dataset.theme = dark ? 'dark' : 'light'; document.title = `${title} · Serein`; }, [dark, title]);
   return <div className="workflow"><a className="skip-link" href="#workflow-main">Skip to content</a><header className="workflow-header"><a className="wordmark" href="?view=catalogue">Serein</a><a href="?view=catalogue">Back to catalogue</a><Button variant="quiet" onClick={() => setDark(!dark)}>{dark ? 'Use light theme' : 'Use dark theme'}</Button></header><main id="workflow-main" tabIndex={-1}><header className="workflow-intro"><h1>{title}</h1><p>{description}</p></header>{children}</main><footer className="workflow-footer">Local demonstration · No accounts, payments or email delivery.</footer></div>;
 }
 export function Recovery({ onRecover }: { onRecover: () => void }) { return <div className="workflow-notice" role="alert"><p>Saved data could not be read. It may be damaged, from another version, or browser storage may be unavailable. Existing data has not been changed.</p><Button variant="secondary" onClick={onRecover}>Allow replacement on next save</Button><p>This permits the next successful save to replace the saved record with the values shown.</p></div>; }
@@ -319,50 +319,50 @@ export const money = (amount: number) => new Intl.NumberFormat('en-US', { style:
 
 ```css
 .workflow { min-height: 100vh; }
-.workflow-header { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; padding: 1rem max(1.25rem, calc((100% - 1120px) / 2)); border-bottom: 1px solid var(--dp-divider); }
+.workflow-header { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; padding: 1rem max(1.25rem, calc((100% - 1120px) / 2)); border-bottom: 1px solid var(--sr-color-line); }
 .workflow-header > button { margin-left: auto; }
-.workflow a { color: var(--dp-text); text-underline-offset: .2em; }
-.workflow a:hover { color: var(--dp-orange-text); }
+.workflow a { color: var(--sr-color-ink); text-underline-offset: .2em; }
+.workflow a:hover { color: var(--sr-color-signal-ink); }
 .workflow main { width: min(1120px, calc(100% - 2.5rem)); margin: 0 auto; padding: 2.5rem 0; }
 .workflow h1 { font-size: 2rem; line-height: 1.2; letter-spacing: -.03em; }
 .workflow h2 { font-size: 1.25rem; line-height: 1.4; }
 .workflow h3 { font-size: 1rem; margin: 1.5rem 0 .5rem; }
 .workflow p { max-width: 70ch; line-height: 1.6; }
 .workflow-intro { margin-bottom: 2rem; }
-.workflow-intro > p, .workflow-muted, .workflow-footer { color: var(--dp-muted); }
+.workflow-intro > p, .workflow-muted, .workflow-footer { color: var(--sr-color-ink-muted); }
 .workflow-form { max-width: 640px; }
-.workflow-form fieldset { border: 0; border-bottom: 1px solid var(--dp-divider); padding: 0 0 1.75rem; margin: 0 0 1.75rem; display: grid; gap: 1rem; min-width: 0; }
+.workflow-form fieldset { border: 0; border-bottom: 1px solid var(--sr-color-line); padding: 0 0 1.75rem; margin: 0 0 1.75rem; display: grid; gap: 1rem; min-width: 0; }
 .workflow-form legend { padding: 0; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 700; }
 .workflow-form fieldset > p { margin: 0; }
 .workflow-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; margin: 1.5rem 0 1rem; }
-.workflow-error { color: var(--dp-error); }
-.workflow-notice { max-width: 70ch; padding: 1.25rem; border: 1px solid var(--dp-border); background: var(--dp-surface); margin-bottom: 2rem; }
+.workflow-error { color: var(--sr-color-danger); }
+.workflow-notice { max-width: 70ch; padding: 1.25rem; border: 1px solid var(--sr-color-line-strong); background: var(--sr-color-surface-raised); margin-bottom: 2rem; }
 .workflow-notice p:last-child { margin: .75rem 0 0; font-size: .875rem; }
 .workflow-demo { margin: 1.5rem 0; }
 .workflow-demo summary { cursor: pointer; min-height: 44px; display: list-item; padding: .75rem 0; font-size: .875rem; }
 .workflow-filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 1rem; max-width: 720px; margin-bottom: 1rem; }
 .workflow table { width: 100%; border-collapse: collapse; text-align: left; font-size: .9375rem; font-variant-numeric: tabular-nums; }
-.workflow th { font-size: .8125rem; color: var(--dp-muted); font-weight: 600; }
+.workflow th { font-size: .8125rem; color: var(--sr-color-ink-muted); font-weight: 600; }
 .workflow th, .workflow td { padding: 1rem .75rem; white-space: nowrap; }
 .workflow th:last-child, .workflow td:last-child { text-align: right; }
 .workflow td:first-child button { padding-inline: 0; }
 .invoice-client { display: block; }
-.invoice-detail { margin-top: 2rem; border-top: 1px solid var(--dp-border); padding-top: 1.5rem; }
+.invoice-detail { margin-top: 2rem; border-top: 1px solid var(--sr-color-line-strong); padding-top: 1.5rem; }
 .workflow-section-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
 .workflow-facts { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin: 1.5rem 0; }
-.workflow-facts dt { color: var(--dp-muted); font-size: .8125rem; margin-bottom: .4rem; }
+.workflow-facts dt { color: var(--sr-color-ink-muted); font-size: .8125rem; margin-bottom: .4rem; }
 .workflow-facts dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
 .workflow-facts > div { min-width: 0; }
-.workflow-steps { display: flex; flex-wrap: wrap; gap: .75rem 2rem; list-style: none; margin: 0 0 2rem; padding: 0 0 1.5rem; border-bottom: 1px solid var(--dp-divider); color: var(--dp-muted); }
-.workflow-steps [aria-current] { color: var(--dp-text); font-weight: 750; text-decoration: underline; text-underline-offset: .5em; }
+.workflow-steps { display: flex; flex-wrap: wrap; gap: .75rem 2rem; list-style: none; margin: 0 0 2rem; padding: 0 0 1.5rem; border-bottom: 1px solid var(--sr-color-line); color: var(--sr-color-ink-muted); }
+.workflow-steps [aria-current] { color: var(--sr-color-ink); font-weight: 750; text-decoration: underline; text-underline-offset: .5em; }
 .workflow-complete { max-width: 640px; padding-block: 1rem; }
-.workflow-footer { width: min(1120px, calc(100% - 2.5rem)); margin: 0 auto; padding: 1.5rem 0; border-top: 1px solid var(--dp-divider); font-size: .8125rem; line-height: 1.6; }
+.workflow-footer { width: min(1120px, calc(100% - 2.5rem)); margin: 0 auto; padding: 1.5rem 0; border-top: 1px solid var(--sr-color-line); font-size: .8125rem; line-height: 1.6; }
 @media (max-width: 600px) { .workflow-header { gap: .5rem 1rem; } .workflow-header .wordmark { width: 100%; } .workflow-header > button { margin-left: 0; } .workflow main { padding-top: 1.75rem; } .workflow-filters { grid-template-columns: 1fr; } .workflow th, .workflow td { padding: .75rem; } .workflow h1 { font-size: 1.75rem; } }
 
 .workflow-table-hint { display: none; font-size: .8125rem; }
 @media (max-width: 600px) { .workflow-table-hint { display: block; } }
 
-.workflow .skip-link { color: var(--dp-canvas); }
+.workflow .skip-link { color: var(--sr-color-surface); }
 ```
 
 ## examples/README.md
@@ -626,6 +626,12 @@ export type ToastProviderProps = {
     limit?: number;
 };
 export declare function ToastProvider({ children, timeout, limit }: ToastProviderProps): import("react").JSX.Element;
+```
+
+## fonts.d.ts
+
+```tsx
+export {};
 ```
 
 ## forms.d.ts
@@ -944,90 +950,189 @@ export declare function useAsyncAction(action: (signal: AbortSignal) => Promise<
 # Theme tokens
 
 ```css
-:root,[data-dp-theme="light"]{
- color-scheme:light;
- --dp-canvas:#FFFFFF;--dp-surface:#F6F6F5;--dp-raised:#FFFFFF;--dp-field:#FFFFFF;--dp-selected:#FFF0E8;
- --dp-text:#20211F;--dp-muted:#60615F;--dp-border:#878984;--dp-divider:#E3E5E0;
- --dp-hover:#ECEDEA;--dp-active:#E2E4DF;
- --dp-orange:#FF681F;--dp-orange-hover:#F45C14;--dp-orange-active:#E8540E;--dp-orange-border:#A83A0A;--dp-on-orange:#141414;--dp-orange-text:#A83A0A;
- --dp-success:#28694F;--dp-success-surface:#E9F7EF;--dp-error:#B4233C;--dp-error-surface:#FDECEF;--dp-warning:#88500B;--dp-warning-surface:#FFF4DC;--dp-focus:#20211F;
- --dp-font:'Plus Jakarta Sans Variable','Plus Jakarta Sans',sans-serif;
- --dp-radius-small:5px;--dp-radius-control:8px;--dp-radius-popup:12px;--dp-radius-panel:16px;--dp-radius-dialog:20px;
- --dp-shadow-surface:none;
- --dp-shadow-popup:0 2px 6px #20211F0A,0 12px 32px #20211F14;
- --dp-shadow-dialog:0 12px 24px #20211F14,0 32px 80px #20211F26;
- --dp-shadow-action:inset 0 1px 0 #FFFFFF55,0 2px 3px #7B2E0E14;
- --dp-shadow-action-hover:inset 0 1px 0 #FFFFFF55,0 3px 8px #7B2E0E24;
- --dp-ease-out:cubic-bezier(.16,1,.3,1);--dp-duration-fast:140ms;--dp-duration-enter:240ms;
- --dp-navigation-subtle-fill:color-mix(in srgb,var(--dp-canvas) 94%,transparent);
- --dp-navigation-expressive-fill:color-mix(in srgb,var(--dp-canvas) 88%,transparent);
- --dp-navigation-shadow:0 4px 16px #1112160A;
- --dp-navigation-expressive-shadow:0 12px 32px #11121618;
-}
-[data-dp-theme="dark"]{
- color-scheme:dark;--dp-canvas:#101113;--dp-surface:#191B1D;--dp-raised:#202224;--dp-field:#16181A;--dp-selected:#30251F;
- --dp-text:#F3F3F0;--dp-muted:#B6B8B3;--dp-border:#747771;--dp-divider:#363936;
- --dp-hover:#2A2D2F;--dp-active:#34383B;
- --dp-orange:#FF803E;--dp-orange-hover:#FF925B;--dp-orange-active:#FFA16F;--dp-orange-border:#FFAA7D;
- --dp-orange-text:#FF874D;--dp-success:#8AD3AC;--dp-success-surface:#142820;--dp-error:#FF9CAF;--dp-error-surface:#32171D;--dp-warning:#FFD28A;--dp-warning-surface:#332711;--dp-focus:#F3F3F0;
- --dp-shadow-surface:none;
- --dp-shadow-popup:0 4px 8px #00000030,0 16px 40px #00000055;
- --dp-shadow-dialog:0 12px 24px #00000040,0 32px 80px #00000070;
- --dp-shadow-action:inset 0 1px 0 #FFFFFF55,0 2px 4px #00000033;
- --dp-shadow-action-hover:inset 0 1px 0 #FFFFFF77,0 4px 12px #00000055;
- --dp-navigation-subtle-fill:color-mix(in srgb,var(--dp-canvas) 94%,transparent);
- --dp-navigation-expressive-fill:color-mix(in srgb,var(--dp-canvas) 88%,transparent);
- --dp-navigation-shadow:0 4px 16px #00000040;
- --dp-navigation-expressive-shadow:0 12px 32px #00000066;
-}
-.dp-theme{font-family:var(--dp-font);background:var(--dp-canvas);color:var(--dp-text)}
-.dp-theme *, .dp-theme *::before,.dp-theme *::after{box-sizing:border-box}
-.dp-theme :where(button,input,textarea,[role="combobox"],[role="tab"],[role="checkbox"],[role="switch"],[role="radio"],[role="option"],a):focus-visible{outline:2px solid var(--dp-focus);outline-offset:3px}
-.dp-theme :is(input,textarea)::placeholder{color:var(--dp-muted);opacity:1}
-.dp-theme :is(input,textarea){caret-color:var(--dp-orange-text)}
-.dp-theme input:disabled{opacity:.5;cursor:not-allowed}
-.dp-theme ::selection{background:var(--dp-orange);color:var(--dp-on-orange)}
-.dp-theme {scrollbar-color:var(--dp-border) var(--dp-canvas)}
-.dp-theme a{text-underline-offset:.2em}
-.dp-theme :where(table,progress,input[type="number"]){font-variant-numeric:tabular-nums}
-@media(prefers-reduced-motion:reduce){.dp-theme button{transition:none!important;transform:none!important}}
-@media(forced-colors:active){.dp-theme{--dp-canvas:Canvas;--dp-surface:Canvas;--dp-selected:ButtonFace;--dp-text:CanvasText;--dp-muted:CanvasText;--dp-border:CanvasText;--dp-divider:CanvasText;--dp-orange:ButtonFace;--dp-orange-hover:ButtonFace;--dp-orange-border:CanvasText;--dp-on-orange:ButtonText;--dp-orange-text:CanvasText;--dp-success:CanvasText;--dp-error:CanvasText;--dp-focus:CanvasText}.dp-theme :where(button,input,textarea,[role="combobox"],[role="tab"],[role="checkbox"],[role="switch"],[role="radio"],[role="option"],a):focus-visible{outline-color:CanvasText}.dp-theme :where(button,input,textarea,[role="combobox"],[role="checkbox"],[role="switch"],[role="radio"]){forced-color-adjust:auto}}
+/* Serein tokens - generated from /tokens (DTCG 2025.10). Do not edit. */
 
-@media(forced-colors:active){.dp-theme button[aria-current="page"],.dp-theme .rdp-selected .rdp-day_button{outline:2px solid ButtonText;outline-offset:-4px}}
-@media(forced-colors:active){:root,[data-dp-theme]{--dp-raised:Canvas;--dp-field:Canvas;--dp-hover:ButtonFace;--dp-active:ButtonFace;--dp-orange-active:ButtonFace;--dp-success-surface:Canvas;--dp-error-surface:Canvas;--dp-warning-surface:Canvas;--dp-warning:CanvasText;--dp-shadow-surface:none;--dp-shadow-popup:none;--dp-shadow-dialog:none;--dp-shadow-action:none;--dp-shadow-action-hover:none}}
+:root {
+  --sr-duration-fast: 100ms;
+  --sr-duration-base: 180ms;
+  --sr-duration-slow: 320ms;
+  --sr-duration-rain: 1100ms;
+  --sr-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --sr-easing-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  --sr-radius-tag: 4px;
+  --sr-radius-control: 8px;
+  --sr-radius-key: 12px;
+  --sr-radius-popup: 12px;
+  --sr-radius-panel: 14px;
+  --sr-radius-sheet: 22px;
+  --sr-size-target-min: 24px;
+  --sr-size-control: 48px;
+  --sr-size-control-compact: 36px;
+  --sr-size-key: 56px;
+  --sr-size-icon: 20px;
+  --sr-size-focus-width: 2px;
+  --sr-size-focus-offset: 2px;
+  --sr-size-hairline: 1px;
+  --sr-size-tick-minor: 6px;
+  --sr-size-tick-major: 60px;
+  --sr-size-gauge-unit: 4px;
+  --sr-space-1: 4px;
+  --sr-space-2: 8px;
+  --sr-space-3: 12px;
+  --sr-space-4: 16px;
+  --sr-space-5: 24px;
+  --sr-space-6: 32px;
+  --sr-space-7: 48px;
+  --sr-space-8: 64px;
+  --sr-space-9: 96px;
+  --sr-font-family-sans: "Anek Latin", "Noto Sans", system-ui, sans-serif;
+  --sr-font-family-mono: "Chivo Mono", ui-monospace, "SFMono-Regular", monospace;
+  --sr-font-weight-light: 300;
+  --sr-font-weight-regular: 400;
+  --sr-font-weight-medium: 500;
+  --sr-font-weight-semibold: 600;
+}
 
-/* Opt in on one navigation plane; keep content and nested controls opaque/plain.
+/* Light is the default; dark follows the system unless a theme is forced with data-theme. */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --sr-color-surface: #f3f3f1;
+  --sr-color-surface-raised: #ffffff;
+  --sr-color-surface-sunken: #e9e9e6;
+  --sr-color-surface-overlay: #ffffff;
+  --sr-color-surface-hover: #f1f1ee;
+  --sr-color-surface-pressed: #e6e6e2;
+  --sr-color-ink: #0b0c0e;
+  --sr-color-ink-muted: #575d66;
+  --sr-color-line: #dfe0dd;
+  --sr-color-line-strong: #868c95;
+  --sr-color-focus: #0b0c0e;
+  --sr-color-signal: #ff5a1f;
+  --sr-color-signal-hover: #ff7440;
+  --sr-color-signal-pressed: #e94d12;
+  --sr-color-signal-edge: #b5350a;
+  --sr-color-on-signal: #160600;
+  --sr-color-signal-ink: #b5350a;
+  --sr-color-signal-soft: #ffe6db;
+  --sr-color-success: #127a3e;
+  --sr-color-success-soft: #dff3e6;
+  --sr-color-warning: #8a5800;
+  --sr-color-warning-soft: #fbefd2;
+  --sr-color-danger: #c2185b;
+  --sr-color-danger-soft: #fbe1ea;
+  --sr-color-on-danger: #ffffff;
+  --sr-shadow-raised: 0 1px 2px 0 rgba(11, 12, 14, 0.06);
+  --sr-shadow-key: inset 0 -1px 0 0 rgba(11, 12, 14, 0.08), 0 1px 2px 0 rgba(11, 12, 14, 0.06);
+  --sr-shadow-overlay: 0 16px 40px 0 rgba(11, 12, 14, 0.14), 0 0 0 1px rgba(11, 12, 14, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --sr-color-surface: #0b0c0e;
+    --sr-color-surface-raised: #131518;
+    --sr-color-surface-sunken: #07080a;
+    --sr-color-surface-overlay: #1a1d21;
+    --sr-color-surface-hover: #1c1f23;
+    --sr-color-surface-pressed: #24282d;
+    --sr-color-ink: #f3f4f6;
+    --sr-color-ink-muted: #9aa1ab;
+    --sr-color-line: #24282e;
+    --sr-color-line-strong: #5f6773;
+    --sr-color-focus: #f3f4f6;
+    --sr-color-signal: #ff6a2c;
+    --sr-color-signal-hover: #ff8752;
+    --sr-color-signal-pressed: #ffa077;
+    --sr-color-signal-edge: #ff6a2c;
+    --sr-color-on-signal: #160600;
+    --sr-color-signal-ink: #ff8752;
+    --sr-color-signal-soft: #2e140a;
+    --sr-color-success: #46d17f;
+    --sr-color-success-soft: #0f2618;
+    --sr-color-warning: #ffb224;
+    --sr-color-warning-soft: #2b2009;
+    --sr-color-danger: #ff5c8a;
+    --sr-color-danger-soft: #2e0f19;
+    --sr-color-on-danger: #1a040b;
+    --sr-shadow-raised: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    --sr-shadow-key: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 0 rgba(0, 0, 0, 0.5);
+    --sr-shadow-overlay: 0 16px 40px 0 rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --sr-color-surface: #0b0c0e;
+  --sr-color-surface-raised: #131518;
+  --sr-color-surface-sunken: #07080a;
+  --sr-color-surface-overlay: #1a1d21;
+  --sr-color-surface-hover: #1c1f23;
+  --sr-color-surface-pressed: #24282d;
+  --sr-color-ink: #f3f4f6;
+  --sr-color-ink-muted: #9aa1ab;
+  --sr-color-line: #24282e;
+  --sr-color-line-strong: #5f6773;
+  --sr-color-focus: #f3f4f6;
+  --sr-color-signal: #ff6a2c;
+  --sr-color-signal-hover: #ff8752;
+  --sr-color-signal-pressed: #ffa077;
+  --sr-color-signal-edge: #ff6a2c;
+  --sr-color-on-signal: #160600;
+  --sr-color-signal-ink: #ff8752;
+  --sr-color-signal-soft: #2e140a;
+  --sr-color-success: #46d17f;
+  --sr-color-success-soft: #0f2618;
+  --sr-color-warning: #ffb224;
+  --sr-color-warning-soft: #2b2009;
+  --sr-color-danger: #ff5c8a;
+  --sr-color-danger-soft: #2e0f19;
+  --sr-color-on-danger: #1a040b;
+  --sr-shadow-raised: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  --sr-shadow-key: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 0 rgba(0, 0, 0, 0.5);
+  --sr-shadow-overlay: 0 16px 40px 0 rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Serein theme layer for @serein-ui/react.
+   Colour, type, spacing, radius, shadow and motion values come from @serein-ui/tokens (--sr-*),
+   which the build places at the top of styles.css. Apply data-theme="light|dark" on <html>
+   (omit it to follow the system) and the sr-theme class on <body>. */
+.sr-theme{font-family:var(--sr-font-family-sans);font-size:15px;line-height:22px;background:var(--sr-color-surface);color:var(--sr-color-ink);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased}
+.sr-theme *, .sr-theme *::before,.sr-theme *::after{box-sizing:border-box}
+.sr-theme :where(button,input,textarea,[role="combobox"],[role="tab"],[role="checkbox"],[role="switch"],[role="radio"],[role="option"],a):focus-visible{outline:var(--sr-size-focus-width) solid var(--sr-color-focus);outline-offset:var(--sr-size-focus-offset)}
+.sr-theme :is(input,textarea)::placeholder{color:var(--sr-color-ink-muted);opacity:1}
+.sr-theme :is(input,textarea){caret-color:var(--sr-color-signal-ink)}
+.sr-theme input:disabled{opacity:.5;cursor:not-allowed}
+.sr-theme ::selection{background:var(--sr-color-signal);color:var(--sr-color-on-signal)}
+.sr-theme {scrollbar-color:var(--sr-color-line-strong) var(--sr-color-surface)}
+.sr-theme a{color:var(--sr-color-signal-ink);text-underline-offset:.2em}
+.sr-theme :where(table,progress,input[type="number"]){font-variant-numeric:tabular-nums}
+.sr-theme :where(code,kbd,samp){font-family:var(--sr-font-family-mono)}
+@media(prefers-reduced-motion:reduce){.sr-theme button{transition:none!important;transform:none!important}}
+@media(forced-colors:active){.sr-theme{--sr-color-surface:Canvas;--sr-color-surface-raised:Canvas;--sr-color-signal-soft:ButtonFace;--sr-color-ink:CanvasText;--sr-color-ink-muted:CanvasText;--sr-color-line-strong:CanvasText;--sr-color-line:CanvasText;--sr-color-signal:ButtonFace;--sr-color-signal-hover:ButtonFace;--sr-color-signal-edge:CanvasText;--sr-color-on-signal:ButtonText;--sr-color-signal-ink:CanvasText;--sr-color-success:CanvasText;--sr-color-danger:CanvasText;--sr-color-focus:CanvasText}.sr-theme :where(button,input,textarea,[role="combobox"],[role="tab"],[role="checkbox"],[role="switch"],[role="radio"],[role="option"],a):focus-visible{outline-color:CanvasText}.sr-theme :where(button,input,textarea,[role="combobox"],[role="checkbox"],[role="switch"],[role="radio"]){forced-color-adjust:auto}}
+
+@media(forced-colors:active){.sr-theme button[aria-current="page"],.sr-theme .rdp-selected .rdp-day_button{outline:2px solid ButtonText;outline-offset:-4px}}
+@media(forced-colors:active){:root,[data-theme]{--sr-color-surface-overlay:Canvas;--sr-color-surface-hover:ButtonFace;--sr-color-surface-pressed:ButtonFace;--sr-color-signal-pressed:ButtonFace;--sr-color-success-soft:Canvas;--sr-color-danger-soft:Canvas;--sr-color-warning-soft:Canvas;--sr-color-warning:CanvasText;--sr-shadow-raised:none;--sr-shadow-overlay:none;--sr-shadow-key:none}}
+
+/* One navigation plane (app bar, sidebar). Serein materials are solid: no translucency or blur.
+   data-sr-material="subtle" (default) sits on the page; "expressive" lifts onto a raised panel; "solid" has no edge shadow.
    Layout, position and corner geometry belong to the consuming app. */
-.dp-navigation-surface {
- background:var(--dp-canvas);color:var(--dp-text);
- border:1px solid var(--dp-divider);
- box-shadow:var(--dp-navigation-shadow);
+.sr-navigation-surface {
+ background:var(--sr-color-surface);color:var(--sr-color-ink);
+ border:var(--sr-size-hairline) solid var(--sr-color-line);
 }
-.dp-navigation-surface[data-dp-material="expressive"] {
- box-shadow:var(--dp-navigation-expressive-shadow);
+.sr-navigation-surface[data-sr-material="expressive"] {
+ background:var(--sr-color-surface-raised);box-shadow:var(--sr-shadow-raised);
 }
-@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) and (background:color-mix(in srgb,white 94%,transparent)) {
- .dp-navigation-surface {
-  background:var(--dp-navigation-subtle-fill);
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
- }
- .dp-navigation-surface[data-dp-material="expressive"] {
-  background:var(--dp-navigation-expressive-fill);
-  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
- }
+.sr-navigation-surface[data-sr-material="solid"] {
+ background:var(--sr-color-surface);box-shadow:none;
 }
-.dp-navigation-surface[data-dp-material="solid"] {
- background:var(--dp-canvas);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;
-}
-/* Media-query support varies; always offer the explicit Solid choice too. */
-@media (prefers-reduced-transparency:reduce), (prefers-contrast:more), (forced-colors:active) {
- .dp-navigation-surface,.dp-navigation-surface[data-dp-material] {
-  background:var(--dp-canvas);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;
-  border-color:var(--dp-border);
+@media (prefers-contrast:more), (forced-colors:active) {
+ .sr-navigation-surface,.sr-navigation-surface[data-sr-material] {
+  box-shadow:none;border-color:var(--sr-color-line-strong);
  }
 }
 @media (forced-colors:active) {
- .dp-navigation-surface,.dp-navigation-surface[data-dp-material] {
+ .sr-navigation-surface,.sr-navigation-surface[data-sr-material] {
   background:Canvas;color:CanvasText;border-color:CanvasText;
  }
 }

@@ -1,9 +1,9 @@
 body { margin: 0; }
-.story-frame { max-width: 760px; padding: 16px; font-family: var(--dp-font); color: var(--dp-text); background: var(--dp-canvas); }
+.story-frame { max-width: 760px; padding: 16px; font-family: var(--sr-font-family-sans); color: var(--sr-color-ink); background: var(--sr-color-surface); }
 .story-frame > * { max-width: 100%; }
 /* An explicit user-controlled preview only; distributed CSS keeps system defaults. */
-[data-motion-preview=full] .dp-status-icon--pending { animation: dp-status-icon-pending 1.1s ease-in-out infinite !important; }
-[data-motion-preview=full] .dp-status-icon--send.dp-status-icon--pending { animation: dp-status-icon-send 1.1s ease-in-out infinite !important; }
-[data-motion-preview=full] .dp-status-icon--loading.dp-status-icon--pending { animation: dp-status-icon-spin .8s linear infinite !important; }
-[data-motion-preview=full] .dp-status-icon--success { animation: dp-status-icon-success 360ms ease-out both !important; }
-[data-motion-preview=full] .dp-status-icon--error { animation: dp-status-icon-error 280ms ease-out both !important; }
+[data-motion-preview=full] .sr-status-icon--pending { animation: sr-status-icon-pending 1.1s ease-in-out infinite !important; }
+[data-motion-preview=full] .sr-status-icon--send.sr-status-icon--pending { animation: sr-status-icon-send 1.1s ease-in-out infinite !important; }
+[data-motion-preview=full] .sr-status-icon--loading.sr-status-icon--pending { animation: sr-status-icon-spin .8s linear infinite !important; }
+[data-motion-preview=full] .sr-status-icon--success { animation: sr-status-icon-success 360ms ease-out both !important; }
+[data-motion-preview=full] .sr-status-icon--error { animation: sr-status-icon-error 280ms ease-out both !important; }

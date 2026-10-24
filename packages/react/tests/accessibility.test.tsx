@@ -78,32 +78,26 @@ function contrastRatio(foreground: string, background: string) {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-function themeTokens(declarationBlock: string, inherited: Record<string, string> = {}) {
-  return { ...inherited, ...Object.fromEntries([...declarationBlock.matchAll(/(--dp-[\w-]+):\s*(#[\da-fA-F]{6})/g)].map(([, name, value]) => [name, value])) };
+// Serein colours come from @serein-ui/tokens; check the pairs the components rely on.
+function themeTokens(theme: 'light' | 'dark') {
+  const { themes } = JSON.parse(readFileSync(require.resolve('@serein-ui/tokens/json'), 'utf8'));
+  return Object.fromEntries(Object.entries(themes[theme].color as Record<string, string>).map(([name, value]) => [`--sr-color-${name}`, value]));
 }
 
 test('light and dark tokens meet enabled control text and boundary contrast thresholds', () => {
-  const css = readFileSync('src/tokens.css', 'utf8');
-  const lightBlock = css.match(/:root,\[data-dp-theme="light"\]\{([^}]*)\}/)?.[1];
-  const darkBlock = css.match(/\[data-dp-theme="dark"\]\{([^}]*)\}/)?.[1];
-  expect(lightBlock).toBeDefined();
-  expect(darkBlock).toBeDefined();
-  const light = themeTokens(lightBlock!);
-  const dark = themeTokens(darkBlock!, light);
-
-  for (const [themeName, tokens] of Object.entries({ light, dark })) {
-    for (const foreground of ['--dp-text', '--dp-muted', '--dp-orange-text', '--dp-error', '--dp-success']) {
-      for (const background of ['--dp-canvas', '--dp-surface']) {
+  for (const [themeName, tokens] of Object.entries({ light: themeTokens('light'), dark: themeTokens('dark') })) {
+    for (const foreground of ['--sr-color-ink', '--sr-color-ink-muted', '--sr-color-signal-ink', '--sr-color-danger', '--sr-color-success']) {
+      for (const background of ['--sr-color-surface', '--sr-color-surface-raised']) {
         expect(contrastRatio(tokens[foreground], tokens[background]), `${themeName}: ${foreground} on ${background}`).toBeGreaterThanOrEqual(4.5);
       }
     }
 
-    for (const background of ['--dp-orange', '--dp-orange-hover']) {
-      expect(contrastRatio(tokens['--dp-on-orange'], tokens[background]), `${themeName}: --dp-on-orange on ${background}`).toBeGreaterThanOrEqual(4.5);
+    for (const background of ['--sr-color-signal', '--sr-color-signal-hover', '--sr-color-signal-pressed']) {
+      expect(contrastRatio(tokens['--sr-color-on-signal'], tokens[background]), `${themeName}: --sr-color-on-signal on ${background}`).toBeGreaterThanOrEqual(4.5);
     }
 
-    for (const background of ['--dp-canvas', '--dp-surface']) {
-      expect(contrastRatio(tokens['--dp-border'], tokens[background]), `${themeName}: enabled control boundary on ${background}`).toBeGreaterThanOrEqual(3);
+    for (const background of ['--sr-color-surface', '--sr-color-surface-raised']) {
+      expect(contrastRatio(tokens['--sr-color-line-strong'], tokens[background]), `${themeName}: enabled control boundary on ${background}`).toBeGreaterThanOrEqual(3);
     }
   }
 });

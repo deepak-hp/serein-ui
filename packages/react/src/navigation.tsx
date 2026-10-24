@@ -3,14 +3,14 @@ import * as stylex from '@stylexjs/stylex';
 import { Button, type ButtonProps } from './components';
 
 const s = stylex.create({
-  link: { color: 'var(--dp-orange-text)', textDecoration: 'underline', textUnderlineOffset: 3, lineHeight: 1.6, ':hover': { textDecorationThickness: 2 } },
+  link: { color: 'var(--sr-color-signal-ink)', textDecoration: 'underline', textUnderlineOffset: 3, lineHeight: 1.6, ':hover': { textDecorationThickness: 2 } },
   list: { listStyle: 'none', margin: 0, padding: 0, display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, fontSize: 14 },
   crumb: { display: 'inline-flex', alignItems: 'center', gap: 8, minHeight: 32, overflowWrap: 'anywhere' },
-  current: { color: 'var(--dp-text)', fontWeight: 600 },
-  muted: { color: 'var(--dp-muted)' },
+  current: { color: 'var(--sr-color-ink)', fontWeight: 600 },
+  muted: { color: 'var(--sr-color-ink-muted)' },
   pages: { display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 6 },
   page: { padding: 10, minWidth: 44, minHeight: 44 },
-  selected: { backgroundColor: 'var(--dp-selected)', borderColor: 'var(--dp-orange-text)', fontWeight: 700 },
+  selected: { backgroundColor: 'var(--sr-color-signal-soft)', borderColor: 'var(--sr-color-signal-ink)', fontWeight: 700 },
   icon: { width: 48, height: 48, padding: 12, flexShrink: 0 },
   iconContent: { display: 'flex', alignItems: 'center', justifyContent: 'center' },
 });

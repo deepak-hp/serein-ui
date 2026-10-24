@@ -11,8 +11,8 @@ export function readTheme(): Theme {
 }
 
 export function applyTheme(theme: Theme) {
-  document.documentElement.dataset.dpTheme = theme;
-  document.body.classList.add('dp-theme');
+  document.documentElement.dataset.theme = theme;
+  document.body.classList.add('sr-theme');
 }
 
 export function saveTheme(theme: Theme) {

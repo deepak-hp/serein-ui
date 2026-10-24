@@ -39,7 +39,7 @@ const [open, setOpen] = useState(false);
 
 Dialog and AlertDialog confirmation invokes `onConfirm` and requests closing. It does not wait for a Promise. For an asynchronous operation, keep the overlay controlled, manage pending/error state in the application, and close after the operation succeeds. A controlled parent can decline dismissal while necessary. AlertDialog initially focuses Cancel and does not dismiss on outside interaction.
 
-Base UI manages focus and portal lifecycles. Set the theme on `html` and `dp-theme` on `body`, including server-rendered markup, so portaled controls inherit it.
+Base UI manages focus and portal lifecycles. Set the theme on `html` and `sr-theme` on `body`, including server-rendered markup, so portaled controls inherit it.
 
 ## Search and multiple selection
 

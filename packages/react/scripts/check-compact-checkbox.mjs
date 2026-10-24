@@ -16,8 +16,8 @@ await writeFile(resolve(fixture, 'entry.jsx'), `
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Checkbox } from '../../dist/index.js';
+import '../../dist/fonts.css';
 import '../../dist/styles.css';
-import '@fontsource-variable/plus-jakarta-sans';
 
 const files = [
   { name: 'quarterly-report-final-approved-with-supporting-notes.pdf', detail: '4.8 MB · Updated today' },
@@ -28,17 +28,17 @@ const files = [
 function App() {
   const [selected, setSelected] = useState([true, false, false]);
   const theme = new URLSearchParams(location.search).get('theme') || 'light';
-  document.documentElement.dataset.dpTheme = theme;
-  return <main className="dp-theme" style={{ minHeight: '100vh', padding: 16 }}>
+  document.documentElement.dataset.theme = theme;
+  return <main className="sr-theme" style={{ minHeight: '100vh', padding: 16 }}>
     <h1 style={{ margin: '0 0 16px', fontSize: 20 }}>Project files</h1>
-    <div data-file-list style={{ width: '100%', maxWidth: 720, border: '1px solid var(--dp-divider)', borderRadius: 'var(--dp-radius-panel)', overflow: 'hidden' }}>
-      {files.map((file, index) => <div data-compact-row key={file.name} style={{ display: 'grid', gridTemplateColumns: '48px minmax(0, 1fr)', alignItems: 'center', minHeight: 64, borderTop: index ? '1px solid var(--dp-divider)' : undefined }}>
+    <div data-file-list style={{ width: '100%', maxWidth: 720, border: '1px solid var(--sr-color-line)', borderRadius: 'var(--sr-radius-panel)', overflow: 'hidden' }}>
+      {files.map((file, index) => <div data-compact-row key={file.name} style={{ display: 'grid', gridTemplateColumns: '48px minmax(0, 1fr)', alignItems: 'center', minHeight: 64, borderTop: index ? '1px solid var(--sr-color-line)' : undefined }}>
         <div data-selection-cell style={{ width: 48 }}>
           <Checkbox hideLabel label={\`Select \${file.name}\`} checked={selected[index]} indeterminate={index === 1} disabled={index === 2} onCheckedChange={checked => setSelected(current => current.map((value, itemIndex) => itemIndex === index ? checked : value))} />
         </div>
         <div data-file-copy style={{ minWidth: 0, padding: '8px 16px 8px 8px' }}>
           <div data-file-name style={{ overflowWrap: 'anywhere', fontWeight: 600 }}>{file.name}</div>
-          <div style={{ marginTop: 2, color: 'var(--dp-muted)', fontSize: 13 }}>{file.detail}</div>
+          <div style={{ marginTop: 2, color: 'var(--sr-color-ink-muted)', fontSize: 13 }}>{file.detail}</div>
         </div>
       </div>)}
     </div>

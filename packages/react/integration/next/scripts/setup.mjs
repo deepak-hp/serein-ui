@@ -4,8 +4,8 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const appRoot = path.resolve(import.meta.dirname, '..');
-const trialRoot = path.resolve(appRoot, '..', '..');
-const repositoryRoot = path.resolve(trialRoot, '..');
+const trialRoot = path.resolve(appRoot, '..', '..'); // packages/react
+const repositoryRoot = path.resolve(trialRoot, '..', '..');
 const filename = 'serein-ui-react-0.1.0-beta.1.tgz';
 const expectedSha256 = 'e7fefb1a74be80df55384ca446db9995359d7d2ae560676bf94d5c23f53cc470';
 const vendorDirectory = path.join(appRoot, 'vendor');
@@ -80,8 +80,8 @@ async function prepareCurrentSource() {
   const sourceCommit = run('git', ['-C', repositoryRoot, 'rev-parse', 'HEAD'], repositoryRoot);
   const sourceStatus = run('git', [
     '-C', repositoryRoot, 'status', '--short', '--',
-    'trial/src', 'trial/package.json', 'trial/package-lock.json', 'trial/scripts',
-    'trial/ai', 'trial/docs', 'trial/LICENSE', 'trial/THIRD_PARTY_NOTICES.md',
+    'packages/react/src', 'packages/react/package.json', 'pnpm-lock.yaml', 'packages/react/scripts',
+    'packages/react/ai', 'packages/react/docs', 'packages/react/LICENSE', 'packages/react/THIRD_PARTY_NOTICES.md', 'tokens',
   ], repositoryRoot);
 
   return {

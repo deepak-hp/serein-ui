@@ -55,7 +55,7 @@ export function Example() {
 }
 ```
 
-Set `data-dp-theme="light"` or `data-dp-theme="dark"` on the document's `html` element, and `class="dp-theme"` on `body`. Theme selection is document-wide so portalled dropdowns and dialogs inherit the same tokens. Scoped or nested themes are not supported in this trial. The font import is an explicit host-app choice.
+Set `data-theme="light"` or `data-theme="dark"` on the document's `html` element, and `class="sr-theme"` on `body`. Theme selection is document-wide so portalled dropdowns and dialogs inherit the same tokens. Scoped or nested themes are not supported in this trial. The font import is an explicit host-app choice.
 
 `Button` supports primary, secondary and quiet variants, plus loading and disabled states. `TextField` associates its label, description and error with the input. `Select` uses Base UI keyboard behaviour. `Dialog` supports Escape and returns focus to its trigger.
 

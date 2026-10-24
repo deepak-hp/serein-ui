@@ -1,12 +1,14 @@
 import { transformAsync } from '@babel/core';
 import stylexPlugin from '@stylexjs/babel-plugin';
 import { build } from 'esbuild';
-import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const require = createRequire(import.meta.url);
 const sourceDirectory = join(root, 'src');
 const outputDirectory = join(root, 'dist');
 const temporaryDirectory = await mkdtemp(join(tmpdir(), 'serein-stylex-'));
@@ -69,14 +71,23 @@ try {
   const processStyles = stylexPlugin.processStyles ?? stylexPlugin.processStylexRules;
   if (!processStyles) throw new Error('The StyleX Babel plugin does not expose a CSS processor');
 
-  const [stylexCss, tokensCss, motionCss, calendarCss] = await Promise.all([
+  // Serein tokens and fonts ship inside this package so one install is enough.
+  const fontsCssPath = require.resolve('@serein-ui/fonts/fonts.css');
+  const [stylexCss, sereinTokensCss, sereinTypeCss, tokensCss, motionCss, calendarCss, fontsCss] = await Promise.all([
     Promise.resolve(processStyles(rules)),
+    readFile(require.resolve('@serein-ui/tokens/css'), 'utf8'),
+    readFile(require.resolve('@serein-ui/tokens/type.css'), 'utf8'),
     readFile(join(sourceDirectory, 'tokens.css'), 'utf8'),
     readFile(join(sourceDirectory, 'motion.css'), 'utf8'),
     readFile(join(sourceDirectory, 'calendar.css'), 'utf8'),
+    readFile(fontsCssPath, 'utf8'),
   ]);
-  await writeFile(join(outputDirectory, 'styles.css'), `${stylexCss}\n${tokensCss}\n${motionCss}\n${calendarCss}`);
+  await writeFile(join(outputDirectory, 'styles.css'), `${sereinTokensCss}\n${sereinTypeCss}\n${stylexCss}\n${tokensCss}\n${motionCss}\n${calendarCss}`);
   await writeFile(join(outputDirectory, 'styles.d.ts'), 'export {};\n');
+  await cp(join(dirname(fontsCssPath), 'files'), join(outputDirectory, 'files'), { recursive: true });
+  await cp(join(dirname(fontsCssPath), '..', 'OFL.txt'), join(outputDirectory, 'files', 'OFL.txt'));
+  await writeFile(join(outputDirectory, 'fonts.css'), fontsCss);
+  await writeFile(join(outputDirectory, 'fonts.d.ts'), 'export {};\n');
 } finally {
   await rm(temporaryDirectory, { recursive: true, force: true });
 }

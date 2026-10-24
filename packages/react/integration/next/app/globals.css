@@ -35,13 +35,13 @@ input {
 
 .page-header > p:last-child,
 .card-heading p {
-  color: var(--dp-muted);
+  color: var(--sr-color-ink-muted);
   line-height: 1.6;
 }
 
 .eyebrow {
   margin: 0 0 10px;
-  color: var(--dp-orange-text);
+  color: var(--sr-color-signal-ink);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;

@@ -66,7 +66,7 @@ try {
   for (const theme of ['light', 'dark']) {
     if (theme === 'dark') await page.getByRole('button', { name: 'Use dark theme', exact: true }).click();
     await page.reload();
-    assert.equal(await page.locator('html').getAttribute('data-dp-theme'), theme);
+    assert.equal(await page.locator('html').getAttribute('data-theme'), theme);
     for (const width of [320, 1100]) {
       await page.setViewportSize({ width, height: 800 });
       await page.evaluate(() => document.fonts.ready);

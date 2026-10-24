@@ -68,5 +68,5 @@ function Controls() {
 
 export function SsrApp() {
   useEffect(() => { window.__ssrHydrated = true; }, []);
-  return h(UI.ToastProvider, { timeout: 0 }, h('main', { className: 'dp-theme' }, h('h1', null, 'SSR fixture'), h(Controls), h(ToastProbe)));
+  return h(UI.ToastProvider, { timeout: 0 }, h('main', { className: 'sr-theme' }, h('h1', null, 'SSR fixture'), h(Controls), h(ToastProbe)));
 }

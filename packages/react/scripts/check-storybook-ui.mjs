@@ -14,14 +14,14 @@ try {
   assert.equal(errors.length, 0, errors.join('\n'));
   await page.goto(`${baseUrl}/iframe.html?id=components-statusicon--pending&viewMode=story&globals=theme:dark`);
   await page.getByText('Message in progress', { exact: true }).waitFor();
-  const icon = page.locator('svg.dp-status-icon');
+  const icon = page.locator('svg.sr-status-icon');
   assert.equal(await icon.locator('path').count(), 2, 'Pending plane needs visible trails even with motion disabled');
   assert.equal(await icon.evaluate(element => getComputedStyle(element).animationName), 'none');
   await page.getByRole('button', { name: 'Preview animation', exact: true }).click();
   await page.getByRole('button', { name: 'Use system preference', exact: true }).waitFor();
-  await page.waitForFunction(() => getComputedStyle(document.querySelector('.dp-status-icon')).animationName === 'dp-status-icon-send');
+  await page.waitForFunction(() => getComputedStyle(document.querySelector('.sr-status-icon')).animationName === 'sr-status-icon-send');
   await page.getByRole('button', { name: 'Use system preference', exact: true }).click();
-  await page.waitForFunction(() => getComputedStyle(document.querySelector('.dp-status-icon')).animationName === 'none');
+  await page.waitForFunction(() => getComputedStyle(document.querySelector('.sr-status-icon')).animationName === 'none');
   await page.goto(`${baseUrl}/iframe.html?id=components-statusicon--idle&viewMode=story&globals=theme:dark`);
   await page.getByText('Message ready', { exact: true }).waitFor();
   assert.equal(await icon.locator('path').count(), 1);

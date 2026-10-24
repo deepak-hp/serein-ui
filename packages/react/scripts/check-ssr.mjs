@@ -26,7 +26,7 @@ try {
   const markup = renderToString(React.createElement(SsrApp));
   assert.match(markup, /SSR fixture/);
   const [client, styles] = await Promise.all([readFile(output), readFile(resolve(dist, 'styles.css'))]);
-  const html = `<!doctype html><html data-dp-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="/styles.css"></head><body class="dp-theme"><div id="root">${markup}</div><script type="module" src="/client.js"></script></body></html>`;
+  const html = `<!doctype html><html data-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="/styles.css"></head><body class="sr-theme"><div id="root">${markup}</div><script type="module" src="/client.js"></script></body></html>`;
   server = createServer((request, response) => {
     const body = request.url === '/client.js' ? client : request.url === '/styles.css' ? styles : html;
     response.writeHead(200, { 'content-type': request.url === '/client.js' ? 'text/javascript' : request.url === '/styles.css' ? 'text/css' : 'text/html' });

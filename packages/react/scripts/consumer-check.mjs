@@ -110,9 +110,9 @@ export async function runConsumerCheck() {
   const emittedCss = await cssFiles(join(consumerDirectory, 'dist'));
   if (emittedCss.length === 0) throw new Error('Consumer bundle did not emit CSS');
   const css = (await Promise.all(emittedCss.map((file) => readFile(file, 'utf8')))).join('\n');
-  if (!css.includes('--dp-orange')) throw new Error('Consumer CSS does not contain the library theme tokens');
-  if (!css.includes('.dp-calendar')) throw new Error('Consumer CSS does not include calendar styles');
-  if (!css.includes('.dp-status-icon--pending')) {
+  if (!css.includes('--sr-color-signal')) throw new Error('Consumer CSS does not contain the library theme tokens');
+  if (!css.includes('.sr-calendar')) throw new Error('Consumer CSS does not include calendar styles');
+  if (!css.includes('.sr-status-icon--pending')) {
     throw new Error('Consumer CSS does not contain the StatusIcon motion rules');
   }
   console.log('Packed consumer: strict public types, accessible-name contract and compiler-free JS/CSS bundle verified.');

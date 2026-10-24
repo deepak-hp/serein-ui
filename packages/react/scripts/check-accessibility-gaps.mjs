@@ -44,7 +44,7 @@ function App() {
       requestAnimationFrame(() => emailRef.current?.focus());
     }
   }
-  return <main className="dp-theme" style={{ minHeight: '100vh', padding: 24, display: 'grid', gap: 24 }}>
+  return <main className="sr-theme" style={{ minHeight: '100vh', padding: 24, display: 'grid', gap: 24 }}>
     <h1>Accessibility gap fixture</h1>
     <section aria-labelledby="composites-heading" style={{ display: 'grid', gap: 16, maxWidth: 420 }}>
       <h2 id="composites-heading">Composite widgets</h2>

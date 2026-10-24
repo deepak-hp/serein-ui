@@ -4,11 +4,11 @@ import { Tabs as BaseTabs } from '@base-ui/react/tabs';
 
 const s = stylex.create({
   root: { minWidth: 0 },
-  list: { display: 'flex', flexWrap: 'wrap', gap: 4, padding: 4, borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--dp-divider)' },
-  tab: { minHeight: 48, padding: '10px 16px', backgroundColor: 'transparent', color: 'var(--dp-muted)', borderWidth: 0, borderStyle: 'solid', borderBottomWidth: 2, borderColor: 'transparent', borderRadius: 'var(--dp-radius-control)', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, cursor: 'pointer', ':hover': { backgroundColor: 'var(--dp-surface)' }, ':focus-visible': { outline: '2px solid var(--dp-focus)', outlineOffset: 3 } },
-  active: { color: 'var(--dp-text)', backgroundColor: 'var(--dp-selected)', borderBottomColor: 'var(--dp-orange-text)' },
+  list: { display: 'flex', flexWrap: 'wrap', gap: 4, padding: 4, borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line)' },
+  tab: { minHeight: 48, padding: '10px 16px', backgroundColor: 'transparent', color: 'var(--sr-color-ink-muted)', borderWidth: 0, borderStyle: 'solid', borderBottomWidth: 2, borderColor: 'transparent', borderRadius: 'var(--sr-radius-control)', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, cursor: 'pointer', ':hover': { backgroundColor: 'var(--sr-color-surface-raised)' }, ':focus-visible': { outline: '2px solid var(--sr-color-focus)', outlineOffset: 3 } },
+  active: { color: 'var(--sr-color-ink)', backgroundColor: 'var(--sr-color-signal-soft)', borderBottomColor: 'var(--sr-color-signal-ink)' },
   disabled: { opacity: .5, cursor: 'not-allowed' },
-  panel: { padding: '24px 4px', color: 'var(--dp-text)', fontSize: 14, lineHeight: 1.7 },
+  panel: { padding: '24px 4px', color: 'var(--sr-color-ink)', fontSize: 14, lineHeight: 1.7 },
 });
 
 export type TabsProps = {

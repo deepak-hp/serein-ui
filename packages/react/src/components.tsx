@@ -7,42 +7,42 @@ import { Dialog as BaseDialog } from '@base-ui/react/dialog';
 import { StatusIcon } from './StatusIcon';
 
 const s = stylex.create({
- button: { display:'inline-flex', alignItems:'center', justifyContent:'center', gap:10, minHeight:48, padding:'11px 20px', borderRadius:'var(--dp-radius-control)', borderWidth:1, borderStyle:'solid', fontFamily:'inherit', fontSize:14, fontWeight:600, lineHeight:1.4, cursor:'pointer', transition:'background-color var(--dp-duration-fast) var(--dp-ease-out), box-shadow var(--dp-duration-fast) var(--dp-ease-out), transform var(--dp-duration-fast) var(--dp-ease-out)', textDecoration:'none', ':active':{transform:'translateY(1px)'} },
- primary: { backgroundColor:{default:'var(--dp-orange)', ':hover':'var(--dp-orange-hover)', ':active':'var(--dp-orange-active)'}, color:'var(--dp-on-orange)', borderColor:'var(--dp-orange-border)', boxShadow:{default:'var(--dp-shadow-action)', ':hover':'var(--dp-shadow-action-hover)'} },
- secondary: { backgroundColor:{default:'var(--dp-surface)', ':hover':'var(--dp-hover)', ':active':'var(--dp-active)'}, color:'var(--dp-text)', borderColor:'var(--dp-divider)' },
- quiet: { backgroundColor:{default:'transparent', ':hover':'var(--dp-hover)', ':active':'var(--dp-active)'}, color:'var(--dp-text)', borderColor:'transparent' },
- buttonDisabled: { backgroundColor:{default:'var(--dp-surface)', ':hover':'var(--dp-surface)', ':active':'var(--dp-surface)'}, color:'var(--dp-muted)', borderColor:'var(--dp-divider)', boxShadow:'none', cursor:'not-allowed', ':active':{transform:'none'} },
- controlDisabled: { backgroundColor:{default:'var(--dp-field)', ':hover':'var(--dp-field)', ':active':'var(--dp-field)'}, color:'var(--dp-muted)', borderColor:'var(--dp-border)', cursor:'not-allowed' },
- disabled: { color:'var(--dp-muted)', cursor:'not-allowed' },
+ button: { display:'inline-flex', alignItems:'center', justifyContent:'center', gap:10, minHeight:48, padding:'11px 20px', borderRadius:'var(--sr-radius-control)', borderWidth:1, borderStyle:'solid', fontFamily:'inherit', fontSize:14, fontWeight:600, lineHeight:1.4, cursor:'pointer', transition:'background-color var(--sr-duration-fast) var(--sr-easing-settle), box-shadow var(--sr-duration-fast) var(--sr-easing-settle), transform var(--sr-duration-fast) var(--sr-easing-settle)', textDecoration:'none', ':active':{transform:'translateY(1px)'} },
+ primary: { backgroundColor:{default:'var(--sr-color-signal)', ':hover':'var(--sr-color-signal-hover)', ':active':'var(--sr-color-signal-pressed)'}, color:'var(--sr-color-on-signal)', borderColor:'var(--sr-color-signal-edge)', boxShadow:{default:'none', ':hover':'none'} },
+ secondary: { backgroundColor:{default:'var(--sr-color-surface-raised)', ':hover':'var(--sr-color-surface-hover)', ':active':'var(--sr-color-surface-pressed)'}, color:'var(--sr-color-ink)', borderColor:'var(--sr-color-line)' },
+ quiet: { backgroundColor:{default:'transparent', ':hover':'var(--sr-color-surface-hover)', ':active':'var(--sr-color-surface-pressed)'}, color:'var(--sr-color-ink)', borderColor:'transparent' },
+ buttonDisabled: { backgroundColor:{default:'var(--sr-color-surface-raised)', ':hover':'var(--sr-color-surface-raised)', ':active':'var(--sr-color-surface-raised)'}, color:'var(--sr-color-ink-muted)', borderColor:'var(--sr-color-line)', boxShadow:'none', cursor:'not-allowed', ':active':{transform:'none'} },
+ controlDisabled: { backgroundColor:{default:'var(--sr-color-surface-raised)', ':hover':'var(--sr-color-surface-raised)', ':active':'var(--sr-color-surface-raised)'}, color:'var(--sr-color-ink-muted)', borderColor:'var(--sr-color-line-strong)', cursor:'not-allowed' },
+ disabled: { color:'var(--sr-color-ink-muted)', cursor:'not-allowed' },
  field: { display:'flex', flexDirection:'column', gap:8, minWidth:0 },
- label: { fontSize:14, fontWeight:600, color:'var(--dp-text)' },
- input: { width:'100%', minHeight:48, padding:'11px 14px', backgroundColor:'var(--dp-field)', color:'var(--dp-text)', borderWidth:1, borderStyle:'solid', borderColor:{default:'var(--dp-border)', ':hover':'var(--dp-muted)'}, borderRadius:'var(--dp-radius-control)', fontFamily:'inherit', fontSize:16, lineHeight:1.5 },
- invalid: { borderColor:{default:'var(--dp-error)', ':hover':'var(--dp-error)'} },
- help: { fontSize:13, lineHeight:1.6, color:'var(--dp-muted)', margin:0 },
- error: { color:'var(--dp-error)' },
- trigger: { display:'flex', alignItems:'center', justifyContent:'space-between', gap:16, textAlign:'left', cursor:'pointer', ':hover':{backgroundColor:'var(--dp-hover)'}, ':active':{backgroundColor:'var(--dp-active)'} },
+ label: { fontSize:14, fontWeight:600, color:'var(--sr-color-ink)' },
+ input: { width:'100%', minHeight:48, padding:'11px 14px', backgroundColor:'var(--sr-color-surface-raised)', color:'var(--sr-color-ink)', borderWidth:1, borderStyle:'solid', borderColor:{default:'var(--sr-color-line-strong)', ':hover':'var(--sr-color-ink-muted)'}, borderRadius:'var(--sr-radius-control)', fontFamily:'inherit', fontSize:16, lineHeight:1.5 },
+ invalid: { borderColor:{default:'var(--sr-color-danger)', ':hover':'var(--sr-color-danger)'} },
+ help: { fontSize:13, lineHeight:1.6, color:'var(--sr-color-ink-muted)', margin:0 },
+ error: { color:'var(--sr-color-danger)' },
+ trigger: { display:'flex', alignItems:'center', justifyContent:'space-between', gap:16, textAlign:'left', cursor:'pointer', ':hover':{backgroundColor:'var(--sr-color-surface-hover)'}, ':active':{backgroundColor:'var(--sr-color-surface-pressed)'} },
  selectValue: { minWidth:0, overflowWrap:'anywhere' },
  selectIcon: { display:'inline-flex', flexShrink:0 },
- placeholder: { color:'var(--dp-muted)' },
- indicator: { marginLeft:'auto', width:16, minWidth:16, display:'inline-flex', color:'var(--dp-orange-text)' },
+ placeholder: { color:'var(--sr-color-ink-muted)' },
+ indicator: { marginLeft:'auto', width:16, minWidth:16, display:'inline-flex', color:'var(--sr-color-signal-ink)' },
  indicatorHidden: { visibility:'hidden' },
- empty: { padding:'12px', color:'var(--dp-muted)', fontSize:14, lineHeight:1.5 },
+ empty: { padding:'12px', color:'var(--sr-color-ink-muted)', fontSize:14, lineHeight:1.5 },
  positioner:{ zIndex:80 },
- popup: { width:'var(--anchor-width)', maxWidth:'var(--available-width)', maxHeight:'min(320px, var(--available-height))', overflowY:'auto', backgroundColor:'var(--dp-raised)', color:'var(--dp-text)', padding:6, borderWidth:1, borderStyle:'solid', borderColor:'var(--dp-divider)', borderRadius:'var(--dp-radius-popup)', boxShadow:'var(--dp-shadow-popup)' },
- option: { minHeight:44, padding:'10px 12px', display:'flex', alignItems:'center', gap:10, fontSize:14, lineHeight:1.5, borderRadius:'var(--dp-radius-small)', cursor:'default', outline:'none', overflowWrap:'anywhere', ':focus-visible':{outline:'2px solid var(--dp-focus)',outlineOffset:3} },
- highlighted: { backgroundColor:'var(--dp-hover)' },
- selected: { backgroundColor:'var(--dp-selected)', fontWeight:600 },
+ popup: { width:'var(--anchor-width)', maxWidth:'var(--available-width)', maxHeight:'min(320px, var(--available-height))', overflowY:'auto', backgroundColor:'var(--sr-color-surface-overlay)', color:'var(--sr-color-ink)', padding:6, borderWidth:1, borderStyle:'solid', borderColor:'var(--sr-color-line)', borderRadius:'var(--sr-radius-popup)', boxShadow:'var(--sr-shadow-overlay)' },
+ option: { minHeight:44, padding:'10px 12px', display:'flex', alignItems:'center', gap:10, fontSize:14, lineHeight:1.5, borderRadius:'var(--sr-radius-tag)', cursor:'default', outline:'none', overflowWrap:'anywhere', ':focus-visible':{outline:'2px solid var(--sr-color-focus)',outlineOffset:3} },
+ highlighted: { backgroundColor:'var(--sr-color-surface-hover)' },
+ selected: { backgroundColor:'var(--sr-color-signal-soft)', fontWeight:600 },
  backdrop: { position:'fixed', inset:0, backgroundColor:'#00000085', zIndex:70 },
- dialog: { position:'fixed', top:'50%', left:'50%', transform:'translate(-50%, -50%)', width:'min(480px, calc(100vw - 32px))', maxHeight:'calc(100dvh - 40px)', overflowY:'auto', padding:28, backgroundColor:'var(--dp-raised)', color:'var(--dp-text)', borderWidth:1, borderStyle:'solid', borderColor:'var(--dp-divider)', borderRadius:'var(--dp-radius-dialog)', zIndex:71, boxShadow:'var(--dp-shadow-dialog)' },
+ dialog: { position:'fixed', top:'50%', left:'50%', transform:'translate(-50%, -50%)', width:'min(480px, calc(100vw - 32px))', maxHeight:'calc(100dvh - 40px)', overflowY:'auto', padding:28, backgroundColor:'var(--sr-color-surface-overlay)', color:'var(--sr-color-ink)', borderWidth:1, borderStyle:'solid', borderColor:'var(--sr-color-line)', borderRadius:'var(--sr-radius-sheet)', zIndex:71, boxShadow:'var(--sr-shadow-overlay)' },
  title: { margin:'0 0 10px', fontSize:24, lineHeight:1.3, fontWeight:650, letterSpacing:'-0.03em' },
- description: { margin:'0 0 24px', color:'var(--dp-muted)', fontSize:14, lineHeight:1.7 },
+ description: { margin:'0 0 24px', color:'var(--sr-color-ink-muted)', fontSize:14, lineHeight:1.7 },
  actions: { display:'flex', flexWrap:'wrap', justifyContent:'flex-end', gap:10, marginTop:28 },
 });
 type NativeButtonProps = Omit<ComponentProps<'button'>, 'color'>;
 export type ButtonProps = NativeButtonProps & { variant?:'primary'|'secondary'|'quiet'; loading?:boolean };
 export function Button({variant='primary', loading=false, disabled, children, className='', ...props}:ButtonProps) {
  const generated=stylex.props(s.button,s[variant],disabled&&!loading&&s.buttonDisabled);
- return <BaseButton {...props} {...generated} className={generated.className+' dp-control '+className} disabled={disabled||loading} aria-busy={loading||undefined}>
+ return <BaseButton {...props} {...generated} className={generated.className+' sr-control '+className} disabled={disabled||loading} aria-busy={loading||undefined}>
  {loading && <StatusIcon state="pending" kind="loading" />} {children}
  </BaseButton>;
 }

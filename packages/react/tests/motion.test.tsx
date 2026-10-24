@@ -27,7 +27,7 @@ describe('StatusIcon', () => {
 
     expect(icon).toHaveAttribute('aria-hidden', 'true');
     expect(icon).toHaveAttribute('width', '20');
-    expect(icon).toHaveClass('dp-status-icon', 'dp-status-icon--pending', 'dp-status-icon--payment');
+    expect(icon).toHaveClass('sr-status-icon', 'sr-status-icon--pending', 'sr-status-icon--payment');
     expect(icon?.querySelector('rect')).not.toBeNull();
   });
 
@@ -35,7 +35,7 @@ describe('StatusIcon', () => {
     const { container } = render(<StatusIcon state="pending" kind="loading" />);
     const icon = container.querySelector('svg');
 
-    expect(icon).toHaveClass('dp-status-icon--loading');
+    expect(icon).toHaveClass('sr-status-icon--loading');
     expect(icon?.querySelector('circle')).not.toBeNull();
     expect(icon?.querySelector('path')).not.toBeNull();
   });

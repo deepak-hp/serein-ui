@@ -32,15 +32,15 @@ The reference app also offers an explicit **Preview glass effects** checkbox, of
 
 ## Use in an app
 
-Import the normal library stylesheet, set `data-dp-theme` on html and `dp-theme` on body as usual, then opt in on a single navigation container:
+Import the normal library stylesheet, set `data-theme` on html and `sr-theme` on body as usual, then opt in on a single navigation container:
 
 ```tsx
-<header className="dp-navigation-surface" data-dp-material="subtle">
+<header className="sr-navigation-surface" data-sr-material="subtle">
   {/* Labelled navigation and controls. */}
 </header>
 ```
 
-`data-dp-material` accepts `subtle`, `expressive` or `solid`; omission uses subtle. This is a CSS utility, not a React component or a prop accepted by every library control. The application owns padding, positioning, geometry and the accessible preference control. Do not nest material surfaces or attach this class to a content table or form.
+`data-sr-material` accepts `subtle`, `expressive` or `solid`; omission uses subtle. This is a CSS utility, not a React component or a prop accepted by every library control. The application owns padding, positioning, geometry and the accessible preference control. Do not nest material surfaces or attach this class to a content table or form.
 
 `prefers-reduced-transparency: reduce`, `prefers-contrast: more` and forced colours override either glass finish with an opaque surface. Browser/OS support for transparency preferences varies; retain a user-selectable Solid mode. Unsupported backdrop filtering or colour mixing falls back to an opaque background. Never weaken the neutral fill without retesting contrast against the content underneath.
 

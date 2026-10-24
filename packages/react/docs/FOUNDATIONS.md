@@ -36,27 +36,27 @@ Orange is reserved for priority actions and selected controls. Neutral controls 
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--dp-radius-small` | 5px | Small indicators and options |
-| `--dp-radius-control` | 8px | Buttons, fields, joined-control outer corners |
-| `--dp-radius-popup` | 12px | Menus and popovers |
-| `--dp-radius-panel` | 16px | Cards and grouped surfaces |
-| `--dp-radius-dialog` | 20px | Focused modal surfaces |
+| `--sr-radius-tag` | 5px | Small indicators and options |
+| `--sr-radius-control` | 8px | Buttons, fields, joined-control outer corners |
+| `--sr-radius-popup` | 12px | Menus and popovers |
+| `--sr-radius-panel` | 16px | Cards and grouped surfaces |
+| `--sr-radius-sheet` | 20px | Focused modal surfaces |
 
 Circles and pill controls retain their functional shapes. Standard buttons and fields are at least 48px high; common menu options are at least 44px. Visible focus uses a two-pixel outline with three-pixel offset. The softer shapes do not reduce hit targets or focus visibility.
 
 Each component owns its outer frame. DataTable also owns its horizontal scrolling, named region, and keyboard focus; place it in an unframed layout wrapper rather than adding a second border or scroll region. Joined controls share one seam, and row/item dividers stop before the container's outer edge. Preserve control boundaries and keyboard focus outlines: they communicate different states, even when both are visible.
 
-`--dp-font` selects Plus Jakarta Sans Variable, then Plus Jakarta Sans and a sans-serif fallback. Labels/buttons use 14px, inputs 16px, helpers 13px. Buttons and control labels use weight 600. Heading tracking stays at or above -0.04em. Tables and numeric controls use tabular figures. Group related content tightly and leave more space between tasks; do not make every paragraph a card.
+`--sr-font-family-sans` selects Plus Jakarta Sans Variable, then Plus Jakarta Sans and a sans-serif fallback. Labels/buttons use 14px, inputs 16px, helpers 13px. Buttons and control labels use weight 600. Heading tracking stays at or above -0.04em. Tables and numeric controls use tabular figures. Group related content tightly and leave more space between tasks; do not make every paragraph a card.
 
 ## Material and motion
 
-`--dp-shadow-surface` is `none`: cards and grouped surfaces use fill and divider relationships at rest. `--dp-shadow-popup` and `--dp-shadow-dialog` express elevation only for transient layers. `--dp-shadow-action` gives the primary action a restrained top-edge highlight and offset shadow. Keep control boundaries visible in both themes.
+`--sr-shadow-raised` is `none`: cards and grouped surfaces use fill and divider relationships at rest. `--sr-shadow-overlay` and `--sr-shadow-overlay` express elevation only for transient layers. `--dp-shadow-action` gives the primary action a restrained top-edge highlight and offset shadow. Keep control boundaries visible in both themes.
 
-Status icons communicate real pending, success, or error states; motion never determines completion. Reduced-motion settings disable the animated transitions and state-icon motion. Optional `dp-navigation-surface` supports `subtle`, `expressive`, and `solid` modes on one navigation plane. Content, nested controls, and forms stay opaque. Reduced transparency, increased contrast, and forced colours use solid fallbacks. See [navigation material guidance](APPLE-DESIGN.md).
+Status icons communicate real pending, success, or error states; motion never determines completion. Reduced-motion settings disable the animated transitions and state-icon motion. Optional `sr-navigation-surface` supports `subtle`, `expressive`, and `solid` modes on one navigation plane. Content, nested controls, and forms stay opaque. Reduced transparency, increased contrast, and forced colours use solid fallbacks. See [navigation material guidance](APPLE-DESIGN.md).
 
 ## Integration and accessibility
 
-Apply `data-dp-theme="light|dark"` on `<html>` and `dp-theme` on `<body>` so portalled overlays inherit the same theme. The `dp-*` styling contract stays stable through the Serein rename. Existing demo storage keys stay stable too.
+Apply `data-theme="light|dark"` on `<html>` and `sr-theme` on `<body>` so portalled overlays inherit the same theme. The `dp-*` styling contract stays stable through the Serein rename. Existing demo storage keys stay stable too.
 
 The React package is named `@serein-ui/react`, with a verified [GitHub beta download](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1). npm publication and scope verification remain deferred. The canonical repository is `deepak-hp/serein-ui`, and its [documentation site](https://deepak-hp.github.io/serein-ui/) is deployed. Existing persisted demo storage keys remain unchanged for compatibility.
 

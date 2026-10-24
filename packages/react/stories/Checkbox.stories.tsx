@@ -55,12 +55,12 @@ function CompactRowsExample() {
   const [selected, setSelected] = useState([true, false, false]);
   return <main style={{ width: '100%', maxWidth: 720, padding: 24 }}>
     <h2 style={{ margin: '0 0 16px', fontSize: 20 }}>Project files</h2>
-    <div style={{ border: '1px solid var(--dp-divider)', borderRadius: 'var(--dp-radius-panel)', overflow: 'hidden' }}>
-      {compactFiles.map((file, index) => <div key={file.name} style={{ display: 'grid', gridTemplateColumns: '48px minmax(0, 1fr)', alignItems: 'center', minHeight: 64, borderTop: index ? '1px solid var(--dp-divider)' : undefined }}>
+    <div style={{ border: '1px solid var(--sr-color-line)', borderRadius: 'var(--sr-radius-panel)', overflow: 'hidden' }}>
+      {compactFiles.map((file, index) => <div key={file.name} style={{ display: 'grid', gridTemplateColumns: '48px minmax(0, 1fr)', alignItems: 'center', minHeight: 64, borderTop: index ? '1px solid var(--sr-color-line)' : undefined }}>
         <Checkbox hideLabel label={`Select ${file.name}`} checked={selected[index]} onCheckedChange={checked => setSelected(current => current.map((value, itemIndex) => itemIndex === index ? checked : value))} />
         <div style={{ minWidth: 0, padding: '8px 16px 8px 8px' }}>
           <div style={{ overflowWrap: 'anywhere', fontWeight: 600 }}>{file.name}</div>
-          <div style={{ marginTop: 2, color: 'var(--dp-muted)', fontSize: 13 }}>{file.detail}</div>
+          <div style={{ marginTop: 2, color: 'var(--sr-color-ink-muted)', fontSize: 13 }}>{file.detail}</div>
         </div>
       </div>)}
     </div>

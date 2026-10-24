@@ -27,6 +27,8 @@ const PAIRS = [
   ['success', 'surface-raised', 4.5], ['warning', 'surface-raised', 4.5], ['danger', 'surface-raised', 4.5], ['danger', 'surface', 4.5],
   ['success', 'success-soft', 4.5], ['warning', 'warning-soft', 4.5], ['danger', 'danger-soft', 4.5],
   ['ink', 'success-soft', 4.5], ['ink', 'warning-soft', 4.5], ['ink', 'danger-soft', 4.5], ['ink', 'signal-soft', 4.5],
+  ['ink', 'surface-hover', 4.5], ['ink', 'surface-pressed', 4.5], ['ink-muted', 'surface-hover', 4.5],
+  ['on-signal', 'signal-pressed', 4.5], ['signal-edge', 'surface', 3], ['signal-edge', 'surface-raised', 3],
 ];
 
 describe('themes', () => {

@@ -17,7 +17,7 @@ try {
       await page.evaluate(() => document.fonts.ready);
       await page.screenshot({ path: `.review/dates-${component}-${theme}.png` });
       const overflow = await page.evaluate(() => {
-        const elements = [...document.querySelectorAll('.dp-calendar,[role="dialog"]')];
+        const elements = [...document.querySelectorAll('.sr-calendar,[role="dialog"]')];
         return document.documentElement.scrollWidth > innerWidth+1 || elements.some(el => el.scrollWidth > el.clientWidth+1);
       });
       if (overflow) failures.push(`${component}/${theme}: calendar or popup overflows`);

@@ -2,15 +2,15 @@ import { useState, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 
 const s = stylex.create({
-  scroll: { overflowX: 'auto', maxWidth: '100%', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--dp-divider)', borderRadius: 'var(--dp-radius-panel)', backgroundColor: 'var(--dp-raised)', boxShadow: 'var(--dp-shadow-surface)', ':focus-visible': { outline: '2px solid var(--dp-focus)', outlineOffset: 3 } },
-  table: { width: '100%', borderCollapse: 'collapse', color: 'var(--dp-text)', fontSize: 14, lineHeight: 1.6, textAlign: 'left', fontVariantNumeric: 'tabular-nums' },
+  scroll: { overflowX: 'auto', maxWidth: '100%', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line)', borderRadius: 'var(--sr-radius-panel)', backgroundColor: 'var(--sr-color-surface-overlay)', boxShadow: 'var(--sr-shadow-raised)', ':focus-visible': { outline: '2px solid var(--sr-color-focus)', outlineOffset: 3 } },
+  table: { width: '100%', borderCollapse: 'collapse', color: 'var(--sr-color-ink)', fontSize: 14, lineHeight: 1.6, textAlign: 'left', fontVariantNumeric: 'tabular-nums' },
   caption: { textAlign: 'left', padding: 16, fontWeight: 650, fontSize: 16 },
-  head: { backgroundColor: 'var(--dp-surface)', fontWeight: 650, padding: '10px 16px', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--dp-border)' },
-  cell: { padding: '14px 16px', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--dp-divider)', overflowWrap: 'anywhere' },
+  head: { backgroundColor: 'var(--sr-color-surface-raised)', fontWeight: 650, padding: '10px 16px', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line-strong)' },
+  cell: { padding: '14px 16px', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line)', overflowWrap: 'anywhere' },
   lastCell: { borderBottomWidth: 0 },
-  row: { ':hover': { backgroundColor: 'var(--dp-surface)' } },
+  row: { ':hover': { backgroundColor: 'var(--sr-color-surface-raised)' } },
   sort: { display: 'inline-flex', alignItems: 'center', gap: 8, minHeight: 36, padding: '4px 0', borderWidth: 0, backgroundColor: 'transparent', color: 'inherit', fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', cursor: 'pointer', textAlign: 'left' },
-  empty: { textAlign: 'center', padding: 32, color: 'var(--dp-muted)' },
+  empty: { textAlign: 'center', padding: 32, color: 'var(--sr-color-ink-muted)' },
 });
 
 export type TableSort = { key: string; direction: 'asc' | 'desc' } | null;

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@fontsource-variable/plus-jakarta-sans';
+import '@serein-ui/react/fonts.css';
 import '@serein-ui/react/styles.css';
 import './globals.css';
 
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-dp-theme="light">
-      <body className="dp-theme">{children}</body>
+    <html lang="en" data-theme="light">
+      <body className="sr-theme">{children}</body>
     </html>
   );
 }

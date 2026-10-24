@@ -9,7 +9,8 @@ assert.equal(contract.package, pkg.name, 'AI contract package name is stale: run
 assert.equal(contract.version, pkg.version, 'AI contract package version is stale: run npm run build');
 const files = (await readdir('dist')).filter(f => f.endsWith('.d.ts')).sort();
 const declarations = Object.fromEntries(await Promise.all(files.map(async f => [f, await readText(`dist/${f}`)])));
-const tokens = await readText('src/tokens.css');
+// Serein design tokens (colour, type, spacing, motion) followed by this package's theme layer.
+const tokens = `${await readText('node_modules/@serein-ui/tokens/dist/css/tokens.css')}\n${await readText('src/tokens.css')}`;
 const guide = await readText('ai/README.md');
 const composition = await readText('ai/COMPOSITION.md');
 const workflowSources = ['Invoices.tsx', 'Settings.tsx', 'Onboarding.tsx', 'Shell.tsx', 'model.ts', 'workflows.css'];

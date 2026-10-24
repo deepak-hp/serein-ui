@@ -65,9 +65,6 @@ importers:
       '@daypicker/react':
         specifier: 10.0.1
         version: 10.0.1(@types/react@19.3.0)(react@19.3.0)
-      '@fontsource-variable/plus-jakarta-sans':
-        specifier: 5.3.0
-        version: 5.3.0
       '@stylexjs/stylex':
         specifier: 0.19.1
         version: 0.19.1
@@ -87,6 +84,12 @@ importers:
       '@babel/preset-typescript':
         specifier: 7.29.7
         version: 7.29.7(@babel/core@7.29.7)
+      '@serein-ui/fonts':
+        specifier: workspace:*
+        version: link:../fonts
+      '@serein-ui/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       '@storybook/addon-a11y':
         specifier: 10.6.0
         version: 10.6.0(storybook@10.6.0(@types/react@19.3.0)(prettier@3.9.10)(react@19.3.0))
@@ -720,9 +723,6 @@ packages:
 
   '@fontsource-variable/chivo-mono@5.3.0':
     resolution: {integrity: sha512-S96WUAZDi9vm1YY35jhLhArRcfEp0Qcnh4xGdtVl8Ffm4QbRcfpArkyklHlsug8xv4Y9MfVn/DWIerOB1PQUMA==}
-
-  '@fontsource-variable/plus-jakarta-sans@5.3.0':
-    resolution: {integrity: sha512-/l/4r0yyWK9JzAlmA0LiYgGgmJe/Gswt4jTJEzr5QhJfwMbvJZDmYWyW0M4X7yCK69BajMVlV/Lx8g7WDc1+sw==}
 
   '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0':
     resolution: {integrity: sha512-qvsTEwEFefhdirGOPnu9Wp6ChfIwy2dBCRuETU3uE+4cC+PFoxMSiiEhxk4lOluA34eARHA0OxqsEUYDqRMgeQ==}
@@ -3522,8 +3522,6 @@ snapshots:
   '@fontsource-variable/anek-latin@5.3.0': {}
 
   '@fontsource-variable/chivo-mono@5.3.0': {}
-
-  '@fontsource-variable/plus-jakarta-sans@5.3.0': {}
 
   '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0(typescript@6.0.3)(vite@8.3.4(@types/node@22.20.3)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))':
     dependencies:

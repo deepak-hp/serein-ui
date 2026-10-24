@@ -1,14 +1,14 @@
 import { useLayoutEffect, type ReactNode } from 'react';
 import type { Preview } from '@storybook/react-vite';
-import '@fontsource-variable/plus-jakarta-sans';
+import '../dist/fonts.css';
 import '../dist/styles.css';
 import './preview.css';
 
 function ThemeFrame({ children, theme, motion }: { children: ReactNode; theme: string; motion: string }) {
   useLayoutEffect(() => {
-    document.documentElement.dataset.dpTheme = theme;
+    document.documentElement.dataset.theme = theme;
     document.documentElement.lang = 'en';
-    document.body.classList.add('dp-theme');
+    document.body.classList.add('sr-theme');
     document.body.dataset.motionPreview = motion;
   }, [theme, motion]);
   return <div className="story-frame">{children}</div>;

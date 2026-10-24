@@ -20,7 +20,7 @@ function NavigationMaterialExample({ initialMaterial }: { initialMaterial: Navig
 
   return (
     <div className="navigation-material-example">
-      <header className="navigation-material-example__header dp-navigation-surface" data-dp-material={material}>
+      <header className="navigation-material-example__header sr-navigation-surface" data-sr-material={material}>
         <a className="navigation-material-example__wordmark" href={`#${id}-projects`}>Serein</a>
         <nav aria-label="Workspace navigation" className="navigation-material-example__links">
           <a href={`#${id}-projects`} aria-current="page">Projects</a>
@@ -73,9 +73,9 @@ export const Subtle: Story = {
     await userEvent.click(trigger);
     const dialog = await within(canvasElement.ownerDocument.body).findByRole('dialog', { name: 'Appearance' });
     await userEvent.click(within(dialog).getByRole('radio', { name: 'Expressive' }));
-    await expect(canvas.getByRole('banner')).toHaveAttribute('data-dp-material', 'expressive');
+    await expect(canvas.getByRole('banner')).toHaveAttribute('data-sr-material', 'expressive');
     await userEvent.click(within(dialog).getByRole('radio', { name: 'Subtle' }));
-    await expect(canvas.getByRole('banner')).toHaveAttribute('data-dp-material', 'subtle');
+    await expect(canvas.getByRole('banner')).toHaveAttribute('data-sr-material', 'subtle');
     await userEvent.keyboard('{Escape}');
     await waitFor(() => expect(dialog).not.toBeInTheDocument());
     await waitFor(() => expect(trigger).toHaveFocus());

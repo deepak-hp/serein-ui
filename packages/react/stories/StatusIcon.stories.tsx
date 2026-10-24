@@ -21,14 +21,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Idle: Story = { play: async ({ canvasElement }) => {
   await expect(within(canvasElement).getByText('Message ready')).toBeVisible();
-  await expect(canvasElement.querySelector('svg.dp-status-icon')).toHaveAttribute('aria-hidden', 'true');
-  await expect(getComputedStyle(canvasElement.querySelector('svg.dp-status-icon')!).animationName).toBe('none');
+  await expect(canvasElement.querySelector('svg.sr-status-icon')).toHaveAttribute('aria-hidden', 'true');
+  await expect(getComputedStyle(canvasElement.querySelector('svg.sr-status-icon')!).animationName).toBe('none');
 } };
 export const Pending: Story = { args: { state: 'pending' }, play: async ({ canvasElement, globals }) => {
   await expect(within(canvasElement).getByText('Message in progress')).toBeVisible();
-  await expect(canvasElement.querySelector('svg.dp-status-icon')).toHaveAttribute('aria-hidden', 'true');
+  await expect(canvasElement.querySelector('svg.sr-status-icon')).toHaveAttribute('aria-hidden', 'true');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches && globals.motion !== 'full';
-  await expect(getComputedStyle(canvasElement.querySelector('svg.dp-status-icon')!).animationName).toBe(reduced ? 'none' : 'dp-status-icon-send');
+  await expect(getComputedStyle(canvasElement.querySelector('svg.sr-status-icon')!).animationName).toBe(reduced ? 'none' : 'sr-status-icon-send');
 } };
 export const Success: Story = { args: { state: 'success' } };
 export const Error: Story = { args: { state: 'error' } };
