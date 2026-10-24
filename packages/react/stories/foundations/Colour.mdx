@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColourTable } from './Specimens';
+
+<Meta title="Foundations/Colour" />
+
+# Colour
+
+Serein uses **roles, never raw values**. Neutral grounds carry the screen, ink carries the content, and one vivid **signal** (vermilion) marks the single action a view exists for. Errors are rose, so a failure never reads as the brand colour.
+
+- Grounds: `surface` (page), `surface-raised` (panels, inputs), `surface-sunken` (wells, tracks), `surface-overlay` (menus, dialogs), plus `surface-hover` and `surface-pressed`.
+- Ink: `ink` and `ink-muted`. Lines: `line` (decorative) and `line-strong` (control boundaries, at least 3:1).
+- Signal: `signal` fills the one primary action, with `on-signal` (near-black) text in both themes. `signal-ink` is the text-safe version for links.
+- Focus is neutral (`focus`), so the signal stays reserved for action.
+
+Every text pair meets 4.5:1 and every boundary 3:1 in both themes. The `@serein-ui/tokens` tests fail the build if a change breaks that. Switch the theme in the toolbar to compare.
+
+<ColourTable />

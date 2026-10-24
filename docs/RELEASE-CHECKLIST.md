@@ -10,7 +10,8 @@ This is the durable source of scope and progress. Checked items require evidence
 
 - [x] Serein name and `@serein-ui/react` package identity established.
 - [x] Approved Indian-astrology-inspired Flame & Ink direction implemented; private birth research excluded from Git.
-- [x] Orange filled primary actions, dark button text, white/near-black canvases, Plus Jakarta Sans, restrained success green.
+- [x] Precision-instrument language from the Serein foundations merge: vermilion signal with dark text, Anek Latin and Chivo Mono, machined corners, solid materials, tokens contrast-tested in both themes (supersedes the earlier orange/Plus Jakarta Sans direction).
+- [ ] Re-run the catalogue-era visual and accessibility reviews below on the merged Storybook site; items marked done refer to the earlier look.
 - [x] Subtle meaningful status motion and reduced-motion support implemented.
 - [x] Apple-informed optional navigation materials with opaque accessibility fallbacks implemented.
 - [x] Catalogue documents these foundations and their correct roles with live examples (846eb1d).
@@ -48,7 +49,7 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Keep generated documentation fresh with build/CI checks.
 - [x] Document supported integration paths and validate artifact access without requiring a particular assistant.
 - [x] Design a reproducible multi-task evaluation with human review; don't fabricate results or promise universal model support.
-- [x] Generate and retain twelve independent in-domain attempts comparing plain React/CSS with the then-current Ritam package plus guidance, with compiler records, original and supplemental browser results, and a label-hidden review packet. These frozen artifacts predate the Serein rename. See [pilot observations](../trial/evaluation/RESULTS.md).
+- [x] Generate and retain twelve independent in-domain attempts comparing plain React/CSS with the then-current Ritam package plus guidance, with compiler records, original and supplemental browser results, and a label-hidden review packet. These frozen artifacts predate the Serein rename. See [pilot observations](../packages/react/evaluation/RESULTS.md).
 - [x] Generate four fresh file-review attempts with frozen inputs and equal authored-line limits, retain initial/final compiler and browser records, and prepare another label-hidden review packet. A documented supplemental verifier corrects a pending-label lookup defect; original results remain preserved. See [the fresh trial](validation/2026-10-14-ai-trial.md).
 - [ ] Obtain independent human review and evaluate fresh tasks before claiming improved AI-generated design quality. The pilot's overlapping examples, small sample and corrected harness do not establish general superiority.
 - [x] Distribute a portable playback packet for the four frozen file-review candidates, preserving original and supplemental results; all 56 downloaded files verified and 16 playback checks passed. Playback checks do not count as human review; see [the delivery receipt](validation/2026-10-21-beta-distribution.md).
@@ -63,7 +64,7 @@ Base UI supplies the underlying keyboard, ARIA and focus primitives. Serein's re
 - [x] Maintain checks for light/dark token contrast, enabled-control boundaries, visible focus, compact targets, reflow/text spacing, reduced motion and optional-material/forced-colour fallbacks.
 - [x] Maintain wrapper checks for names, labels, descriptions, invalid/error wiring, disabled options and focus restoration, including nested Drawer/Dialog composition.
 - [x] Maintain custom-component checks for table semantics/sorting, date/range adapters, status feedback and async cancellation/retry; keep distinct Projects, Invoices, Settings and Onboarding outcomes covered.
-- [x] Publish the [criterion/evidence matrix](../trial/docs/ACCESSIBILITY-EVIDENCE.md) and [representative native review protocol](../trial/reference/ACCESSIBILITY-REVIEW.md). Retain existing cross-engine integration regressions.
+- [x] Publish the [criterion/evidence matrix](../packages/react/docs/ACCESSIBILITY-EVIDENCE.md) and [representative native review protocol](../packages/react/reference/ACCESSIBILITY-REVIEW.md). Retain existing cross-engine integration regressions.
 - [x] Refresh the focused customization checks on the unchanged runtime at `0b9a6c4`: 87 library tests, 15 reference tests, 564 story cases, 18 cross-engine wrapper scenarios, compact controls, styling/materials and three-engine workflows passed on 24 October. See [commands, results and limits](validation/2026-10-24-customization-accessibility.md). Future candidates need their own results.
 
 **Representative native checks — deferred while work must remain in the background**
@@ -107,6 +108,6 @@ Reuse a recorded observation only for the same wrapper, composition and environm
 ## Status and evidence
 
 Completed local implementation plan: [release readiness](superpowers/plans/2026-09-28-release-readiness.md).
-Fresh evidence: [release candidate record](RELEASE-READINESS.md). Historical and current results: [verification](../trial/docs/VERIFICATION.md).
+Fresh evidence: [release candidate record](RELEASE-READINESS.md). Historical and current results: [verification](../packages/react/docs/VERIFICATION.md).
 
 Release status: **MIT-licensed React-web beta source, documentation and verified GitHub downloads public; npm publication deferred**. Local verification, revision-specific hosted checks and deployment evidence are recorded in the evidence document. npm publication access and manual/human gates remain open. No accessibility conformance or stable production-release claim is made.

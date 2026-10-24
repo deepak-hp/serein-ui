@@ -1,0 +1,16 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TypeTable } from './Specimens';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+**Anek Latin** (Ek Type, India) sets every word and every figure. It includes the ₹ sign, tabular figures and a width axis, which Serein narrows to 88% for readouts. **Chivo Mono** is used only for measurement: units, axis labels, references and timestamps. Never use it for prose.
+
+Both families ship inside `@serein-ui/react`: import `@serein-ui/react/fonts.css` once, before `styles.css`. No font is fetched from a third-party CDN.
+
+- One `readout-xl` per screen, used for the figure the person came to see.
+- Nothing smaller than 12px.
+- No eyebrow labels above headings. Metadata sits right-aligned on the heading's line instead.
+
+<TypeTable />

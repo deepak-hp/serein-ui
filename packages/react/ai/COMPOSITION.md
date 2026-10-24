@@ -1,6 +1,15 @@
 # Composing screens with Serein
 
-Use this guide with the installed version's contract and examples. These recipes guide composition; they are not additional exported components. Preserve the approved Flame & Ink identity. A screen's purpose determines its structure.
+Use this guide with the installed version's contract and examples. These recipes guide composition; they are not additional exported components. Preserve Serein's precision-instrument language. A screen's purpose determines its structure.
+
+## The Serein language in six rules
+
+1. **Measure, don't decorate.** Every line is a graduation, a boundary or data. No gradients, glass, glows, emoji, decorative illustration, stars, moons or zodiac imagery.
+2. **One signal.** The vermilion `--sr-color-signal` marks the single primary action per view (plus a needle or today's value in a measurement). Everything else is ink on a ground. Never use the signal for status, notices or large areas.
+3. **The figure is the hero.** Lead with the figure the person came for as a `Readout` (light, tabular, Indian grouping such as ₹1,00,000, true minus −₹2,400). Labels and units are small and exact, set in Chivo Mono only when they are measurements.
+4. **Headings carry their metadata.** Put the heading on the left and its metadata (date, unit, count) right-aligned on the same row. No eyebrow or kicker labels, no section numbers.
+5. **Settle, don't bounce.** Motion travels to a reading and stops (`--sr-easing-settle`). Every animated outcome is also announced; reduced motion removes travel.
+6. **Every state is written.** Empty, loading (`Drizzle` plus words), error (what happened, what is safe, what to do), success (a statement, not a celebration), and over-limit.
 
 ## Start with a four-line brief
 
@@ -26,11 +35,17 @@ These are starting points, not mandatory templates. Document why the chosen layo
 - **Hierarchy:** lead with the task. Keep important content near its actions. Use heading size, weight and whitespace to express relationships; avoid making every section equally prominent.
 - **Containers:** use a card when an item is an independent unit. Use alignment and dividers for a continuous list or form. Explain the need before nesting surfaces.
 - **Density:** dense workspaces need compact, scannable rows; focused forms need comfortable reading width. Density must not reduce usable hit targets or hide focus.
-- **Colour:** retain Plus Jakarta Sans and shared tokens. Orange denotes priority; use dark text on the orange fill. For small orange text on a neutral surface, use `--sr-color-signal-ink`, not the bright `--sr-color-signal` button fill. Use theme-aware semantic tokens or Badge for statuses, and green sparingly for actual success. Semantic meaning also needs text.
+- **Colour:** retain Anek Latin, Chivo Mono (measurements only) and shared tokens. The vermilion signal denotes the one priority action; use dark `--sr-color-on-signal` text on it. For small signal-coloured text on a neutral surface, use `--sr-color-signal-ink`, not the bright `--sr-color-signal` fill. Use theme-aware semantic tokens or Badge for statuses, and green sparingly for actual success. Semantic meaning also needs text.
 - **Content:** use realistic field lengths, dates and quantities. Name actions specifically. Avoid empty slogans, invented performance numbers and charts that don't help the task.
 - **Typography:** use a small consistent hierarchy, readable line lengths and tabular numerals for amounts. Long labels must wrap or have an accessible full-text path.
 - **Responsive layout:** decide what stacks, wraps or stays in a scrollable region. A comparison table may scroll inside a labelled focusable region; the page itself must not overflow. Never silently drop essential data.
-- **Motion/materials:** animate changes that need explanation. Follow reduced-motion and contrast preferences. Translucency is limited to appropriate navigation surfaces, not a substitute for hierarchy.
+- **Motion/materials:** animate changes that need explanation. Follow reduced-motion and contrast preferences. Materials are solid everywhere; hierarchy comes from tone, hairlines and type, never translucency.
+
+## Recipe: money entry
+
+**Task:** a person sends or pays an amount and must be sure of the figure before confirming.
+
+Lead with the recipient, then a `Readout` of the amount above a `Tape` that shows it against the limit, then a `Keypad`. The single signal `Button` states the amount ("Send ₹2,400"). Over the limit, keep the button focusable but unavailable and say why ("Over daily limit"); the tape's hatched zone shows the same fact visually. While sending, the button keeps its width and shows a busy state; on success state the outcome in words with a reference; on failure say nothing was charged and move focus to "Try again". Storybook's Patterns / Send money demonstrates this.
 
 ## Recipe: invoice collection
 

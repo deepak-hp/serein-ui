@@ -1,33 +1,57 @@
 # Serein
 
-A React component library and composition guide for building purposeful interfaces with coding assistants. The MIT-licensed beta package is `@serein-ui/react`; version `0.1.0-beta.1` is prepared but not yet published to npm.
+A precise, calm, accessible design system for web, mobile and desktop, built so coding assistants can create thoughtful interfaces too. MIT-licensed.
 
-Serein means fine rain from a clear evening sky. Its design pairs bright orange actions with clear white and deep evening surfaces, soft elevation, Plus Jakarta Sans, and restrained success green. It preserves the founder's Indian astrology-inspired direction; personal chart research is kept outside version control.
+Serein is designed like an instrument: **fine graduations, exact readouts, and one vivid vermilion signal**, set in Anek Latin with Chivo Mono for measurements. [DESIGN.md](DESIGN.md) records the language; the token files in [`tokens/`](tokens) are its source of truth.
 
-Explore the [component catalogue](https://deepak-hp.github.io/serein-ui/?view=catalogue), [design studio](https://deepak-hp.github.io/serein-ui/?view=serein), and [Storybook](https://deepak-hp.github.io/serein-ui/storybook/). These are the verified canonical Serein beta destinations; npm publication and human accessibility review remain open.
+Explore the documentation and components in [Storybook](https://deepak-hp.github.io/serein-ui/). npm publication and human accessibility review remain open.
 
-## Beta download
+## Packages
 
-The GitHub prerelease [v0.1.0-beta.1](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) is available. Download `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS`, and unsigned `SOURCE.json` from that release, verify the checksum, and install the exact tarball in a Node 24 test application using React and React DOM `^19.3.0`; import `@serein-ui/react/styles.css` once. The downloaded archive passed the supplied consumer check; npm publication is explicitly deferred.
+| Package | What it is |
+| --- | --- |
+| [`@serein-ui/react`](packages/react) | 49 React components on Base UI with precompiled StyleX, Storybook, AI contract and recipes. Ships the tokens and fonts inside. |
+| [`@serein-ui/tokens`](packages/tokens) | DTCG 2025.10 tokens as CSS variables, JS/TS, JSON, a Tailwind v4 theme (default palette removed), Swift and Kotlin. Contrast is tested in both themes. |
+| [`@serein-ui/fonts`](packages/fonts) | Self-hosted Anek Latin and Chivo Mono (OFL). |
+| [`@serein-ui/css`](packages/css) | Framework-neutral reset, base styles and a theme-switching helper. |
+| [`@serein-ui/icons`](packages/icons) | 46 authored icons on a 20px grid: SVG, strings and React. |
+| [`@serein-ui/format`](packages/format) | Indian-first money and number formatting (₹1,00,000, true minus sign). |
 
-To see the redesign locally, run `npm run reference:setup` then `npm run reference:dev` in `trial/`, and open [the Serein design studio](http://127.0.0.1:5174/?view=serein). The same real components appear in both themes. [DESIGN.md](DESIGN.md) records the visual language and [foundations](trial/docs/FOUNDATIONS.md) documents the tokens.
+Only `@serein-ui/react` is distributed today (as a GitHub prerelease archive); it bundles what it needs from the others.
+
+## Use it
+
+```tsx
+import '@serein-ui/react/fonts.css';
+import '@serein-ui/react/styles.css';
+import { Button, Readout } from '@serein-ui/react';
+```
+
+Set `data-theme="light"` or `"dark"` on `<html>` (omit it to follow the system) and `class="sr-theme"` on `<body>`. See the [library setup](packages/react/README.md) and the [beta download instructions](docs/BETA-EVALUATION.md).
+
+## Develop
+
+Requires Node 22+ and pnpm 10.
+
+```sh
+pnpm install
+pnpm build       # every package
+pnpm test        # unit, contrast, Tailwind and spec checks
+pnpm storybook   # http://127.0.0.1:6006
+```
+
+Dependencies only install versions at least 14 days old (`minimumReleaseAge`), and install scripts are blocked unless reviewed.
 
 ## Start here
 
+- [Cross-platform plan and roadmap](docs/PLAN.md)
 - [End goal and master checklist](docs/RELEASE-CHECKLIST.md)
-- [Library setup and commands](trial/README.md)
-- [AI integration](trial/ai/README.md)
-- [Composition recipes](trial/ai/COMPOSITION.md)
-- [Comparison pilot and its limits](trial/docs/COMPOSITION-PILOT.md)
-- [Accessibility scope](trial/docs/ACCESSIBILITY.md)
+- [AI integration](packages/react/ai/README.md) and [composition recipes](packages/react/ai/COMPOSITION.md)
+- [Accessibility scope](packages/react/docs/ACCESSIBILITY.md)
 - [Release and verification guide](docs/RELEASING.md)
-- [Beta evaluation and feedback](docs/BETA-EVALUATION.md)
 - [Supported environments](docs/SUPPORT.md)
-- [Documentation hosting](docs/HOSTING.md)
-- [Release readiness evidence](docs/RELEASE-READINESS.md)
 - [Contributing and maintenance](CONTRIBUTING.md)
-- [Repository handoff](docs/REPOSITORY-HANDOFF.md)
 
-The current implementation supports React web. Native platform adapters are not implemented. Automated accessibility tests are not a conformance certification. No public registry installation is available until the beta is published; use the reviewed prerelease asset or local tarball workflow in [the library setup](trial/README.md).
+The current components target React web; native adapters are on the roadmap (React Native first). Automated accessibility tests are not a conformance certification.
 
-The source is available under the [MIT License](LICENSE). [Licensing details](docs/LICENSING.md) explain its scope and the separate terms for dependencies and font software.
+The source is available under the [MIT License](LICENSE). [Licensing details](docs/LICENSING.md) explain the separate terms for dependencies and the bundled fonts.

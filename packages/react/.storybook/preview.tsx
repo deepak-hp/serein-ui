@@ -22,7 +22,7 @@ const preview: Preview = {
   initialGlobals: { theme: import.meta.env.VITE_TEST_THEME || 'light', motion: 'system' },
   decorators: [(Story, context) => <ThemeFrame theme={context.globals.theme} motion={context.globals.motion}><Story /></ThemeFrame>],
   parameters: {
-    options: { storySort: { order: ['Start here', ['Catalogue', 'Integration', 'Agent API', 'Accessibility'], 'Components', 'Patterns'] } },
+    options: { storySort: { order: ['Start here', ['Catalogue', 'Integration', 'Agent API', 'Accessibility'], 'Foundations', ['Colour', 'Typography', 'Spacing, radius and motion', 'Icons'], 'Components', 'Patterns'] } },
     layout: 'padded',
     controls: { expanded: true },
     a11y: {

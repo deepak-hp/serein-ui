@@ -6,9 +6,9 @@ Read the package's `ai/llms-full.txt` before implementing UI. If the Serein MCP 
 
 Reuse the exported components, shared tokens, document-level themes and reduced-motion defaults. Keep accessible labels, error descriptions, keyboard behaviour and focus. See `ai/README.md` for setup and `docs/ACCESSIBILITY.md` for validation requirements. Do not claim WCAG or EAA compliance solely from passing automated checks.
 
-Use `docs/FOUNDATIONS.md` for Serein's surface, corner, colour, elevation and type roles. Preserve its warm orange primary actions and opaque content layers. Do not translate the name into weather graphics or apply glass to every component.
+Use `docs/FOUNDATIONS.md` for Serein's surface, corner, colour, elevation and type roles. Keep one vermilion signal action per view with dark text on it, solid materials everywhere, and money shown with `Readout`. Do not translate the name into weather graphics, stars or glass.
 
-Keep resting cards flat, secondary actions tonal, and shadows for transient overlays. Use each status's semantic text/surface pair; reserve green for actual success. Preserve accessible field boundaries and distinguish selected, hovered, and keyboard-focused rows.
+Keep panels on the raised surface with a hairline, secondary actions tonal, and shadows for transient overlays. Use each status's semantic text/surface pair; reserve green for actual success. Preserve accessible field boundaries and distinguish selected, hovered, and keyboard-focused rows.
 
 Let each component own its frame and scrolling. DataTable already provides a border, horizontal scroll region, accessible name, and keyboard focus; do not add another bordered, scrolling, or focusable wrapper around it. Keep dividers between items, not against a container's existing outer edge.
 

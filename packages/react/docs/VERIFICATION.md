@@ -68,7 +68,7 @@ The complete `npm run check:release` command passed with exit code 0 on Windows 
 
 An independent Git source export also passed a clean lockfile install, build, package/AI checks, fresh reference setup and reference build. The dependency audit reported zero known vulnerabilities across 401 resolved dependencies. Independent task and whole-branch reviews have no unresolved material findings. Integration repaired test readiness for popup closure and lazy pages, dynamic server addresses, and equivalent minified hex colours; assertions still check the actual interaction and colour values.
 
-The final verification log is a local ignored artifact at `trial/release-final-pass.log`; captures are under `.review`. Existing Storybook annotation/docgen and documentation chunk warnings remain non-blocking. Hosted Linux CI has been configured but not observed running. Publication, final licensing, native-platform support and the manual accessibility gates below remain incomplete.
+The final verification log is a local ignored artifact at `packages/react/release-final-pass.log`; captures are under `.review`. Existing Storybook annotation/docgen and documentation chunk warnings remain non-blocking. Hosted Linux CI has been configured but not observed running. Publication, final licensing, native-platform support and the manual accessibility gates below remain incomplete.
 
 ## Release work still required
 

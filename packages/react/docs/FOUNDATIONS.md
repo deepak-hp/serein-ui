@@ -1,63 +1,53 @@
 # Serein foundations
 
-Serein takes its material language from fine rain falling from a clear evening sky: clear surfaces, soft light, and restrained movement. The approved astrology-informed foundation remains symbolic. Orange actions, white and near-black canvases, Plus Jakarta Sans, and limited green are preserved. Personal chart details are not distributed.
+Serein is designed like a precision instrument: fine graduations, exact readouts and one vivid signal, calm enough to read like fine rain from a clear evening sky. Its symbolism comes from Jyotish as a measured science (Jantar Mantar's engraved scales, the rain gauge), used structurally: there are no stars, moons, zodiac wheels or galaxies. Personal chart details are not distributed.
+
+## Source of truth
+
+All values are design tokens in the repository's `tokens/` folder (W3C DTCG 2025.10 format), built by [`@serein-ui/tokens`](../../tokens) into CSS custom properties (`--sr-*`), JS/TS, JSON, a Tailwind v4 theme, Swift and Kotlin. `styles.css` in this package starts with the CSS layer, so components and your own CSS read the same variables. The token tests fail the build if any text pair drops below 4.5:1 or any boundary below 3:1 in either theme.
 
 ## Colour roles
 
-Source of truth: `src/tokens.css`. Distributed values are included in the [machine-readable contract](../ai/contract.json) and [token stylesheet](../tokens.css).
-
-| Role | Light | Dark |
+| Role | Token | Use |
 | --- | --- | --- |
-| Canvas | `#FFFFFF` | `#101113` |
-| Quiet surface | `#F6F6F5` | `#191B1D` |
-| Raised surface | `#FFFFFF` | `#202224` |
-| Input surface | `#FFFFFF` | `#16181A` |
-| Text | `#20211F` | `#F3F3F0` |
-| Supporting text | `#60615F` | `#B6B8B3` |
-| Control boundary | `#878984` | `#747771` |
-| Decorative divider | `#E3E5E0` | `#363936` |
-| Neutral hover | `#ECEDEA` | `#2A2D2F` |
-| Neutral active | `#E2E4DF` | `#34383B` |
-| Primary action | `#FF681F` | `#FF803E` |
-| Primary hover | `#F45C14` | `#FF925B` |
-| Primary active | `#E8540E` | `#FFA16F` |
-| Primary text | `#141414` | `#141414` |
-| Accent text | `#A83A0A` | `#FF874D` |
-| Success | `#28694F` | `#8AD3AC` |
-| Success surface | `#E9F7EF` | `#142820` |
-| Error | `#B4233C` | `#FF9CAF` |
-| Error surface | `#FDECEF` | `#32171D` |
-| Warning | `#88500B` | `#FFD28A` |
-| Warning surface | `#FFF4DC` | `#332711` |
+| Page | `--sr-color-surface` | Screen background |
+| Raised | `--sr-color-surface-raised` | Panels, inputs, keys, the selected segment |
+| Sunken | `--sr-color-surface-sunken` | Wells, tracks, avatars, disabled fills |
+| Overlay | `--sr-color-surface-overlay` | Menus, popovers, dialogs, toasts |
+| Hover / pressed | `--sr-color-surface-hover`, `--sr-color-surface-pressed` | Neutral control states |
+| Ink | `--sr-color-ink`, `--sr-color-ink-muted` | Text, readouts, metadata |
+| Lines | `--sr-color-line`, `--sr-color-line-strong` | Decorative hairlines; control boundaries (≥3:1) |
+| Signal | `--sr-color-signal` (+ `-hover`, `-pressed`, `-edge`) | The one primary action, needles, today's value |
+| On signal | `--sr-color-on-signal` | Near-black text on the signal, both themes |
+| Signal text | `--sr-color-signal-ink`, `--sr-color-signal-soft` | Links and selected text; selected/active grounds |
+| Status | `--sr-color-success`, `-warning`, `-danger` (+ `-soft`) | Always with a word or icon; danger is rose, never the signal |
+| Focus | `--sr-color-focus` | Neutral 2px ring with 2px offset |
 
-Orange is reserved for priority actions and selected controls. Neutral controls use the quiet surface at rest and dedicated hover and active fills; they do not borrow the orange selection wash. Filled orange buttons use dark text, never white. Green communicates an actual successful result. Every status also has words or another non-colour cue. The stronger border token defines interactive boundaries; the softer divider is only for decorative separation. Surfaces are opaque, with neutral shadows reserved for transient elevation rather than ambient coloured glows.
+The exact values for both themes are in Storybook under **Foundations / Colour** and in [`ai/contract.json`](../ai/contract.json).
 
 ## Geometry and typography
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--sr-radius-tag` | 5px | Small indicators and options |
-| `--sr-radius-control` | 8px | Buttons, fields, joined-control outer corners |
-| `--sr-radius-popup` | 12px | Menus and popovers |
-| `--sr-radius-panel` | 16px | Cards and grouped surfaces |
-| `--sr-radius-sheet` | 20px | Focused modal surfaces |
+| `--sr-radius-tag` | 4px | Tags, the gauge tube, small indicators |
+| `--sr-radius-control` | 8px | Buttons, fields, segmented tracks |
+| `--sr-radius-key` | 12px | Keypad and quick-action keys |
+| `--sr-radius-popup` | 12px | Menus, popovers, tooltips, select lists |
+| `--sr-radius-panel` | 14px | Panels and notices |
+| `--sr-radius-sheet` | 22px | Dialogs and sheets |
 
-Circles and pill controls retain their functional shapes. Standard buttons and fields are at least 48px high; common menu options are at least 44px. Visible focus uses a two-pixel outline with three-pixel offset. The softer shapes do not reduce hit targets or focus visibility.
+Standard buttons and fields are 48px high (`--sr-size-control`); compact desktop controls are 36px. Scales, tapes and gauges stay square.
 
-Each component owns its outer frame. DataTable also owns its horizontal scrolling, named region, and keyboard focus; place it in an unframed layout wrapper rather than adding a second border or scroll region. Joined controls share one seam, and row/item dividers stop before the container's outer edge. Preserve control boundaries and keyboard focus outlines: they communicate different states, even when both are visible.
-
-`--sr-font-family-sans` selects Plus Jakarta Sans Variable, then Plus Jakarta Sans and a sans-serif fallback. Labels/buttons use 14px, inputs 16px, helpers 13px. Buttons and control labels use weight 600. Heading tracking stays at or above -0.04em. Tables and numeric controls use tabular figures. Group related content tightly and leave more space between tasks; do not make every paragraph a card.
+`--sr-font-family-sans` is **Anek Latin** (Ek Type): every word and figure, with the ₹ sign, tabular figures and a width axis narrowed to 88% for readouts. `--sr-font-family-mono` is **Chivo Mono**, for measurements only (units, axis labels, references, timestamps). Both ship in this package via `fonts.css`. Type styles are available as `sr-type-*` classes: `readout-xl` 88px, `readout-l` 60px, `readout-m` 32px, `title` 28px, `heading` 17px, `body` 15px, `body-reading` 17px, `label` 13px, `measure` 12px mono. Nothing is set below 12px. No eyebrow labels above headings.
 
 ## Material and motion
 
-`--sr-shadow-raised` is `none`: cards and grouped surfaces use fill and divider relationships at rest. `--sr-shadow-overlay` and `--sr-shadow-overlay` express elevation only for transient layers. `--dp-shadow-action` gives the primary action a restrained top-edge highlight and offset shadow. Keep control boundaries visible in both themes.
+Materials are solid. Panels use the raised surface with a hairline and `--sr-shadow-raised`; keys use `--sr-shadow-key`; overlays use `--sr-shadow-overlay`. There is no translucency, blur, gradient or glow.
 
-Status icons communicate real pending, success, or error states; motion never determines completion. Reduced-motion settings disable the animated transitions and state-icon motion. Optional `sr-navigation-surface` supports `subtle`, `expressive`, and `solid` modes on one navigation plane. Content, nested controls, and forms stay opaque. Reduced transparency, increased contrast, and forced colours use solid fallbacks. See [navigation material guidance](APPLE-DESIGN.md).
+Motion is fast and exact: `--sr-duration-fast` 100ms (hover, press), `--sr-duration-base` 180ms (state changes), `--sr-duration-slow` 320ms (tapes, needles, success marks), with `--sr-easing-standard` for UI and `--sr-easing-settle` for things coming to rest. Status icons communicate real pending, success or error states; motion never determines completion. Reduced-motion settings remove travel and state-icon motion.
 
 ## Integration and accessibility
 
-Apply `data-theme="light|dark"` on `<html>` and `sr-theme` on `<body>` so portalled overlays inherit the same theme. The `dp-*` styling contract stays stable through the Serein rename. Existing demo storage keys stay stable too.
+Import `@serein-ui/react/fonts.css` then `@serein-ui/react/styles.css`. Apply `data-theme="light|dark"` on `<html>` (omit it to follow the system) and `sr-theme` on `<body>` so portalled overlays inherit the same theme.
 
-The React package is named `@serein-ui/react`, with a verified [GitHub beta download](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1). npm publication and scope verification remain deferred. The canonical repository is `deepak-hp/serein-ui`, and its [documentation site](https://deepak-hp.github.io/serein-ui/) is deployed. Existing persisted demo storage keys remain unchanged for compatibility.
-
-Keep visible labels, connected errors, keyboard operation, focus return, and semantic landmarks. Verify light/dark, narrow layouts, reduced motion, forced colours, and full user processes in the consuming app. Automated checks do not certify WCAG 2.2 AA or EAA conformance. See [accessibility guidance](ACCESSIBILITY.md) and [recorded evidence](ACCESSIBILITY-EVIDENCE.md).
+Keep visible labels, connected errors, keyboard operation, focus return and semantic landmarks. Verify light/dark, narrow layouts, reduced motion, forced colours and full user processes in the consuming app. Automated checks do not certify WCAG 2.2 AA or EAA conformance. See [accessibility guidance](ACCESSIBILITY.md) and [recorded evidence](ACCESSIBILITY-EVIDENCE.md).

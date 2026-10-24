@@ -4,13 +4,13 @@ Status: Serein is an MIT-licensed React web library. GitHub prerelease `@serein-
 
 ## Quick start for any coding assistant
 
-Serein's visual language is clear surfaces, warm orange actions, soft neutral elevation, and purposeful state motion. Use the shared surface, field, radius, and shadow tokens instead of inventing per-screen palettes or geometry. Preserve orange buttons with dark text in both themes; green is for actual success. The name's evening-rain meaning is a material metaphor, not a request for weather, stars, gradients, or decorative animation. `docs/FOUNDATIONS.md` defines the exact roles; the checkout's root `DESIGN.md` also records the visual system.
+Serein's visual language is a precision instrument: fine graduations, exact readouts and one vivid vermilion **signal** reserved for the single action a view exists for. Every value is a `--sr-*` token (colour, type, spacing, radius, shadow, motion); never invent per-screen palettes or geometry. The signal fill always carries dark `--sr-color-on-signal` text; errors are rose (`--sr-color-danger`), never the signal. The name's evening-rain meaning is a structural metaphor, not a request for weather, stars, gradients or decorative animation. `docs/FOUNDATIONS.md` defines the exact roles; the checkout's root `DESIGN.md` records the visual system.
 
-Resting cards are flat; menus and dialogs carry elevation. Secondary actions use neutral rest/hover/active fills. Badges pair success, warning, or error text with the corresponding semantic surface token. Keep contrast-qualified field boundaries and visible keyboard focus; decorative edges can stay quiet.
+Panels sit on `--sr-color-surface-raised` with a `--sr-color-line` hairline; menus and dialogs carry `--sr-shadow-overlay`. Secondary actions use neutral rest/hover/pressed fills. Badges pair success, warning, or error text with the corresponding `-soft` surface token. Keep contrast-qualified field boundaries (`--sr-color-line-strong`) and the neutral focus ring.
 
 Read `llms-full.txt` and `contract.json` in this directory. These are generated from the installed package's TypeScript declarations and CSS tokens on every build. Read `examples/README.md` when a local workflow recipe fits the task; those reviewed files are client-side demonstrations, not package exports or backend integrations. Read stories for usage, `docs/FOUNDATIONS.md` for the implemented visual system, and `docs/ACCESSIBILITY.md` for obligations and known limits. Never invent props or components.
 
-For the released candidate, download `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS` and unsigned `SOURCE.json` from the [GitHub prerelease](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1), verify the checksum, and follow [the evaluation installation instructions](https://github.com/deepak-hp/serein-ui/blob/main/docs/BETA-EVALUATION.md). For a local checkout, run `npm ci`, `npm run build`, then `npm run storybook` from `trial`; `npm pack` remains an optional local-package path. Import `@serein-ui/react/styles.css` once. Import `@fontsource-variable/plus-jakarta-sans` if using the brand font dependency. The consumer does not need a StyleX compiler.
+For the released candidate, download `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS` and unsigned `SOURCE.json` from the [GitHub prerelease](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1), verify the checksum, and follow [the evaluation installation instructions](https://github.com/deepak-hp/serein-ui/blob/main/docs/BETA-EVALUATION.md). For a local checkout, run `pnpm install`, `pnpm build`, then `pnpm storybook` from the repository root. Import `@serein-ui/react/fonts.css` and then `@serein-ui/react/styles.css` once. The consumer does not need a StyleX compiler.
 
 Set `data-theme="light"` or `"dark"` on `<html>` and class `sr-theme` on `<body>`. The theme is document-wide, including portals. Do not apply the theme solely to a nested wrapper. Only use supported, documented props.
 
@@ -32,8 +32,9 @@ Storybook provides `/manifests/components.json` and `/manifests/docs.json`; this
 
 Before composing a screen, read `ai/COMPOSITION.md` (also included in `llms-full.txt`). Identify the user's task, choose an appropriate layout recipe, and inspect the rendered result. Component reuse alone does not establish good hierarchy or task fit. The recipes describe composition, not additional exports. For repeatable comparison of assistant outputs, use `docs/AI-EVALUATION.md`; it requires human review and does not yield a universal quality score.
 
-- Reuse exported components before writing custom controls. Keep Plus Jakarta Sans, token colours and the established geometry.
-- Use dark text on the orange primary fill. White text on that orange is not an approved text pairing.
+- Reuse exported components before writing custom controls. Keep Anek Latin for text and figures, Chivo Mono only for measurements (units, references, timestamps), token colours and the established geometry.
+- One signal (primary) action per view. Use dark `--sr-color-on-signal` text on the vermilion fill; white text on it is not an approved pairing.
+- Show money and key figures with `Readout` (tabular, Indian digit grouping, true minus sign); enter money with `Keypad` + `Readout` + `Tape`; show budgets and quotas with `Gauge` or `Meter`; daily series with `RainChart`; short waits with `Drizzle` plus a text label. Never put an eyebrow label above a heading; metadata sits right-aligned on the heading's row.
 - Every control needs a meaningful visible label. Keep descriptions and errors associated with inputs. Error meaning must also be conveyed with text.
 - `Select`, `Checkbox`, `Switch`, `RadioGroup` and `Tabs` are controlled: store their value and handle changes. Do not pass undocumented native props to wrapper APIs that do not support them.
 - For Checkbox row selection beside an already visible record name, use `hideLabel` with a specific required `label` and a 48px selection column. Do not constrain a visible-label Checkbox to a tiny cell or hide text through selectors targeting its internal DOM.
@@ -42,11 +43,9 @@ Before composing a screen, read `ai/COMPOSITION.md` (also included in `llms-full
 - Respect reduced motion by default. The explicit Storybook motion preview is a demo override, not a production preference.
 - Test keyboard navigation, focus return, errors, loading, disabled states, light/dark and narrow layouts. Automated axe checks do not prove full WCAG conformance or EAA compliance.
 
-## Navigation materials and Apple guidance
+## Navigation surface
 
-Preserve Flame & Ink's approved palette, Plus Jakarta Sans, crisp controls and filled orange primary actions. Apple guidance refines navigation hierarchy, legibility and interaction within that identity; it is not a replacement theme. Read `docs/APPLE-DESIGN.md` for the source-to-design mapping.
-
-The compiled stylesheet provides `.sr-navigation-surface` with `data-sr-material="subtle"`, `"expressive"` or `"solid"` on a navigation container. It is a CSS utility, not an exported React component or a universal control prop. Omission uses subtle. Use one navigation plane; keep content/forms/tables and nested controls opaque/plain. The app owns positioning, padding and preference UI. Both glass finishes become opaque under supported reduced-transparency, increased-contrast or forced-colour preferences; offer an explicit Solid choice for browsers without preference support. No backdrop-filter support also means opaque fallback. Keep primary orange and dark labels unchanged. These web effects do not reproduce native Liquid Glass APIs or adaptive refraction.
+The compiled stylesheet provides `.sr-navigation-surface` with `data-sr-material="subtle"`, `"expressive"` or `"solid"` on one navigation container (app bar or sidebar). It is a CSS utility, not an exported React component or a universal control prop. Omission uses subtle. Serein materials are always solid: no translucency, blur or glass anywhere. The app owns positioning, padding and preference UI. Read `docs/APPLE-DESIGN.md` for how platform guidance maps onto Serein.
 
 ## Component families and ownership
 
@@ -68,8 +67,8 @@ Use `MultiSelect` for controlled string-array choices with search, selected chip
 
 ## Verification
 
-`npm run ai:check` verifies generated docs against current declaration and token files. `npm run test:stories` runs browser interaction/accessibility checks in light and dark, with reduced motion on and off. `npm run check:consumer` installs a packed copy into a separate app. Rebuild after changing component source.
+`pnpm ai:check` verifies generated docs against current declaration and token files. `pnpm test:stories` runs browser interaction/accessibility checks in light and dark, with reduced motion on and off. `pnpm check:consumer` installs a packed copy into a separate app. Run these with `pnpm --filter @serein-ui/react <script>` from the repository root, and rebuild after changing component source.
 
-`npm run check:production` adds package/client-boundary, SSR/hydration and strict packed-consumer type checks to the normal tests and builds. The compiled entry preserves `"use client"`; individual server frameworks still need integration testing. These checks do not establish native platform support or accessibility certification.
+`pnpm check:production` adds package/client-boundary, SSR/hydration and strict packed-consumer type checks to the normal tests and builds. The compiled entry preserves `"use client"`; individual server frameworks still need integration testing. These checks do not establish native platform support or accessibility certification.
 
 References: [Storybook MCP](https://storybook.js.org/docs/ai/mcp/overview), [Storybook manifests](https://storybook.js.org/docs/ai/manifests), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).

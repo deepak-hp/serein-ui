@@ -61,37 +61,29 @@ jobs:
       pages: read
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/trial/.playwright
-    defaults:
-      run:
-        working-directory: trial
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
           ref: ${{ needs.gate.outputs.sha }}
+      - uses: pnpm/action-setup@v4
       - name: Set up Node
         uses: actions/setup-node@v5
         with:
           node-version: 24
-          cache: npm
-          cache-dependency-path: trial/package-lock.json
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Configure Pages
-        id: pages
         uses: actions/configure-pages@v6
-      - name: Build catalogue and Storybook
-        run: node scripts/build-site.mjs --base-path "${{ steps.pages.outputs.base_path || '/' }}"
-      - name: Install Chromium
-        run: npm exec -- playwright install --with-deps chromium
-      - name: Verify assembled site
-        run: node scripts/check-site.mjs
+      - name: Build packages and the Storybook documentation site
+        run: |
+          pnpm build
+          pnpm --filter @serein-ui/react build:storybook
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: trial/site-dist
+          path: packages/react/storybook-static
 
   deploy:
     needs: build

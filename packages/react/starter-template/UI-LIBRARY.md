@@ -21,7 +21,7 @@ If the library checkout's Storybook is running locally, its MCP endpoint is `htt
 
 ## Theme and component rules
 
-Keep the approved palette and Plus Jakarta Sans. Primary orange uses dark text. Theme belongs on html; body has `sr-theme`, including portal content. `src/theme.ts` remembers an explicit preference when browser storage is available.
+Keep Serein's tokens and fonts (Anek Latin; Chivo Mono only for measurements). The vermilion signal is the one primary action per view and uses dark text. Theme belongs on html; body has `sr-theme`, including portal content. `src/theme.ts` remembers an explicit preference when browser storage is available.
 
 Selection controls use controlled values and callbacks. Date picker values are ISO date-only strings; ranges must preserve a partial first selection. Overlays expose controlled open state, but confirm callbacks do not await your asynchronous work automatically. Read the actual contracts before composing a save flow.
 

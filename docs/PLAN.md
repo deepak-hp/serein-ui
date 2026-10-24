@@ -1,7 +1,13 @@
 # Serein — build and release plan
 
-Status: proposal for approval · 21 October 2026 · applies to the *precision instrument* direction with the Vermilion signal.
-Visual reference: the Serein design-system artifact. Nothing here is built yet.
+Status: approved 21 October 2026 · applies to the *precision instrument* direction with the Vermilion signal.
+
+> **Update, 24 October 2026 — merged with the Codex beta.** Decisions that changed from the original plan below:
+> - Home is `deepak-hp/serein-ui` (not a new `serein-ds` org); npm scope is `@serein-ui/*`.
+> - The web behaviour layer is **Base UI** (already integrated and tested), not React Aria; styles are precompiled StyleX.
+> - **Storybook** is the single documentation site; the Starlight docs app was not adopted.
+> - Phase 0 (foundations) is done. Phase 1's component list is largely covered by the 42 merged components; Phase 2's signature components (Readout, Tape, Gauge, Meter, RainChart, Keypad, Drizzle) are added. Next: React Native parity, the AI tool outputs (skill, MCP checks, lint plugin) and the release checklist.
+> - Only `@serein-ui/react` is distributed for now; it bundles the tokens, fonts, icons and formatting it needs.
 
 ---
 
@@ -79,7 +85,7 @@ The Rain and Turmeric themes are removed in Phase 0; only Vermilion ships. A hig
 
 **Goal:** an assistant with Serein installed produces a correct, calm, accessible screen on the first try, and a machine can check that it did.
 
-**One source, many formats.** `ai/rules.md` (composition rules, component chooser, anti-patterns) and `ai/recipes/*.md` (send money, receipt, dashboard…) are the only hand-written AI docs. A build step generates:
+**One source, many formats.** `packages/react/ai/COMPOSITION.md` (the Serein rules, component chooser, recipes such as money entry) and `ai/README.md` are the hand-written AI docs; the contract and full-text guide are generated from them on every build. Planned generated outputs:
 
 | Output | For | Maturity |
 |---|---|---|

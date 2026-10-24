@@ -11,7 +11,7 @@ No trademark, domain, npm scope ownership or package-name availability is guaran
 - The user supplied `https://github.com/deepak-hp/ritam-ui.git` for the initial push on 28 September 2026. The remote was empty when checked.
 - Root `.gitignore` excludes `.research/` and `design-system/`, which contain private chart research and outdated design drafts. They remain on disk.
 - Existing nested ignores exclude dependencies, generated builds, browser profiles, local package archives and verification captures.
-- Use `trial/README.md` for the actual build/setup commands. Rebuild the local tarball with `reference:setup` after cloning; the reference app's vendor archive is intentionally not committed.
+- Use `packages/react/README.md` for the actual build/setup commands. Rebuild the local tarball with `reference:setup` after cloning; the reference app's vendor archive is intentionally not committed.
 - The committed reference lockfile names a local archive generated from this source. Run `reference:setup` before installing/running that app; do not start with `npm ci` inside `reference`.
 - Before the first push, inspect the staged file list and contents for secrets/private data, confirm the intended remote and run the relevant checks. Do not force-push or overwrite existing remote history.
 - The MIT license is now applied. npm publication, scope ownership and the documented release accessibility review remain separate open gates. A source push does not publish to npm or certify accessibility.

@@ -1,288 +1,119 @@
 ---
 name: Serein
-description: Clear surfaces, warm light, and measured movement for a React interface library.
+description: A precise, calm design language built like an instrument - fine graduations, exact readouts and one vivid signal.
+source: tokens/ (W3C DTCG 2025.10), built by @serein-ui/tokens. This file summarises it; the token files win on any difference.
 colors:
-  clear-canvas: "#FFFFFF"
-  mist-surface: "#F6F6F5"
-  raised-light: "#FFFFFF"
-  field-light: "#FFFFFF"
-  flame-wash-light: "#FFF0E8"
-  ink-light: "#20211F"
-  muted-light: "#60615F"
-  boundary-light: "#878984"
-  divider-light: "#E3E5E0"
-  hover-light: "#ECEDEA"
-  active-light: "#E2E4DF"
-  flame-light: "#FF681F"
-  flame-hover-light: "#F45C14"
-  flame-active-light: "#E8540E"
-  flame-border-light: "#A83A0A"
-  on-flame: "#141414"
-  flame-text-light: "#A83A0A"
-  success-light: "#28694F"
-  success-surface-light: "#E9F7EF"
-  error-light: "#B4233C"
-  error-surface-light: "#FDECEF"
-  warning-light: "#88500B"
-  warning-surface-light: "#FFF4DC"
-  evening-canvas: "#101113"
-  evening-surface: "#191B1D"
-  raised-dark: "#202224"
-  field-dark: "#16181A"
-  flame-wash-dark: "#30251F"
-  ink-dark: "#F3F3F0"
-  muted-dark: "#B6B8B3"
-  boundary-dark: "#747771"
-  divider-dark: "#363936"
-  hover-dark: "#2A2D2F"
-  active-dark: "#34383B"
-  flame-dark: "#FF803E"
-  flame-hover-dark: "#FF925B"
-  flame-active-dark: "#FFA16F"
-  flame-border-dark: "#FFAA7D"
-  flame-text-dark: "#FF874D"
-  success-dark: "#8AD3AC"
-  success-surface-dark: "#142820"
-  error-dark: "#FF9CAF"
-  error-surface-dark: "#32171D"
-  warning-dark: "#FFD28A"
-  warning-surface-dark: "#332711"
+  surface-light: "#f3f3f1"
+  surface-raised-light: "#ffffff"
+  surface-sunken-light: "#e9e9e6"
+  surface-overlay-light: "#ffffff"
+  surface-hover-light: "#f1f1ee"
+  surface-pressed-light: "#e6e6e2"
+  ink-light: "#0b0c0e"
+  ink-muted-light: "#575d66"
+  line-light: "#dfe0dd"
+  line-strong-light: "#868c95"
+  focus-light: "#0b0c0e"
+  signal-light: "#ff5a1f"
+  signal-hover-light: "#ff7440"
+  signal-pressed-light: "#e94d12"
+  signal-edge-light: "#b5350a"
+  on-signal: "#160600"
+  signal-ink-light: "#b5350a"
+  signal-soft-light: "#ffe6db"
+  success-light: "#127a3e"
+  success-soft-light: "#dff3e6"
+  warning-light: "#8a5800"
+  warning-soft-light: "#fbefd2"
+  danger-light: "#c2185b"
+  danger-soft-light: "#fbe1ea"
+  surface-dark: "#0b0c0e"
+  surface-raised-dark: "#131518"
+  surface-sunken-dark: "#07080a"
+  surface-overlay-dark: "#1a1d21"
+  surface-hover-dark: "#1c1f23"
+  surface-pressed-dark: "#24282d"
+  ink-dark: "#f3f4f6"
+  ink-muted-dark: "#9aa1ab"
+  line-dark: "#24282e"
+  line-strong-dark: "#5f6773"
+  focus-dark: "#f3f4f6"
+  signal-dark: "#ff6a2c"
+  signal-hover-dark: "#ff8752"
+  signal-pressed-dark: "#ffa077"
+  signal-ink-dark: "#ff8752"
+  signal-soft-dark: "#2e140a"
+  success-dark: "#46d17f"
+  success-soft-dark: "#0f2618"
+  warning-dark: "#ffb224"
+  warning-soft-dark: "#2b2009"
+  danger-dark: "#ff5c8a"
+  danger-soft-dark: "#2e0f19"
 typography:
-  display:
-    fontFamily: "Plus Jakarta Sans Variable, Plus Jakarta Sans, sans-serif"
-    fontSize: "clamp(36px, 3.6vw, 50px)"
-    fontWeight: 600
-    lineHeight: 1.14
-    letterSpacing: "-0.04em"
-  headline:
-    fontFamily: "Plus Jakarta Sans Variable, Plus Jakarta Sans, sans-serif"
-    fontSize: "24px"
-    fontWeight: 650
-    lineHeight: 1.3
-    letterSpacing: "-0.03em"
-  title:
-    fontFamily: "Plus Jakarta Sans Variable, Plus Jakarta Sans, sans-serif"
-    fontSize: "16px"
-    fontWeight: 650
-    lineHeight: 1.4
-  body:
-    fontFamily: "Plus Jakarta Sans Variable, Plus Jakarta Sans, sans-serif"
-    fontSize: "14px"
-    fontWeight: 400
-    lineHeight: 1.7
-  label:
-    fontFamily: "Plus Jakarta Sans Variable, Plus Jakarta Sans, sans-serif"
-    fontSize: "14px"
-    fontWeight: 600
-    lineHeight: 1.4
+  readout-xl: { fontFamily: "Anek Latin", fontSize: "88px", fontWeight: 300, lineHeight: 1, letterSpacing: "-0.035em", fontStretch: "88%" }
+  readout-l: { fontFamily: "Anek Latin", fontSize: "60px", fontWeight: 300, lineHeight: 1.0667, letterSpacing: "-0.03em", fontStretch: "88%" }
+  readout-m: { fontFamily: "Anek Latin", fontSize: "32px", fontWeight: 400, lineHeight: 1.125, letterSpacing: "-0.02em", fontStretch: "88%" }
+  title: { fontFamily: "Anek Latin", fontSize: "28px", fontWeight: 500, lineHeight: 1.2143, letterSpacing: "-0.015em" }
+  heading: { fontFamily: "Anek Latin", fontSize: "17px", fontWeight: 600, lineHeight: 1.4118 }
+  body: { fontFamily: "Anek Latin", fontSize: "15px", fontWeight: 400, lineHeight: 1.4667 }
+  label: { fontFamily: "Anek Latin", fontSize: "13px", fontWeight: 500, lineHeight: 1.3846 }
+  measure: { fontFamily: "Chivo Mono", fontSize: "12px", fontWeight: 400, lineHeight: 1.3333 }
 rounded:
-  small: "5px"
+  tag: "4px"
   control: "8px"
+  key: "12px"
   popup: "12px"
-  panel: "16px"
-  dialog: "20px"
+  panel: "14px"
+  sheet: "22px"
+spacing: "4px grid, nine steps: 4, 8, 12, 16, 24, 32, 48, 64, 96"
+motion:
+  fast: "100ms"
+  base: "180ms"
+  slow: "320ms"
+  standard: "cubic-bezier(0.2, 0, 0, 1)"
+  settle: "cubic-bezier(0.16, 1, 0.3, 1)"
 components:
   button-primary:
-    backgroundColor: "{colors.flame-light}"
-    textColor: "{colors.on-flame}"
+    backgroundColor: "{colors.signal-light}"
+    textColor: "{colors.on-signal}"
+    border: "1px solid {colors.signal-edge-light}"
     typography: "{typography.label}"
     rounded: "{rounded.control}"
-    padding: "11px 20px"
-  button-primary-hover:
-    backgroundColor: "{colors.flame-hover-light}"
-    textColor: "{colors.on-flame}"
-  button-primary-active:
-    backgroundColor: "{colors.flame-active-light}"
-    textColor: "{colors.on-flame}"
-  button-secondary:
-    backgroundColor: "{colors.mist-surface}"
-    textColor: "{colors.ink-light}"
-    typography: "{typography.label}"
-    rounded: "{rounded.control}"
-    padding: "11px 20px"
-  text-field:
-    backgroundColor: "{colors.field-light}"
-    textColor: "{colors.ink-light}"
-    rounded: "{rounded.control}"
-    padding: "11px 14px"
-  card:
-    backgroundColor: "{colors.raised-light}"
-    textColor: "{colors.ink-light}"
-    rounded: "{rounded.panel}"
-    padding: "20px"
-  badge:
-    backgroundColor: "{colors.mist-surface}"
-    textColor: "{colors.ink-light}"
-    rounded: "{rounded.small}"
-    padding: "3px 8px"
-  popup:
-    backgroundColor: "{colors.raised-light}"
-    textColor: "{colors.ink-light}"
-    rounded: "{rounded.popup}"
-    padding: "6px"
-  dialog:
-    backgroundColor: "{colors.raised-light}"
-    textColor: "{colors.ink-light}"
-    rounded: "{rounded.dialog}"
-    padding: "28px"
+    height: "48px"
 ---
 
-# Design System: Serein
+# Serein
 
-## Overview
+Serein is a precise, calm design language built like an instrument: **fine graduations, exact readouts, and one vivid signal**, quiet enough to read like fine rain from a clear evening sky.
 
-**Creative North Star: "Clear Evening Rain"**
+## Principles
 
-Serein takes its character from fine rain in a clear evening sky: calm, precise, and perceptible through small changes in light. White and near-black canvases leave room for content, while one warm orange accent makes the next action unmistakable. The metaphor stays in the material and motion language rather than becoming literal imagery.
+1. **Measure, don't decorate.** Every line is a graduation, a boundary or data.
+2. **One signal.** One vivid vermilion marks the one action per view, plus needles and today's value. Everything else is ink on a ground.
+3. **The figure is the hero.** Money and key numbers are instrument readouts: large, light, tabular. Labels and units are small and exact.
+4. **Settle, don't bounce.** Motion travels to a reading and stops.
+5. **Accessible by construction.** WCAG 2.2 AA in every theme, enforced by token tests.
 
-The system is restrained and practical. Opaque surfaces layer through closely related neutral fills, controls remain crisp, and movement settles quickly into a stable state. Its astrology-informed foundation remains symbolic through the warm orange action color and dark-text treatment; it does not introduce charts, stars, planets, or other celestial decoration. Existing `--dp-*` custom properties remain the runtime compatibility contract.
+## Origins
 
-**Key Characteristics:**
+Serein draws on two precision instruments: the **rain gauge** and **Jantar Mantar**, the observatories built for Jyotish, whose engraved scales measure the sky. They give Serein its graduations, readouts, Tape and Gauge. The vermilion signal comes from sindoor and from Mars (Mangala), the red planet linked with decisive action, and doubles as an instrument's signal orange. The nine spacing steps echo the nine grahas. None of this appears as imagery: no stars, moons, zodiac wheels or galaxies. Personal chart details are not part of the project.
 
-- Clear white and deep evening canvases with opaque layered surfaces.
-- Warm orange actions with dark text and restrained green reserved for real success.
-- Soft geometry that becomes progressively rounder from controls to dialogs.
-- Plus Jakarta Sans throughout, with compact labels and measured negative tracking in headings.
-- Short, settling state changes that retain full meaning without motion.
+## Colour
 
-## Colors
-
-The palette pairs clear neutral planes with a concentrated warm flame accent; semantic colors remain supporting signals rather than decoration.
-
-### Primary
-
-- **Flame:** the filled primary action, selection highlight, progress accent, and text caret. Its darker companion supplies readable inline links and status text on light surfaces.
-- **On Flame:** dark text and icon color for filled orange controls in both themes.
-
-### Secondary
-
-- **Restrained Green:** success text and its pale semantic fill only; it never acts as a general accent.
-- **Error Rose:** invalid boundaries, error text, and its pale failure fill.
-- **Warning Amber:** warning text and its pale semantic fill; it does not replace orange actions.
-
-### Neutral
-
-- **Clear / Evening Canvas:** the page foundation in light and dark themes.
-- **Mist / Evening Surface:** quiet hover, alert, and grouped-content layers.
-- **Raised Surface:** opaque cards, menus, popovers, and dialogs.
-- **Ink:** primary text, focus outlines, and high-emphasis symbols.
-- **Muted Ink:** supporting copy, descriptions, placeholders, and inactive navigation.
-- **Control Boundary:** interactive borders and scrollbar thumbs.
-- **Decorative Divider:** separators and low-emphasis container edges.
-- **Hover / Active Planes:** dedicated neutral fills distinguish pointer hover from pressed state without borrowing the orange selection wash.
-
-### Named Rules
-
-**The One Warm Signal Rule.** Orange identifies the next action or current interactive state; do not spread it across large decorative areas.
-
-**The Meaning Before Color Rule.** Labels and status copy carry meaning. Green, orange, and rose reinforce that meaning and never replace it.
+Roles, never raw values. Grounds (`surface`, `surface-raised`, `surface-sunken`, `surface-overlay`, plus hover and pressed) carry the screen; `ink` and `ink-muted` carry content; `line` is decorative and `line-strong` marks control boundaries. `signal` fills the one primary action with near-black `on-signal` text in both themes. Status colours (`success`, `warning`, `danger`, with `-soft` grounds) always come with a word or icon; danger is rose so it never reads as the signal. Focus is neutral. Dark leads the brand; light is a full equal.
 
 ## Typography
 
-**Display Font:** Plus Jakarta Sans Variable (with Plus Jakarta Sans and sans-serif fallbacks)
+**Anek Latin** (Ek Type, India) sets every word and figure; readouts narrow its width axis to 88% and use tabular figures. **Chivo Mono** is only for measurements: units, axis labels, references, timestamps. One `readout-xl` per screen; nothing below 12px; no eyebrow labels. Metadata sits right-aligned on the heading's row.
 
-**Body Font:** Plus Jakarta Sans Variable (with Plus Jakarta Sans and sans-serif fallbacks)
+## Geometry, materials and motion
 
-**Character:** A single contemporary sans-serif family keeps the library direct and cohesive. Weight, size, line height, and restrained tracking create hierarchy without adding a decorative display face.
+Machined corners (4/8/12/14/22px), never pills; scales and gauges stay square. Materials are solid: panels are raised with a hairline, keys have a machined edge, overlays get a real shadow. No gradients, glass, glows or noise. Motion is fast and exact and settles; reduced motion removes travel, and every outcome is announced.
 
-### Hierarchy
+## Signature components
 
-- **Display:** semibold, fluid, tightly tracked type for the studio's principal statement.
-- **Headline:** semibold type for dialogs and major contained headings.
-- **Title:** semibold type for card, alert, and section titles.
-- **Body:** regular, open-leading type for descriptions and supporting content; long editorial copy stays near 38 characters per line in the studio introduction.
-- **Label:** compact semibold type for buttons, field labels, and actions. Inputs use a larger 16px reading size, while help text steps down to 13px.
+`Readout` (money as an instrument display), `Tape` (an amount ruler under a fixed needle), `Gauge` and `Meter` (graduated budget and quota), `RainChart` (daily values as precipitation bars), `Keypad` (machined keys for money entry) and `Drizzle` (loading as graduations filling in turn).
 
-### Named Rules
+## Never
 
-**The One Family Rule.** Use Plus Jakarta Sans for every interface role; build hierarchy through scale, weight, and spacing.
-
-**The Measured Tracking Rule.** Negative tracking belongs to large headings and wordmarks and never goes below `-0.04em`.
-
-## Layout
-
-The studio uses a centered container capped at 1360px with fluid horizontal padding from 20px to 64px. Its principal desktop composition is a balanced two-column grid with a fluid 40px to 96px gutter. At 760px and below, the grid becomes one column, the header wraps, and navigation occupies a full row. A 1000px intermediate breakpoint simplifies three-column detail areas before the mobile stack.
-
-Spacing follows an 8px-centered rhythm with deliberate 6px, 10px, and 12px adjustments inside compact controls. Standard controls are at least 48px high; menu options are at least 44px high. Panels commonly use 20px padding, the live studio card scales from 20px to 32px, and dialogs use 28px.
-
-**The Opaque Content Rule.** Forms, cards, fields, popups, and dialogs stay opaque. Optional translucency belongs to one navigation plane and must have an explicit solid fallback.
-
-## Elevation & Depth
-
-Serein uses tonal layering, low-contrast borders, and neutral shadows only where a layer must separate from the page. Cards and grouped surfaces are flat at rest; transient popups become more distinct; dialogs use the deepest tier. Buttons use a small inset highlight and compact drop shadow to feel responsive without becoming glossy. No shadow uses the orange accent as a glow.
-
-### Shadow Vocabulary
-
-- **Surface:** `none` in both themes; cards and grouped surfaces rely on fill and divider relationships.
-- **Popup:** `0 2px 6px #20211F0A, 0 12px 32px #20211F14` in light mode; menus, popovers, and toasts.
-- **Dialog:** `0 12px 24px #20211F14, 0 32px 80px #20211F26` in light mode; modal separation over the backdrop.
-- **Action:** `inset 0 1px 0 #FFFFFF55, 0 2px 3px #7B2E0E14`; primary buttons at rest, deepening slightly on hover.
-
-**The Neutral Depth Rule.** Convey elevation with neutral shadow and opaque tonal layers; never add colored ambient glow.
-
-## Shapes
-
-Corners become rounder as an element separates further from the page: compact items use 5px, controls 8px, popups 12px, panels 16px, and dialogs 20px. Circular avatars and state symbols remain true circles. Interactive boundaries use the stronger boundary color; decorative separators and container edges use the quieter divider color.
-
-**The Progressive Radius Rule.** Keep small controls crisp and reserve the largest curvature for panels and dialogs.
-
-## Components
-
-Serein components feel calm and direct: clear boundaries at rest, modest tonal response on hover, a strong visible focus outline, and brief settling motion.
-
-### Buttons
-
-- **Shape:** softly rounded controls with a 48px minimum height.
-- **Primary:** flame fill, dark text, a darker orange boundary, and compact action shadow.
-- **Secondary:** quiet neutral fill, ink text, and a soft divider boundary; hover and active use their dedicated neutral state planes.
-- **Quiet:** transparent fill and boundary, gaining the same neutral hover and active planes.
-- **Hover / Focus:** primary fill darkens through hover and active in light mode and lightens in dark mode; the shadow deepens on hover. All variants receive a 2px ink focus outline offset by 3px. Active buttons move down by 1px. Disabled buttons use a quiet neutral fill and muted text at full opacity, with no press movement. Disabled inputs and selection rows retain their 50% opacity treatment.
-
-### Chips
-
-- **Style:** compact badges are borderless, use a small radius, 12px semibold type, and `3px 8px` padding.
-- **State:** neutral, success, error, and warning badges pair explicit text colors with their corresponding subtle surface families; the label remains the primary source of meaning.
-
-### Cards / Containers
-
-- **Corner Style:** panel radius with opaque raised fill.
-- **Background:** raised surface in each theme.
-- **Shadow Strategy:** none at rest; fill and divider establish the surface, while transient overlays retain elevation shadows.
-- **Border:** one-pixel decorative divider.
-- **Internal Padding:** 20px by default; compositions may scale to 32px when the container has room.
-
-### Inputs / Fields
-
-- **Style:** opaque field fill, strong one-pixel boundary, control radius, 48px minimum height, and 16px input text.
-- **Focus:** the shared 2px ink outline offset by 3px; caret uses readable orange text color.
-- **Error / Disabled:** error shifts the boundary and provides explicit message text; disabled inputs use 50% opacity.
-
-### Navigation
-
-Navigation uses compact 13px links with 48px minimum targets. Muted ink indicates rest; the active destination returns to primary ink and gains an orange underline. A navigation surface may use subtle 12px blur or expressive 24px blur on one plane, with opaque solid mode for reduced transparency, increased contrast, or forced colors.
-
-### Popups and Dialogs
-
-Popups use the raised surface, divider border, 12px radius, and popup shadow. Dialogs use a 20px radius, 28px padding, the deepest shadow, and a neutral translucent backdrop. Actions align to the trailing edge and wrap when space is constrained.
-
-### Status Signals
-
-Pending state uses a small rotation and completion settles into a clear mark. State motion describes real work, never delays information, and stops under reduced-motion preferences.
-
-## Do's and Don'ts
-
-### Do:
-
-- **Do** keep orange concentrated on primary actions, active navigation details, and current state.
-- **Do** pair every semantic color with explicit words or accessible state information.
-- **Do** preserve 48px controls, clear focus outlines, opaque content surfaces, and solid navigation fallbacks.
-- **Do** use the existing `--dp-*` custom properties when extending the shipped library so consumers retain compatibility.
-- **Do** let motion settle quickly and make the same state legible when animation is removed.
-
-### Don't:
-
-- **Don't** turn the Serein name into rain illustrations, droplets, animated weather, galaxy imagery, stars, or planetary decoration.
-- **Don't** add colored ambient glows, decorative gradients, or broad green accent areas.
-- **Don't** place translucent material on forms, cards, fields, popups, or dialogs.
-- **Don't** infer accessibility certification from automated checks; WCAG 2.2 AA remains the target pending manual review.
-- **Don't** describe `@serein-ui/react` as published on npm or its package scope as verified; npm publication is deferred, and the canonical repository is `deepak-hp/serein-ui`.
+Gradients, glass, glows, emoji, decorative illustration, celestial imagery, eyebrow labels, section numbers, more than one signal element per region, cards inside cards, coloured side borders, or hero-metric templates nobody asked for.
