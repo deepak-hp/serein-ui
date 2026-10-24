@@ -4,7 +4,7 @@ phase: 1
 summary: A machined key that starts an action; the signal variant marks the one action a view exists for.
 platforms:
   web: planned
-  native: planned
+  native: draft
 anatomy:
   - part: root
     description: Native <button> (or Pressable on React Native). Keeps its width while busy.

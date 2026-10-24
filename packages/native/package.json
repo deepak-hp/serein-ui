@@ -1,0 +1,56 @@
+{
+  "name": "@serein-ui/native",
+  "version": "0.0.0",
+  "description": "Serein for React Native and Expo: the same component names and props as @serein-ui/react, rendered natively.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepak-hp/serein-ui.git",
+    "directory": "packages/native"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@serein-ui/fonts": "workspace:*",
+    "@serein-ui/format": "workspace:*",
+    "@serein-ui/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "expo-font": ">=57.0.0",
+    "react": "^19.2.0",
+    "react-native": ">=0.86.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.29.7",
+    "@react-native/jest-preset": "0.86.3",
+    "@testing-library/react-native": "14.1.0",
+    "@types/jest": "29.5.14",
+    "@types/react": "19.2.18",
+    "babel-preset-expo": "57.0.14",
+    "expo": "57.0.27",
+    "expo-font": "57.0.4",
+    "jest": "29.7.0",
+    "jest-expo": "57.0.5",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "test-renderer": "1.2.0",
+    "typescript": "6.0.3"
+  }
+}

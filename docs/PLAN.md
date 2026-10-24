@@ -8,6 +8,7 @@ Status: approved 21 October 2026 · applies to the *precision instrument* direct
 > - **Storybook** is the single documentation site; the Starlight docs app was not adopted.
 > - Phase 0 (foundations) is done. Phase 1's component list is largely covered by the 42 merged components; Phase 2's signature components (Readout, Tape, Gauge, Meter, RainChart, Keypad, Drizzle) are added. Next: React Native parity, the AI tool outputs (skill, MCP checks, lint plugin) and the release checklist.
 > - Only `@serein-ui/react` is distributed for now; it bundles the tokens, fonts, icons and formatting it needs.
+> - React Native parity has started: `@serein-ui/native` (Expo SDK 57) has the theme provider, fonts, Button, TextField, Switch and Readout, with `apps/native-playground` as the Expo showcase.
 
 ---
 
