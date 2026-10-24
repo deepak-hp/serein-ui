@@ -1,0 +1,415 @@
+{
+  "$description": "Serein light theme: colour and shadow. Identical names in every theme.",
+  "color": {
+    "$type": "color",
+    "surface": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9529,
+          0.9529,
+          0.9451
+        ],
+        "hex": "#f3f3f1"
+      },
+      "$description": "Page and screen background. Grounds every text token."
+    },
+    "surface-raised": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$description": "Panels, inputs, keys, the selected segment."
+    },
+    "surface-sunken": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9137,
+          0.9137,
+          0.902
+        ],
+        "hex": "#e9e9e6"
+      },
+      "$description": "Wells, segmented tracks, avatars, pressed keys, disabled fills."
+    },
+    "surface-overlay": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$description": "Menus, popovers, sheets and toasts (with shadow.overlay)."
+    },
+    "ink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0431,
+          0.0471,
+          0.0549
+        ],
+        "hex": "#0b0c0e"
+      },
+      "$description": "Primary text, readouts, past data, major graduations."
+    },
+    "ink-muted": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3412,
+          0.3647,
+          0.4
+        ],
+        "hex": "#575d66"
+      },
+      "$description": "Secondary text, metadata, units, axis labels."
+    },
+    "line": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8745,
+          0.8784,
+          0.8667
+        ],
+        "hex": "#dfe0dd"
+      },
+      "$description": "Hairline dividers and panel edges. Decorative; never the only boundary of a control."
+    },
+    "line-strong": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5255,
+          0.549,
+          0.5843
+        ],
+        "hex": "#868c95"
+      },
+      "$description": "Control boundaries and minor graduations. At least 3:1 on every surface."
+    },
+    "focus": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0431,
+          0.0471,
+          0.0549
+        ],
+        "hex": "#0b0c0e"
+      },
+      "$description": "Focus ring, 2px solid with 2px offset. Neutral so the signal stays reserved for action."
+    },
+    "signal": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.3529,
+          0.1216
+        ],
+        "hex": "#ff5a1f"
+      },
+      "$description": "The one vivid colour: the single primary action, the needle, today’s value, the gauge level. Never large areas, notices or status."
+    },
+    "signal-hover": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.4549,
+          0.251
+        ],
+        "hex": "#ff7440"
+      },
+      "$description": "Hover fill for signal buttons and keys."
+    },
+    "on-signal": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0863,
+          0.0235,
+          0
+        ],
+        "hex": "#160600"
+      },
+      "$description": "Text and icons on signal fills. Near-black in both modes."
+    },
+    "signal-ink": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7098,
+          0.2078,
+          0.0392
+        ],
+        "hex": "#b5350a"
+      },
+      "$description": "Signal-coloured text and links on surfaces."
+    },
+    "signal-soft": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.902,
+          0.8588
+        ],
+        "hex": "#ffe6db"
+      },
+      "$description": "Ground behind the gauge fill and the active navigation item."
+    },
+    "success": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0706,
+          0.4784,
+          0.2431
+        ],
+        "hex": "#127a3e"
+      },
+      "$description": "Success text and icons. Always paired with a word or icon."
+    },
+    "success-soft": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8745,
+          0.9529,
+          0.902
+        ],
+        "hex": "#dff3e6"
+      },
+      "$description": "Ground of success notices and tags."
+    },
+    "warning": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5412,
+          0.3451,
+          0
+        ],
+        "hex": "#8a5800"
+      },
+      "$description": "Warning text and icons."
+    },
+    "warning-soft": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9843,
+          0.9373,
+          0.8235
+        ],
+        "hex": "#fbefd2"
+      },
+      "$description": "Ground of warning notices and tags."
+    },
+    "danger": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7608,
+          0.0941,
+          0.3569
+        ],
+        "hex": "#c2185b"
+      },
+      "$description": "Errors and failed states: text, icons, invalid borders. Rose, so it never reads as the signal."
+    },
+    "danger-soft": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9843,
+          0.8824,
+          0.9176
+        ],
+        "hex": "#fbe1ea"
+      },
+      "$description": "Ground of error notices and tags."
+    },
+    "on-danger": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "hex": "#ffffff"
+      },
+      "$description": "Text on a danger fill (destructive confirmation only)."
+    }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "raised": {
+      "$value": {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0431,
+            0.0471,
+            0.0549
+          ],
+          "alpha": 0.06,
+          "hex": "#0b0c0e"
+        },
+        "offsetX": {
+          "value": 0,
+          "unit": "px"
+        },
+        "offsetY": {
+          "value": 1,
+          "unit": "px"
+        },
+        "blur": {
+          "value": 2,
+          "unit": "px"
+        },
+        "spread": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Panels and keys at rest: a 1px soft shadow."
+    },
+    "key": {
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0431,
+              0.0471,
+              0.0549
+            ],
+            "alpha": 0.08,
+            "hex": "#0b0c0e"
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": -1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 0,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          },
+          "inset": true
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0431,
+              0.0471,
+              0.0549
+            ],
+            "alpha": 0.06,
+            "hex": "#0b0c0e"
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 2,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "Keypad and quick-action keys: a machined edge."
+    },
+    "overlay": {
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0431,
+              0.0471,
+              0.0549
+            ],
+            "alpha": 0.14,
+            "hex": "#0b0c0e"
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 16,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 40,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0431,
+              0.0471,
+              0.0549
+            ],
+            "alpha": 0.06,
+            "hex": "#0b0c0e"
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 0,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 0,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 1,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "Menus, popovers, sheets and toasts only."
+    }
+  }
+}

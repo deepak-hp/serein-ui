@@ -1,0 +1,218 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": [
+          "Anek Latin",
+          "Noto Sans",
+          "system-ui",
+          "sans-serif"
+        ],
+        "$description": "Everything: UI text and readouts. Indian-designed (Ek Type), includes ₹, tabular figures and a 75–125 width axis."
+      },
+      "mono": {
+        "$value": [
+          "Chivo Mono",
+          "ui-monospace",
+          "SFMono-Regular",
+          "monospace"
+        ],
+        "$description": "Measurement only: units, axis labels, references, timestamps. Never prose."
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "light": {
+        "$value": 300
+      },
+      "regular": {
+        "$value": 400
+      },
+      "medium": {
+        "$value": 500
+      },
+      "semibold": {
+        "$value": 600
+      }
+    }
+  },
+  "type": {
+    "$type": "typography",
+    "readout-xl": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 88,
+          "unit": "px"
+        },
+        "fontWeight": 300,
+        "lineHeight": 1,
+        "letterSpacing": {
+          "value": -3.08,
+          "unit": "px"
+        }
+      },
+      "$description": "The one key figure on a desktop overview. Tabular figures.",
+      "$extensions": {
+        "dev.serein": {
+          "fontStretch": "88%"
+        }
+      }
+    },
+    "readout-l": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 60,
+          "unit": "px"
+        },
+        "fontWeight": 300,
+        "lineHeight": 1.0667,
+        "letterSpacing": {
+          "value": -1.8,
+          "unit": "px"
+        }
+      },
+      "$description": "Amount entry and the phone balance. Tabular figures.",
+      "$extensions": {
+        "dev.serein": {
+          "fontStretch": "88%"
+        }
+      }
+    },
+    "readout-m": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 32,
+          "unit": "px"
+        },
+        "fontWeight": 400,
+        "lineHeight": 1.125,
+        "letterSpacing": {
+          "value": -0.64,
+          "unit": "px"
+        }
+      },
+      "$description": "Secondary figures inside panels.",
+      "$extensions": {
+        "dev.serein": {
+          "fontStretch": "88%"
+        }
+      }
+    },
+    "title": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 28,
+          "unit": "px"
+        },
+        "fontWeight": 500,
+        "lineHeight": 1.2143,
+        "letterSpacing": {
+          "value": -0.42,
+          "unit": "px"
+        }
+      },
+      "$description": "Screen titles. One per screen."
+    },
+    "heading": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 17,
+          "unit": "px"
+        },
+        "fontWeight": 600,
+        "lineHeight": 1.4118,
+        "letterSpacing": {
+          "value": -0.08,
+          "unit": "px"
+        }
+      },
+      "$description": "Panel and section headings."
+    },
+    "body": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 15,
+          "unit": "px"
+        },
+        "fontWeight": 400,
+        "lineHeight": 1.4667,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "UI text, list titles, field values."
+    },
+    "body-reading": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 17,
+          "unit": "px"
+        },
+        "fontWeight": 400,
+        "lineHeight": 1.5882,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Long-form reading: help, docs, onboarding."
+    },
+    "label": {
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontSize": {
+          "value": 13,
+          "unit": "px"
+        },
+        "fontWeight": 500,
+        "lineHeight": 1.3846,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Field labels, key labels, tab labels."
+    },
+    "measure": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": {
+          "value": 12,
+          "unit": "px"
+        },
+        "fontWeight": 400,
+        "lineHeight": 1.3333,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "Units, axis labels, timestamps, references. Data only."
+    },
+    "measure-strong": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": {
+          "value": 12,
+          "unit": "px"
+        },
+        "fontWeight": 500,
+        "lineHeight": 1.3333,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "$description": "A unit or reference that needs emphasis."
+    }
+  }
+}

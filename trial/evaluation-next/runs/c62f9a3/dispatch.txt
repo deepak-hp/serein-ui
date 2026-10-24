@@ -1,1 +1,0 @@
-Read and execute the frozen generation prompt at C:/Users/deepa/Documents/ChatGPT/UI Library/trial/evaluation-next/runs/c62f9a3/prompt.txt. It contains the full approved task, allowed inputs/output paths and compiler commands. Follow its scope exactly. Do not inspect other candidates or browser/harness code.

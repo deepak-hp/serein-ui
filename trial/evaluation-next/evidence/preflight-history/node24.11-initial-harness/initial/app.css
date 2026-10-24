@@ -1,1 +1,0 @@
-body{background:var(--eval-canvas);color:var(--eval-text)}main{max-width:850px;padding:20px;margin:auto}fieldset{min-width:0;margin:12px 0}label{display:block;overflow-wrap:anywhere}button,input,textarea{font:inherit}button{margin:6px;min-height:40px}textarea{display:block;max-width:100%;width:100%}:focus-visible{outline:3px solid var(--eval-text);outline-offset:3px}

@@ -1,0 +1,36 @@
+import { readdir, mkdir } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import * as api from '../dist/index.js';
+import { families, storySlug } from './component-catalogue.mjs';
+import { aiFingerprint, readText, writeText } from './ai-freshness.mjs';
+
+await mkdir('ai', { recursive: true });
+await mkdir('docs', { recursive: true });
+const workflowSources = ['Invoices.tsx', 'Settings.tsx', 'Onboarding.tsx', 'Shell.tsx', 'model.ts', 'workflows.css'];
+const examplesDir = 'ai/examples';
+await mkdir(examplesDir, { recursive: true });
+const expectedExamples = new Set([...workflowSources, 'README.md']);
+const existingExamples = await readdir(examplesDir);
+assert.ok(existingExamples.every(name => expectedExamples.has(name)), 'Unexpected AI example file: remove it or add it to the explicit mirror list');
+const exampleReadme = `# Reviewed client-side workflow examples\n\nThese files are reviewed, runnable local demonstrations, not package exports or backend integrations. Read only the example relevant to the task, together with [COMPOSITION.md](../COMPOSITION.md), [README.md](../README.md), and the [generated contract](../contract.json).\n\n- Invoices.tsx: records, filtering, detail focus return, and simulated reminder recovery.\n- Settings.tsx: grouped local preferences, validation, failure recovery, and retained input.\n- Onboarding.tsx: sequential local setup, review, completion, and restart recovery.\n- Shell.tsx and workflows.css: the shared semantic shell and layout treatment.\n- model.ts: fictional fixture data, validation, storage boundaries, and simulated latency.\n\nThese files are the source of truth. Run pnpm build to regenerate the contract and full-text guide from them; pnpm ai:check verifies freshness.\n`;
+await writeText(`${examplesDir}/README.md`, exampleReadme);
+const files = (await readdir('dist')).filter(f => f.endsWith('.d.ts')).sort();
+const declarations = Object.fromEntries(await Promise.all(files.map(async f => [f, await readText(`dist/${f}`)])));
+const tokens = await readText('src/tokens.css');
+const guide = await readText('ai/README.md');
+const composition = await readText('ai/COMPOSITION.md');
+const examples = Object.fromEntries(await Promise.all([...workflowSources, 'README.md'].map(async name => [name, await readText(`${examplesDir}/${name}`)])));
+const fingerprint = aiFingerprint({ declarations, tokens, guide, composition, examples });
+const pkg = JSON.parse(await readText('package.json'));
+const components = Object.values(families).flatMap(family => Object.keys(family));
+const hooks = Object.keys(api).filter(name => name.startsWith('use')).sort();
+assert.deepEqual([...components, ...hooks].sort(), Object.keys(api).sort(), 'Every public export must appear in the catalogue');
+await writeText('ai/contract.json', JSON.stringify({ schemaVersion: 1, package: pkg.name, version: pkg.version, platform: 'react-web', components, hooks, families, declarations, tokens, fingerprint, accessibility: { target: 'WCAG 2.2 AA', conformanceClaim: false, guidance: 'docs/ACCESSIBILITY.md' } }, null, 2) + '\n');
+await writeText('ai/llms.txt', '# Serein\n\nMIT-licensed React web component library; GitHub beta archive available, npm registry publication deferred.\n\n- [Full integration guide and API](./llms-full.txt)\n- [Composition recipes](./COMPOSITION.md)\n- [Reviewed workflow examples](./examples/README.md)\n- [Machine-readable contract](./contract.json)\n- [Agent guidance](./AGENTS.md)\n- [Setup](./README.md)\n');
+await writeText('ai/llms-full.txt', `${guide}\n\n${composition}\n\n# Reviewed local workflow examples\n\nThe following files are reviewed client-side local demonstrations, not package exports, private URLs, or backend examples. Read the smallest relevant file; rebuild and run npm run ai:check before relying on a local checkout.\n\n${Object.entries(examples).map(([name, body]) => `## examples/${name}\n\n\`\`\`${name.endsWith('.css') ? 'css' : name.endsWith('.md') ? 'md' : 'tsx'}\n${body}\`\`\`\n`).join('\n')}\n# Exact public TypeScript declarations\n\n${Object.entries(declarations).map(([name, body]) => `## ${name}\n\n\`\`\`tsx\n${body}\`\`\`\n`).join('\n')}\n# Theme tokens\n\n\`\`\`css\n${tokens}\`\`\`\n`);
+// Keep Vite raw-module imports outside the /ai static-file mount.
+await writeText('docs/agent-api.generated.md', await readText('ai/llms-full.txt'));
+await writeText('docs/ai-integration.generated.md', guide);
+await writeText('docs/composition.generated.md', composition);
+const catalogue = `# Component catalogue\n\n${components.length} exported React components (including ToastProvider) and ${hooks.length} hooks. All entries below are implemented and have Storybook examples. This is an MIT-licensed React web library; npm registry publication is deferred and release accessibility review remains open.\n\n${Object.entries(families).map(([family, entries]) => `## ${family}\n\n| Component | Supported behaviour |\n| --- | --- |\n${Object.entries(entries).map(([name, description]) => `| [${name}](/docs/components-${storySlug(name)}--docs) | ${description} |`).join('\n')}\n`).join('\n')}\n## Hooks\n\n- \`useAsyncAction\`: real asynchronous operation, cancellation, pending/success/error state.\n- \`useToast\`: add, update and dismiss notifications beneath ToastProvider.\n\n## Separate modules not yet implemented\n\nNative mobile/desktop adapters, rich-text editing, charts, tree view, drag-and-drop upload transport and enterprise data grids (virtualization, grouping, cell editing) are not included. DataTable and DateField intentionally describe their current capabilities above.\n\n## Quality and integration\n\nUse the theme and motion toolbar on any story. Documentation includes source-derived prop types. Read Integration and Agent API for the compiled package and MCP setup, and Accessibility for automated coverage and manual release checks.\n`;
+await writeText('docs/catalogue.generated.md', catalogue);

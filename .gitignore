@@ -1,6 +1,15 @@
 # Private chart research and historical design drafts stay local.
 .research/
 design-system/
+private/
+
+# Dependencies and build output (all packages).
+node_modules/
+dist/
+.turbo/
+coverage/
+test-results/
+playwright-report/
 
 # Local tooling and generated verification artifacts.
 .superpowers/

@@ -1,0 +1,32 @@
+{
+  "name": "@serein-ui/css",
+  "version": "0.0.0",
+  "description": "Serein base styles (reset, typography, focus, selection, reduced motion) and the theme-switching helper. Framework-neutral.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.css",
+    "./reset.css": "./src/reset.css",
+    "./base.css": "./src/base.css",
+    "./theme": {
+      "types": "./src/theme.d.ts",
+      "default": "./src/theme.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "@serein-ui/tokens": "workspace:^"
+  },
+  "devDependencies": {
+    "@serein-ui/tokens": "workspace:*",
+    "vitest": "5.0.3"
+  }
+}

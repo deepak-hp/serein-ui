@@ -1,0 +1,69 @@
+{
+  "space": {
+    "1": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      },
+      "$description": "Tick pitch; icon-to-label gap."
+    },
+    "2": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      },
+      "$description": "Label-to-control gap; keypad gap."
+    },
+    "3": {
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      },
+      "$description": "Control inner padding."
+    },
+    "4": {
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      },
+      "$description": "Gap between related fields; phone gutter."
+    },
+    "5": {
+      "$value": {
+        "value": 24,
+        "unit": "px"
+      },
+      "$description": "Panel padding; gap between groups."
+    },
+    "6": {
+      "$value": {
+        "value": 32,
+        "unit": "px"
+      },
+      "$description": "Gap between panels; desktop gutter."
+    },
+    "7": {
+      "$value": {
+        "value": 48,
+        "unit": "px"
+      },
+      "$description": "Gap between sections."
+    },
+    "8": {
+      "$value": {
+        "value": 64,
+        "unit": "px"
+      },
+      "$description": "Large section breaks."
+    },
+    "9": {
+      "$value": {
+        "value": 96,
+        "unit": "px"
+      },
+      "$description": "Page-level breathing room."
+    },
+    "$type": "dimension",
+    "$description": "Nine steps on a 4px grid."
+  }
+}

@@ -1,0 +1,42 @@
+# Serein component spec. One file per component; docs, types, tests and AI tools are generated from these.
+# Copy to specs/<kebab-name>.yaml. Validate with `pnpm specs`.
+name: ComponentName            # PascalCase, matches the export name
+status: planned                # planned | draft | beta | stable
+phase: 1                       # roadmap phase (docs/plan.md)
+summary: One sentence saying what it is and when to use it.
+platforms:
+  web: planned                 # planned | draft | beta | stable | n/a
+  native: planned
+anatomy:
+  - part: root
+    description: What this part is.
+props:
+  - name: example
+    type: "'a' | 'b'"
+    default: "'a'"
+    required: false
+    description: What it changes.
+states:
+  - name: default
+    treatment: How it looks and behaves.
+keyboard:
+  - keys: Enter
+    action: What happens.
+aria:
+  role: button
+  attributes: []
+  notes: How assistive technology perceives it.
+motion:
+  - moment: What changes
+    motion: How it moves (name duration.* and easing.* tokens).
+    reducedMotion: What happens instead.
+content:
+  - Writing rule for labels and messages.
+do:
+  - A correct use.
+dont:
+  - A misuse.
+tokens:                        # every token path the component uses; validated against @serein-ui/tokens
+  - color.ink
+wcag:                          # success criteria the component must help satisfy
+  - "2.4.7"
