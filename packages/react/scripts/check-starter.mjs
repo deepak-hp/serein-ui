@@ -4,10 +4,11 @@ import { existsSync } from 'node:fs';
 import { mkdir, mkdtemp, readFile, readdir, writeFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { findNpmCli } from './npm-cli.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-if (!process.env.npm_execpath) throw new Error('Run npm run check:starter.');
-const npm = (args, cwd = root) => execFileSync(process.execPath, [process.env.npm_execpath, ...args], { cwd, stdio: 'pipe', encoding: 'utf8', env: { ...process.env, npm_config_cache: join(root, '.npm-cache') } });
+if (!findNpmCli()) throw new Error('Run npm run check:starter.');
+const npm = (args, cwd = root) => execFileSync(process.execPath, [findNpmCli(), ...args], { cwd, stdio: 'pipe', encoding: 'utf8', env: { ...process.env, npm_config_cache: join(root, '.npm-cache') } });
 await mkdir(join(root, '.starter-check'), { recursive: true });
 const testRoot = await mkdtemp(join(root, '.starter-check', 'run-'));
 const app = join(testRoot, 'my-app');

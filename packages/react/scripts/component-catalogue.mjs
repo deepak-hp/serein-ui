@@ -52,5 +52,14 @@ export const families = {
     StatusIcon: 'Decorative async state icon; always pair with meaningful text.',
     ToastProvider: 'Notification queue and live announcements, used with useToast.',
   },
+  'Measurement': {
+    Readout: 'Money or key figure as an instrument display with muted currency and fraction; reads as the full formatted amount.',
+    Tape: 'Decorative amount ruler sliding under a fixed needle, with a hatched over-limit zone.',
+    Gauge: 'Vertical graduated rain-gauge tube exposed as a meter, with an optional dashed limit.',
+    Meter: 'Horizontal graduated bar with the Gauge props and meter semantics.',
+    RainChart: 'Daily values as precipitation bars with highlight, future stubs, average line and axis labels.',
+    Keypad: 'Machined 3x4 numeric keys for touch money entry; reports each key and leaves editing to the caller.',
+    Drizzle: 'Eight-tick loading indicator lighting in sequence; labelled as a status or decorative.',
+  },
 };
 export const storySlug = name => name === 'ToastProvider' ? 'toast' : name.toLowerCase();

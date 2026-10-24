@@ -88,6 +88,8 @@
     "@babel/preset-react": "7.29.7",
     "@babel/preset-typescript": "7.29.7",
     "@serein-ui/fonts": "workspace:*",
+    "@serein-ui/format": "workspace:*",
+    "@serein-ui/icons": "workspace:*",
     "@serein-ui/tokens": "workspace:*",
     "@storybook/addon-a11y": "10.6.0",
     "@storybook/addon-docs": "10.6.0",

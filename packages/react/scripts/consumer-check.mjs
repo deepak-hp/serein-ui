@@ -4,9 +4,10 @@ import { lstat, mkdir, readFile, readdir, realpath, rm, writeFile } from 'node:f
 import { createRequire } from 'node:module';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { findNpmCli } from './npm-cli.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const npmCli = process.env.npm_execpath;
+const npmCli = findNpmCli();
 const node = process.execPath;
 const consumerDirectory = join(root, '.consumer-check');
 const cacheDirectory = join(root, '.npm-cache');

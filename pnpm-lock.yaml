@@ -87,6 +87,12 @@ importers:
       '@serein-ui/fonts':
         specifier: workspace:*
         version: link:../fonts
+      '@serein-ui/format':
+        specifier: workspace:*
+        version: link:../format
+      '@serein-ui/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@serein-ui/tokens':
         specifier: workspace:*
         version: link:../tokens

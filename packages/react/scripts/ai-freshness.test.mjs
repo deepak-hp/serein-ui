@@ -30,10 +30,11 @@ test('AI freshness ignores LF/CRLF differences and rejects stale or unexpected e
     let result = await check();
     assert.equal(result.code, 0, result.output);
 
-    await writeFile(mirror, `${original}\n// stale mirror regression fixture\n`);
+    // The examples are source files now; editing one without rebuilding must make the contract stale.
+    await writeFile(mirror, `${original}\n// stale example regression fixture\n`);
     result = await check();
     assert.notEqual(result.code, 0);
-    assert.match(result.output, /AI example is stale: Shell\.tsx/);
+    assert.match(result.output, /AI contract is stale/);
   } finally {
     await writeFile(mirror, original);
   }

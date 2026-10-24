@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { lstat, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { findNpmCli } from './npm-cli.mjs';
 
 const scriptPath = fileURLToPath(import.meta.url);
 const trialRoot = resolve(join(scriptPath, '..', '..'));
@@ -57,8 +58,8 @@ export async function ensureOutputDirectory(outputDir, root = trialRoot) {
 }
 
 function npmCli() {
-  if (!process.env.npm_execpath) throw new Error('Run through npm so npm_execpath is available.');
-  return process.env.npm_execpath;
+  if (!findNpmCli()) throw new Error('Run through npm so npm_execpath is available.');
+  return findNpmCli();
 }
 
 function runNpm(args, capture = false) {

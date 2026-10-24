@@ -57,14 +57,18 @@ try {
   }
 
   await mkdir(outputDirectory, { recursive: true });
+  // Runtime and peer dependencies stay external; unpublished workspace helpers (@serein-ui/format, @serein-ui/icons) are bundled.
+  const manifest = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
+  const externalPackages = Object.keys({ ...manifest.dependencies, ...manifest.peerDependencies });
   await build({
     entryPoints: [join(temporaryDirectory, 'index.js')],
     outfile: join(outputDirectory, 'index.js'),
     bundle: true,
     format: 'esm',
     platform: 'browser',
+    nodePaths: [join(root, 'node_modules')], // the transformed sources live in a temp directory; resolve bundled workspace helpers from this package
     target: 'es2022',
-    packages: 'external',
+    external: externalPackages.flatMap(name => [name, `${name}/*`]),
     banner: { js: '"use client";' },
   });
 

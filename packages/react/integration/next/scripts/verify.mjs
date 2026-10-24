@@ -135,7 +135,7 @@ async function main() {
       );
       assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
       const lightBackground = await page.locator('body').evaluate((element) => getComputedStyle(element).backgroundColor);
-      assert.equal(lightBackground, 'rgb(255, 255, 255)');
+      assert.equal(lightBackground, 'rgb(243, 243, 241)'); // --sr-color-surface, light
       await runAxe(page, 'light');
 
       const themeButton = page.getByRole('button', { name: 'Use dark theme' });
@@ -143,7 +143,7 @@ async function main() {
       await themeButton.press('Enter');
       assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
       const darkBackground = await page.locator('body').evaluate((element) => getComputedStyle(element).backgroundColor);
-      assert.equal(darkBackground, 'rgb(16, 17, 19)');
+      assert.equal(darkBackground, 'rgb(11, 12, 14)'); // --sr-color-surface, dark
       await runAxe(page, 'dark');
 
       const name = page.getByRole('textbox', { name: 'Workspace name' });

@@ -26,3 +26,5 @@ export { Calendar } from './calendar';
 export type { CalendarProps, DateRangeValue } from './calendar';
 export { DatePicker, DateRangePicker } from './date-pickers';
 export type { DatePickerProps, DateRangePickerProps } from './date-pickers';
+export { Readout, Tape, Gauge, Meter, RainChart, Keypad, Drizzle } from './measurement';
+export type { ReadoutProps, TapeProps, GaugeProps, MeterProps, RainChartProps, KeypadProps, KeypadKey, DrizzleProps } from './measurement';

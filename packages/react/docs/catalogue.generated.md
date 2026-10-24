@@ -1,6 +1,6 @@
 # Component catalogue
 
-42 exported React components (including ToastProvider) and 2 hooks. All entries below are implemented and have Storybook examples. This is an MIT-licensed React web library; npm registry publication is deferred and release accessibility review remains open.
+49 exported React components (including ToastProvider) and 2 hooks. All entries below are implemented and have Storybook examples. This is an MIT-licensed React web library; npm registry publication is deferred and release accessibility review remains open.
 
 ## Actions
 
@@ -68,6 +68,18 @@
 | [EmptyState](/docs/components-emptystate--docs) | Empty content explanation with an optional real action. |
 | [StatusIcon](/docs/components-statusicon--docs) | Decorative async state icon; always pair with meaningful text. |
 | [ToastProvider](/docs/components-toast--docs) | Notification queue and live announcements, used with useToast. |
+
+## Measurement
+
+| Component | Supported behaviour |
+| --- | --- |
+| [Readout](/docs/components-readout--docs) | Money or key figure as an instrument display with muted currency and fraction; reads as the full formatted amount. |
+| [Tape](/docs/components-tape--docs) | Decorative amount ruler sliding under a fixed needle, with a hatched over-limit zone. |
+| [Gauge](/docs/components-gauge--docs) | Vertical graduated rain-gauge tube exposed as a meter, with an optional dashed limit. |
+| [Meter](/docs/components-meter--docs) | Horizontal graduated bar with the Gauge props and meter semantics. |
+| [RainChart](/docs/components-rainchart--docs) | Daily values as precipitation bars with highlight, future stubs, average line and axis labels. |
+| [Keypad](/docs/components-keypad--docs) | Machined 3x4 numeric keys for touch money entry; reports each key and leaves editing to the caller. |
+| [Drizzle](/docs/components-drizzle--docs) | Eight-tick loading indicator lighting in sequence; labelled as a status or decorative. |
 
 ## Hooks
 

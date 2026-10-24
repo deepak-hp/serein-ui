@@ -13,6 +13,7 @@ import {
 } from 'node:fs/promises';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { findNpmCli } from './npm-cli.mjs';
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const defaultRepositoryRoot = dirname(scriptDirectory);
@@ -112,13 +113,13 @@ export async function createApp(destinationInput, options = {}) {
   const repositoryRoot = options.repositoryRoot ?? defaultRepositoryRoot;
   const templateDirectory = options.templateDirectory ?? join(repositoryRoot, 'starter-template');
   const install = options.install ?? true;
-  const runner = options.runner ?? npmRunner(options.npmExecPath ?? process.env.npm_execpath);
+  const runner = options.runner ?? npmRunner(options.npmExecPath ?? findNpmCli());
   const npmCache = join(repositoryRoot, '.npm-cache');
 
   await destinationState(destination);
   const name = projectName(destination);
 
-  runner(process.execPath, [options.npmExecPath ?? process.env.npm_execpath, '--cache', npmCache, 'run', 'build'], {
+  runner(process.execPath, [options.npmExecPath ?? findNpmCli(), '--cache', npmCache, 'run', 'build'], {
     cwd: repositoryRoot,
     stdio: 'inherit',
   });
@@ -133,7 +134,7 @@ export async function createApp(destinationInput, options = {}) {
 
   const vendorDirectory = join(destination, 'vendor');
   await mkdir(vendorDirectory);
-  const packed = runner(process.execPath, [options.npmExecPath ?? process.env.npm_execpath, '--cache', npmCache, 'pack', '--json', '--pack-destination', vendorDirectory], {
+  const packed = runner(process.execPath, [options.npmExecPath ?? findNpmCli(), '--cache', npmCache, 'pack', '--json', '--pack-destination', vendorDirectory], {
     cwd: repositoryRoot,
     stdio: 'pipe',
   });
@@ -146,7 +147,7 @@ export async function createApp(destinationInput, options = {}) {
 
   if (!install) return destination;
   try {
-    runner(process.execPath, [options.npmExecPath ?? process.env.npm_execpath, '--cache', npmCache, 'install', '--ignore-scripts'], {
+    runner(process.execPath, [options.npmExecPath ?? findNpmCli(), '--cache', npmCache, 'install', '--ignore-scripts'], {
       cwd: destination,
       stdio: 'inherit',
     });
