@@ -1,6 +1,6 @@
 # @serein-ui/native
 
-Serein for React Native and Expo. Components share their names and props with `@serein-ui/react`; tokens come from `@serein-ui/tokens`, money formatting from `@serein-ui/format` and fonts from `@serein-ui/fonts`. Status: early (Phase 2 parity has started). Built and tested against Expo SDK 57 (React Native 0.86, New Architecture).
+Serein for React Native and Expo. Components share their names and props with `@serein-ui/react`; tokens come from `@serein-ui/tokens`, money formatting from `@serein-ui/format` and fonts from `@serein-ui/fonts`. Status: early (Phase 2 parity has started). Built and tested against Expo SDK 58 (React Native 0.88, New Architecture).
 
 ## Use
 
@@ -17,7 +17,7 @@ export default function App() {
 }
 ```
 
-Peer dependencies: `react`, `react-native` (0.86 or later) and `expo-font`.
+Peer dependencies: `react` (19.3 or later), `react-native` (0.88 or later) and `expo-font`.
 
 ## What's here
 
