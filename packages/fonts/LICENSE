@@ -1,0 +1,5 @@
+The font files in this package (Anek Latin and Chivo Mono) are licensed under
+the SIL Open Font License, Version 1.1. The full licence text is in OFL.txt.
+
+The build script and generated CSS are part of Serein and are available under
+the MIT License: https://github.com/deepak-hp/serein-ui/blob/main/LICENSE

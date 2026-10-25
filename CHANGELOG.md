@@ -1,8 +1,27 @@
 # Changelog
 
-All notable beta changes are recorded here. The package has not yet been published to npm.
+All notable changes are recorded here. Each package also has a generated `CHANGELOG.md`.
 
-## Unreleased — Serein foundations merge
+## 0.1.0 — first npm release
+
+The first registry release of all six packages, on the default `latest` tag: `@serein-ui/react`, `@serein-ui/tokens`, `@serein-ui/css`, `@serein-ui/fonts`, `@serein-ui/format` and `@serein-ui/icons`. Pre-1.0: minor versions may change the API, and changes are recorded here. This is not a WCAG conformance claim. The manual screen-reader, zoom and disabled-user reviews in [the release checklist](docs/RELEASE-CHECKLIST.md) are still open.
+
+Changes since `0.1.0-beta.1`:
+
+- Every web component now follows the Serein design language in both themes. See the [design alignment audit](docs/audits/2026-10-25-design-alignment.md).
+  - Type follows the Serein scale.
+  - Selection marks are ink, and segmented controls are a raised key on a sunken track.
+  - The vermilion signal is kept for actions, needles and today.
+  - Drizzle replaces the spinners, focus rings sit 2px off, and machined corners replace pills.
+- New `color.scrim` token for modal backdrops.
+- Upgraded `@base-ui/react` to 1.9.0.
+- Added publish metadata, READMEs and licence files to the tokens, css, fonts, format and icons packages.
+- The package check compares licence text regardless of line endings.
+- The Next.js consumer fixture follows the library's declared version.
+
+The Serein foundations merge, listed below, also ships in this release.
+
+## Serein foundations merge
 
 - **Breaking (beta):** new visual language, "precision instrument": vermilion signal with dark text, Anek Latin and Chivo Mono (bundled, OFL), machined corners, solid materials. Plus Jakarta Sans is no longer used.
 - **Breaking (beta):** theme API is `data-theme` on `<html>` (system preference when omitted) and `sr-theme` on `<body>`; every `--dp-*` variable and `dp-*` class is now `--sr-*` / `sr-*`. Import `@serein-ui/react/fonts.css` before `styles.css`.

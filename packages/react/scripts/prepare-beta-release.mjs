@@ -7,13 +7,13 @@ import { findNpmCli } from './npm-cli.mjs';
 
 const scriptPath = fileURLToPath(import.meta.url);
 const trialRoot = resolve(join(scriptPath, '..', '..'));
-const approvedVersion = '0.1.0-beta.1';
-const approvedTag = 'v0.1.0-beta.1';
+const approvedVersion = '0.1.0';
+const approvedTag = 'v0.1.0';
 
 export function validatePackageMetadata(pkg) {
   if (pkg.version !== approvedVersion) throw new Error(`Package version must be ${approvedVersion}.`);
-  if (pkg.publishConfig?.access !== 'public' || pkg.publishConfig?.tag !== 'beta') {
-    throw new Error('Package publishConfig must be public access with the beta tag.');
+  if (pkg.publishConfig?.access !== 'public' || pkg.publishConfig?.tag !== undefined) {
+    throw new Error('Package publishConfig must be public access on the default latest tag.');
   }
   if (pkg.name !== '@serein-ui/react') throw new Error('Package name must be @serein-ui/react.');
   if (!pkg.repository?.url) throw new Error('Package repository URL is required.');
@@ -22,7 +22,7 @@ export function validatePackageMetadata(pkg) {
 export function buildSourceMetadata(input) {
   if (!/^[0-9a-f]{40}$/.test(input.sourceCommit)) throw new Error('sourceCommit must be a full Git SHA.');
   if (!/^[0-9a-f]{64}$/.test(input.sha256)) throw new Error('sha256 must be a SHA-256 digest.');
-  if (input.version !== approvedVersion || input.proposedTag !== approvedTag) throw new Error('Package version and proposed tag must match the approved beta.');
+  if (input.version !== approvedVersion || input.proposedTag !== approvedTag) throw new Error('Package version and proposed tag must match the approved release.');
   return {
     unsigned: true,
     package: input.packageName,
@@ -93,7 +93,7 @@ export async function prepareBetaRelease(outputArg) {
   const pkg = JSON.parse(await readFile(join(trialRoot, 'package.json'), 'utf8'));
   validatePackageMetadata(pkg);
   const sourceCommit = git(['rev-parse', 'HEAD']);
-  const outputDir = await ensureOutputDirectory(outputArg ?? join(trialRoot, '.review', `beta-release-${sourceCommit.slice(0, 7)}`));
+  const outputDir = await ensureOutputDirectory(outputArg ?? join(trialRoot, '.review', `release-${pkg.version}-${sourceCommit.slice(0, 7)}`));
 
   runNpm(['run', 'build']);
   runNpm(['run', 'check:package']);
@@ -116,7 +116,7 @@ export async function prepareBetaRelease(outputArg) {
   await writeFile(join(outputDir, 'SHA256SUMS'), `${digest}  ${packed[0].filename}\n`);
   await writeFile(join(outputDir, 'SOURCE.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   assertCleanTrackedSource();
-  console.log(`Prepared unsigned beta archive: ${archivePath}`);
+  console.log(`Prepared unsigned release archive: ${archivePath}`);
   return { outputDir, archivePath, metadata };
 }
 

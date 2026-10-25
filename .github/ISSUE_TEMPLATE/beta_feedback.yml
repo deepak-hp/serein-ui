@@ -11,7 +11,7 @@ body:
     attributes:
       label: Candidate and install provenance
       description: Package version, source commit, tarball filename and SHA-256, or verified registry version.
-      placeholder: "0.1.0-beta.1; commit …; serein-ui-react-0.1.0-beta.1.tgz; SHA-256 …"
+      placeholder: "@serein-ui/react@0.1.0 from npm, or commit … and tarball SHA-256 …"
     validations:
       required: true
   - type: textarea

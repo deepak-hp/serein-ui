@@ -1,6 +1,6 @@
 # Repository handoff
 
-Display name: **Serein**. GitHub prerelease package: `@serein-ui/react@0.1.0-beta.1`; npm publication remains deferred. Repository: [deepak-hp/serein-ui](https://github.com/deepak-hp/serein-ui).
+Display name: **Serein**. Packages: `@serein-ui/*` at `0.1.0`, published to npm by the owner (see [RELEASING.md](RELEASING.md)). Repository: [deepak-hp/serein-ui](https://github.com/deepak-hp/serein-ui).
 
 The active library and package were renamed from Ritam UI and `@ritam-ui/react` to Serein and `@serein-ui/react` on 13 October 2026. The repository is now `deepak-hp/serein-ui`; frozen evaluation materials and earlier verification entries retain the old name so their evidence remains accurate.
 

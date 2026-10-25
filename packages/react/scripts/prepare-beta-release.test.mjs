@@ -14,11 +14,11 @@ import { resolvePackageTarball, cleanupPackageTarball, validateSuppliedTarball }
 test('source metadata contains exact archive integrity and no local paths', () => {
   const metadata = buildSourceMetadata({
     packageName: '@serein-ui/react',
-    version: '0.1.0-beta.1',
+    version: '0.1.0',
     sourceCommit: '0123456789abcdef0123456789abcdef01234567',
-    proposedTag: 'v0.1.0-beta.1',
+    proposedTag: 'v0.1.0',
     repositoryURL: 'https://github.com/deepak-hp/serein-ui',
-    archiveName: 'serein-ui-react-0.1.0-beta.1.tgz',
+    archiveName: 'serein-ui-react-0.1.0.tgz',
     sha256: 'a'.repeat(64),
     nodeVersion: 'v24.19.0',
     npmVersion: '10.8.1',
@@ -29,9 +29,10 @@ test('source metadata contains exact archive integrity and no local paths', () =
   assert.doesNotMatch(JSON.stringify(metadata), /[A-Z]:\\|node_modules|npm_config|TOKEN|SECRET/i);
 });
 
-test('package metadata rejects a version or tag that is not the approved beta', () => {
-  assert.throws(() => validatePackageMetadata({ version: '0.1.0', publishConfig: { access: 'public', tag: 'beta' } }), /version/i);
-  assert.throws(() => validatePackageMetadata({ version: '0.1.0-beta.1', publishConfig: { access: 'restricted', tag: 'beta' } }), /publishConfig/i);
+test('package metadata rejects a version or tag that is not the approved release', () => {
+  assert.throws(() => validatePackageMetadata({ version: '0.1.0-beta.1', publishConfig: { access: 'public' } }), /version/i);
+  assert.throws(() => validatePackageMetadata({ version: '0.1.0', publishConfig: { access: 'restricted' } }), /publishConfig/i);
+  assert.throws(() => validatePackageMetadata({ version: '0.1.0', publishConfig: { access: 'public', tag: 'beta' } }), /publishConfig/i);
 });
 
 test('source preparation rejects any nonempty Git status, including untracked files', () => {

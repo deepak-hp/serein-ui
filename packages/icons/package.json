@@ -1,9 +1,14 @@
 {
   "name": "@serein-ui/icons",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Serein icon set: 20px grid, 1.5px stroke, square caps.",
   "type": "module",
   "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/deepak-hp/serein-ui.git", "directory": "packages/icons" },
+  "homepage": "https://github.com/deepak-hp/serein-ui/tree/main/packages/icons#readme",
+  "bugs": { "url": "https://github.com/deepak-hp/serein-ui/issues" },
+  "keywords": ["serein", "design-system", "icons", "svg", "react"],
+  "publishConfig": { "access": "public" },
   "sideEffects": false,
   "files": ["dist"],
   "exports": {

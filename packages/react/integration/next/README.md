@@ -1,6 +1,6 @@
 # Next.js App Router consumer fixture
 
-This internal integration fixture installs `@serein-ui/react@0.1.0-beta.1` from a real npm archive. Default setup builds and packs the current library source; the recorded validation run used the separate frozen reviewed-archive mode. Neither mode uses a source alias, and neither is external beta-adoption evidence.
+This internal integration fixture installs `@serein-ui/react` from a real npm archive of the version the library declares. Default setup builds and packs the current library source; the recorded validation run used the separate frozen reviewed-archive mode. Neither mode uses a source alias, and neither is external beta-adoption evidence.
 
 ## Reproduce
 

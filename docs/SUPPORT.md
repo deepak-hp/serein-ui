@@ -1,8 +1,8 @@
 # Support and compatibility
 
-Serein `0.1.0-beta.1` is a prerelease React web component library. Support covers the packaged JavaScript, type declarations, compiled CSS and documented React APIs. It does not cover React Native, native mobile or desktop widgets, other UI frameworks, an application backend, or the accessibility of a consuming product's complete process.
+Serein `0.1.0` is a pre-1.0 React web component library. Support covers the packaged JavaScript, type declarations, compiled CSS and documented React APIs. It does not cover React Native, native mobile or desktop widgets, other UI frameworks, an application backend, or the accessibility of a consuming product's complete process.
 
-The reviewed GitHub prerelease archive is available from [v0.1.0-beta.1](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1); verify its checksum and use the procedure in [BETA-EVALUATION.md](BETA-EVALUATION.md). npm publication remains deferred, with local tarballs available as a fallback.
+Install it from npm with `npm install @serein-ui/react`. The earlier [v0.1.0-beta.1](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) GitHub archive stays available, but it has the previous visual design.
 
 ## Package and toolchain
 
@@ -52,8 +52,8 @@ Serein does not carry an accessibility certification or a WCAG/EAA conformance c
 
 The release gate includes DOM-free server rendering and Chromium hydration of all public exports on Node 24. Serein does not provide a backend, authentication, data storage or cross-device synchronization. Reference-app `localStorage`, latency and failure controls are demonstration behavior; consumers must test their actual service, persistence and recovery paths.
 
-## Beta changes and reports
+## Changes and reports
 
-Prerelease APIs may change when beta evidence reveals a defect. Changes should remain focused, typed and documented; breaking changes require release notes and a migration path before stable 1.0. Pin the exact beta version or tarball checksum in evaluated applications.
+Before 1.0, a minor version may change APIs when evidence reveals a defect. Changes should remain focused, typed and documented; breaking changes require release notes and a migration path before stable 1.0. Pin an exact version in applications you are evaluating.
 
 Use the repository's bug form for a reproducible defect and the [beta feedback form](../.github/ISSUE_TEMPLATE/beta_feedback.yml) for integration observations. Suspected vulnerabilities and reports containing sensitive details must use the private channel documented in [SECURITY.md](../SECURITY.md), not a public issue. Never include credentials, customer data, personal birth information or proprietary source in a report.

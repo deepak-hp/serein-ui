@@ -1,5 +1,7 @@
 # Serein beta evaluation kit
 
+> This kit documents the `0.1.0-beta.1` GitHub archive. From `0.1.0`, install from npm with `npm install @serein-ui/react`; the feedback questions below still apply.
+
 Serein `0.1.0-beta.1` needs feedback from real people integrating the React web package into real applications. The repository's reference app, automated tests and frozen AI comparison are internal evidence; they are not external adoption, usability or accessibility validation.
 
 The 14 October maintainer work adds [focused browser accessibility checks](validation/2026-10-14-accessibility.md), a [separate Next.js consumer](validation/2026-10-14-next-consumer.md), and a [fresh four-attempt AI task](validation/2026-10-14-ai-trial.md). Reviewers can use these reproductions as background; they do not satisfy the external-reviewer or native-device criteria below.
