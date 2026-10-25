@@ -7,6 +7,7 @@ All notable beta changes are recorded here. The package has not yet been publish
 - **Breaking (beta):** new visual language, "precision instrument": vermilion signal with dark text, Anek Latin and Chivo Mono (bundled, OFL), machined corners, solid materials. Plus Jakarta Sans is no longer used.
 - **Breaking (beta):** theme API is `data-theme` on `<html>` (system preference when omitted) and `sr-theme` on `<body>`; every `--dp-*` variable and `dp-*` class is now `--sr-*` / `sr-*`. Import `@serein-ui/react/fonts.css` before `styles.css`.
 - The repository is a pnpm monorepo: `trial/` moved to `packages/react`, and new `@serein-ui/tokens` (DTCG 2025.10 source in `tokens/`, contrast-tested; CSS, JS, JSON, Tailwind v4, Swift, Kotlin), `@serein-ui/fonts`, `@serein-ui/css`, `@serein-ui/icons` and `@serein-ui/format` packages.
+- New `@serein-ui/native` for React Native / Expo (SDK 58): `SereinProvider` (system, light or dark), `useSereinFonts`, Button, TextField, Switch and Readout, plus `apps/native-playground`. `@serein-ui/fonts` now also ships static TTFs under `native/`.
 - New measurement components: Readout, Tape, Gauge, Meter, RainChart, Keypad and Drizzle, with a Send money pattern.
 - Storybook is the single documentation site, with new Foundations pages. The reference app, design studio, catalogue site and evaluation runs were retired (kept in git history).
 - Navigation surface materials are always opaque (no blur).
