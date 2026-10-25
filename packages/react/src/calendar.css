@@ -1,21 +1,22 @@
-.sr-calendar { position: relative; width: 100%; max-width: 336px; color: var(--sr-color-ink); font-family: var(--sr-font-family-sans); font-size: 14px; }
+.sr-calendar { position: relative; width: 100%; max-width: 336px; color: var(--sr-color-ink); font-family: var(--sr-font-family-sans); font-size: 15px; line-height: 22px; }
 .sr-calendar .rdp-months, .sr-calendar .rdp-month { width: 100%; min-width: 0; }
-.sr-calendar .rdp-month_caption { display: flex; align-items: center; min-height: 44px; padding-right: 96px; margin-bottom: 8px; font-size: 16px; font-weight: 650; line-height: 1.4; }
+.sr-calendar .rdp-month_caption { display: flex; align-items: center; min-height: 44px; padding-right: 96px; margin-bottom: 8px; font-size: 17px; font-weight: 600; line-height: 24px; }
 .sr-calendar .rdp-nav { position: absolute; top: 0; right: 0; display: flex; gap: 4px; height: 44px; }
 .sr-calendar button { min-width: 24px; min-height: 24px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
 .sr-calendar .rdp-button_previous, .sr-calendar .rdp-button_next { width: 44px; height: 44px; display: inline-grid; place-items: center; border-radius: var(--sr-radius-control); }
 .sr-calendar .rdp-chevron { width: 18px; height: 18px; fill: currentColor; }
 .sr-calendar .rdp-month_grid { width: 100%; table-layout: fixed; border-collapse: collapse; }
-.sr-calendar .rdp-weekday { padding: 8px 0; color: var(--sr-color-ink-muted); font-size: 12px; font-weight: 600; text-align: center; }
+.sr-calendar .rdp-weekday { padding: 8px 0; color: var(--sr-color-ink-muted); font-family: var(--sr-font-family-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; text-align: center; }
 .sr-calendar .rdp-day { width: 14.2857%; height: 44px; padding: 2px 0; text-align: center; }
-.sr-calendar .rdp-day_button { width: 100%; max-width: 40px; height: 40px; border-radius: var(--sr-radius-tag); }
-.sr-calendar button:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--sr-color-signal-soft); }
-.sr-calendar .rdp-selected .rdp-day_button { background: var(--sr-color-signal); color: var(--sr-color-on-signal); font-weight: 650; }
-.sr-calendar .rdp-selected .rdp-day_button:hover:not(:disabled) { background: var(--sr-color-signal-hover); color: var(--sr-color-on-signal); }
-.sr-calendar .rdp-range_middle { background: var(--sr-color-signal-soft); }
+.sr-calendar .rdp-day_button { width: 100%; max-width: 40px; height: 40px; border-radius: var(--sr-radius-tag); font-variant-numeric: tabular-nums; }
+.sr-calendar button:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--sr-color-surface-hover); }
+/* Selected days are ink keys, like every other selection mark; the signal marks only today. */
+.sr-calendar .rdp-selected .rdp-day_button { background: var(--sr-color-ink); color: var(--sr-color-surface-raised); font-weight: 600; }
+.sr-calendar .rdp-selected .rdp-day_button:hover:not(:disabled) { background: var(--sr-color-ink); color: var(--sr-color-surface-raised); }
+.sr-calendar .rdp-range_middle { background: var(--sr-color-surface-sunken); }
 .sr-calendar .rdp-range_middle .rdp-day_button { background: transparent; color: var(--sr-color-ink); font-weight: 400; border-radius: 0; }
-.sr-calendar .rdp-range_middle .rdp-day_button:hover:not(:disabled) { background: var(--sr-color-signal-soft); color: var(--sr-color-ink); }
-.sr-calendar .rdp-today:not(.rdp-selected) .rdp-day_button { outline: 1px solid var(--sr-color-signal-ink); outline-offset: -3px; font-weight: 650; }
+.sr-calendar .rdp-range_middle .rdp-day_button:hover:not(:disabled) { background: var(--sr-color-surface-hover); color: var(--sr-color-ink); }
+.sr-calendar .rdp-today:not(.rdp-selected) .rdp-day_button { outline: 1px solid var(--sr-color-signal-ink); outline-offset: -3px; font-weight: 600; }
 .sr-calendar .rdp-disabled, .sr-calendar button[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
 .sr-calendar button:disabled { cursor: not-allowed; }
 .sr-calendar .rdp-hidden { visibility: hidden; }

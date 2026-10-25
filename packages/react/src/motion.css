@@ -6,15 +6,25 @@
 }
 
 .sr-status-icon--pending {
-  animation: sr-status-icon-pending 1.1s ease-in-out infinite;
+  animation: sr-status-icon-pending var(--sr-duration-rain) var(--sr-easing-standard) infinite;
 }
 
+/* Loading is the Drizzle in miniature: the graduations light in turn, nothing spins. */
 .sr-status-icon--loading.sr-status-icon--pending {
-  animation: sr-status-icon-spin .8s linear infinite;
+  animation: none;
 }
+
+.sr-status-icon--loading.sr-status-icon--pending .sr-status-icon__tick {
+  opacity: .22;
+  animation: sr-status-icon-tick var(--sr-duration-rain) linear infinite;
+}
+
+.sr-status-icon--loading.sr-status-icon--pending .sr-status-icon__tick:nth-child(2) { animation-delay: calc(var(--sr-duration-rain) * .25); }
+.sr-status-icon--loading.sr-status-icon--pending .sr-status-icon__tick:nth-child(3) { animation-delay: calc(var(--sr-duration-rain) * .5); }
+.sr-status-icon--loading.sr-status-icon--pending .sr-status-icon__tick:nth-child(4) { animation-delay: calc(var(--sr-duration-rain) * .75); }
 
 .sr-status-icon--send.sr-status-icon--pending {
-  animation: sr-status-icon-send 1.1s ease-in-out infinite;
+  animation: sr-status-icon-send var(--sr-duration-rain) var(--sr-easing-standard) infinite;
 }
 
 @keyframes sr-status-icon-send {
@@ -23,11 +33,11 @@
 }
 
 .sr-status-icon--success {
-  animation: sr-status-icon-success 360ms cubic-bezier(.2, .8, .2, 1) 1 both;
+  animation: sr-status-icon-success var(--sr-duration-slow) var(--sr-easing-settle) 1 both;
 }
 
 .sr-status-icon--error {
-  animation: sr-status-icon-error 280ms ease-out 1 both;
+  animation: sr-status-icon-error var(--sr-duration-slow) var(--sr-easing-standard) 1 both;
 }
 
 @keyframes sr-status-icon-pending {
@@ -40,8 +50,10 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes sr-status-icon-spin {
-  to { transform: rotate(360deg); }
+@keyframes sr-status-icon-tick {
+  0%, 100% { opacity: .22; }
+  12% { opacity: 1; }
+  40% { opacity: .22; }
 }
 
 @keyframes sr-status-icon-error {
@@ -53,10 +65,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .sr-status-icon--pending,
-  .sr-status-icon--loading.sr-status-icon--pending,
   .sr-status-icon--send.sr-status-icon--pending,
   .sr-status-icon--success,
   .sr-status-icon--error {
+    animation: none;
+  }
+
+  .sr-status-icon--loading.sr-status-icon--pending .sr-status-icon__tick {
+    opacity: .6;
     animation: none;
   }
 }

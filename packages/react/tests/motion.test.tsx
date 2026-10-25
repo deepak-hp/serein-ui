@@ -31,13 +31,12 @@ describe('StatusIcon', () => {
     expect(icon?.querySelector('rect')).not.toBeNull();
   });
 
-  it('renders a partial-circle loader for generic pending work', () => {
+  it('renders a four-tick drizzle for generic pending work', () => {
     const { container } = render(<StatusIcon state="pending" kind="loading" />);
     const icon = container.querySelector('svg');
 
     expect(icon).toHaveClass('sr-status-icon--loading');
-    expect(icon?.querySelector('circle')).not.toBeNull();
-    expect(icon?.querySelector('path')).not.toBeNull();
+    expect(icon?.querySelectorAll('.sr-status-icon__tick')).toHaveLength(4);
   });
 });
 

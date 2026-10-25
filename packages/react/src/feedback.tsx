@@ -2,11 +2,11 @@ import { useEffect, useId, useState, type ComponentProps, type ReactNode } from 
 import * as stylex from '@stylexjs/stylex';
 import { Toast as BaseToast } from '@base-ui/react/toast';
 import { Button } from './components';
+import { Drizzle } from './measurement';
 
-const spin = stylex.keyframes({ from: { transform: 'rotate(0deg)' }, to: { transform: 'rotate(360deg)' } });
 const pulse = stylex.keyframes({ '0%, 100%': { opacity: 1 }, '50%': { opacity: 0.55 } });
 const s = stylex.create({
-  badge: { whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '3px 8px', borderWidth: 0, borderStyle: 'solid', borderRadius: 'var(--sr-radius-tag)', fontSize: 12, fontWeight: 600, lineHeight: 1.5 },
+  badge: { whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: 6, padding: '3px 8px', borderWidth: 0, borderStyle: 'solid', borderRadius: 'var(--sr-radius-tag)', fontSize:12, fontWeight:500, lineHeight:'16px' },
   badgeNeutral: { color: 'var(--sr-color-ink)', backgroundColor: 'var(--sr-color-surface-raised)' },
   badgeSuccess: { color: 'var(--sr-color-success)', backgroundColor: 'var(--sr-color-success-soft)' },
   badgeError: { color: 'var(--sr-color-danger)', backgroundColor: 'var(--sr-color-danger-soft)' },
@@ -17,18 +17,18 @@ const s = stylex.create({
   warning: { color: 'var(--sr-color-warning)' },
   panel: { padding: 20, borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line)', borderRadius: 'var(--sr-radius-panel)', color: 'var(--sr-color-ink)', backgroundColor: 'var(--sr-color-surface-overlay)', boxShadow: 'var(--sr-shadow-raised)', minWidth: 0, overflowWrap: 'anywhere' },
   alert: { display: 'flex', gap: 12, alignItems: 'flex-start', backgroundColor: 'var(--sr-color-surface-raised)' },
-  title: { margin: '0 0 6px', fontSize: 16, fontWeight: 650, lineHeight: 1.4 },
-  body: { fontSize: 14, lineHeight: 1.7, color: 'var(--sr-color-ink-muted)', margin: 0 },
-  avatar: { width: 40, height: 40, borderRadius: '50%', display: 'inline-grid', placeItems: 'center', flexShrink: 0, overflow: 'hidden', backgroundColor: 'var(--sr-color-signal-soft)', color: 'var(--sr-color-ink)', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line-strong)', fontSize: 14, fontWeight: 650 },
+  title: { margin: '0 0 6px', fontSize:17, fontWeight:600, lineHeight:'24px' },
+  body: { fontSize:15, lineHeight:'22px', color: 'var(--sr-color-ink-muted)', margin: 0 },
+  // Avatars are machined tiles, the same in both themes; the signal is not decoration.
+  avatar: { width: 40, height: 40, borderRadius: 'var(--sr-radius-control)', display: 'inline-grid', placeItems: 'center', flexShrink: 0, overflow: 'hidden', backgroundColor: 'var(--sr-color-surface-sunken)', color: 'var(--sr-color-ink)', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line)', fontSize:13, lineHeight:'18px', fontWeight:500 },
   image: { width: '100%', height: '100%', objectFit: 'cover' },
-  separator: { margin: '20px 0', borderWidth: 0, borderTopWidth: 1, borderTopStyle: 'solid', borderTopColor: 'var(--sr-color-line)' },
+  separator: { margin: '20px 0', color: 'var(--sr-color-line)', borderWidth: 0, borderStyle: 'solid', borderColor: 'var(--sr-color-line)', borderTopWidth: 1 },
   skeleton: { display: 'block', borderRadius: 'var(--sr-radius-tag)', backgroundColor: 'var(--sr-color-line)', height: 16, animationName: { default: pulse, '@media (prefers-reduced-motion: reduce)': 'none' }, animationDuration: '1.6s', animationIterationCount: 'infinite', animationTimingFunction: 'ease-in-out' },
   sr: { position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clipPath: 'inset(50%)', whiteSpace: 'nowrap', borderWidth: 0 },
   progressField: { display: 'grid', gap: 8, minWidth: 0 },
-  progressLabels: { display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: 14, lineHeight: 1.5, color: 'var(--sr-color-ink)' },
+  progressLabels: { display: 'flex', justifyContent: 'space-between', gap: 12, fontSize:13, lineHeight:'18px', color: 'var(--sr-color-ink)' },
   progress: { width: '100%', height: 12, accentColor: 'var(--sr-color-signal-ink)' },
-  spinner: { width: 20, height: 20, display: 'inline-block', flexShrink: 0, color: 'var(--sr-color-signal-ink)', animationName: { default: spin, '@media (prefers-reduced-motion: reduce)': 'none' }, animationDuration: '900ms', animationIterationCount: 'infinite', animationTimingFunction: 'linear' },
-  status: { display: 'inline-flex', alignItems: 'center', gap: 10, color: 'var(--sr-color-ink)', fontSize: 14 },
+  status: { display: 'inline-flex', alignItems: 'center', gap: 10, color: 'var(--sr-color-ink)', fontSize:13, lineHeight:'18px' },
   empty: { padding: '40px 24px', textAlign: 'center', maxWidth: 560, marginInline: 'auto' },
   action: { marginTop: 20 },
   viewport: { position: 'fixed', bottom: 20, right: 20, width: 'min(380px, calc(100vw - 40px))', maxHeight: 'calc(100dvh - 40px)', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 12, zIndex: 120 },
@@ -80,7 +80,7 @@ export function Progress({ label, value, max = 100 }: ProgressProps) {
 }
 export type SpinnerProps = { label: string };
 export function Spinner({ label }: SpinnerProps) {
-  return <span role="status" {...stylex.props(s.status)}><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...stylex.props(s.spinner)}><path d="M12 3a9 9 0 1 1-9 9" strokeLinecap="round" /></svg><span>{label}</span></span>;
+  return <span role="status" {...stylex.props(s.status)}><Drizzle /><span>{label}</span></span>;
 }
 export type EmptyStateProps = { title: string; description: string; action?: ReactNode };
 export function EmptyState({ title, description, action }: EmptyStateProps) {

@@ -1,7 +1,7 @@
 import { DayPicker, TZDate, type DateRange } from '@daypicker/react';
 import * as stylex from '@stylexjs/stylex';
 
-const s = stylex.create({ field: { display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 }, label: { fontSize: 14, fontWeight: 600, color: 'var(--sr-color-ink)' } });
+const s = stylex.create({ field: { display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 }, label: { fontSize: 13, lineHeight: '18px', fontWeight: 500, color: 'var(--sr-color-ink)' } });
 
 export type CalendarProps = { label: string; value: string | null; onValueChange: (value: string | null) => void; defaultMonth?: string; min?: string; max?: string; disabledDates?: string[]; disabled?: boolean; today?: string; autoFocus?: boolean };
 export type CalendarRangeProps = Omit<CalendarProps, 'value' | 'onValueChange'> & { value: DateRangeValue; onValueChange: (value: DateRangeValue) => void };

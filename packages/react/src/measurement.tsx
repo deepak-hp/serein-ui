@@ -136,7 +136,8 @@ export function Gauge(props: GaugeProps) {
     <g {...stylex.props(s.growY)}><rect x={57} y={level} width={54} height={height - level} fill={`url(#${pattern})`} /><line x1={57} x2={111} y1={level} y2={level} shapeRendering="crispEdges" {...stylex.props(s.meniscus)} /></g>
     <path d={`M56.5 -6V${height - 0.5}H111.5V-6`} shapeRendering="crispEdges" {...stylex.props(s.tube)} />
     {Array.from({ length: units + 1 }, (_, k) => <line key={k} x1={50 - tickLength(k)} x2={50} y1={y(k) - 0.5} y2={y(k) - 0.5} shapeRendering="crispEdges" {...stylex.props(k % 10 === 0 ? s.tkMajor : s.tkMinor)} />)}
-    {Array.from({ length: Math.floor(units / 10) + 1 }, (_, i) => <text key={i} x={30} y={y(i * 10) - 0.5} textAnchor="end" dominantBaseline="central" {...stylex.props(s.tkText)}>{formatTick(i * 10 * unit)}</text>)}
+    {/* A tick label within one label height (16px) of the limit label would collide with it, so the limit wins. */}
+    {Array.from({ length: Math.floor(units / 10) + 1 }, (_, i) => i).filter(i => limit === undefined || Math.abs(y(i * 10) - 0.5 - limitY) >= 16).map(i => <text key={i} x={30} y={y(i * 10) - 0.5} textAnchor="end" dominantBaseline="central" {...stylex.props(s.tkText)}>{formatTick(i * 10 * unit)}</text>)}
     {limit !== undefined && <><line x1={34} x2={111} y1={limitY} y2={limitY} shapeRendering="crispEdges" {...stylex.props(s.limit)} /><text x={30} y={limitY} textAnchor="end" dominantBaseline="central" {...stylex.props(s.tkText, s.tkLimitText)}>{formatTick(limit)}</text></>}
   </svg></div>;
 }

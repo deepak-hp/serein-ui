@@ -1082,6 +1082,7 @@ export declare function useAsyncAction(action: (signal: AbortSignal) => Promise<
   --sr-color-surface-overlay: #ffffff;
   --sr-color-surface-hover: #f1f1ee;
   --sr-color-surface-pressed: #e6e6e2;
+  --sr-color-scrim: rgba(11, 12, 14, 0.48);
   --sr-color-ink: #0b0c0e;
   --sr-color-ink-muted: #575d66;
   --sr-color-line: #dfe0dd;
@@ -1115,6 +1116,7 @@ export declare function useAsyncAction(action: (signal: AbortSignal) => Promise<
     --sr-color-surface-overlay: #1a1d21;
     --sr-color-surface-hover: #1c1f23;
     --sr-color-surface-pressed: #24282d;
+    --sr-color-scrim: rgba(0, 0, 0, 0.64);
     --sr-color-ink: #f3f4f6;
     --sr-color-ink-muted: #9aa1ab;
     --sr-color-line: #24282e;
@@ -1148,6 +1150,7 @@ export declare function useAsyncAction(action: (signal: AbortSignal) => Promise<
   --sr-color-surface-overlay: #1a1d21;
   --sr-color-surface-hover: #1c1f23;
   --sr-color-surface-pressed: #24282d;
+  --sr-color-scrim: rgba(0, 0, 0, 0.64);
   --sr-color-ink: #f3f4f6;
   --sr-color-ink-muted: #9aa1ab;
   --sr-color-line: #24282e;

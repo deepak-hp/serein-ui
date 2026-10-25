@@ -63,8 +63,11 @@ function PaymentGlyph({ state }: Pick<StatusIconProps, 'state'>) {
 function LoadingGlyph({ state }: Pick<StatusIconProps, 'state'>) {
   if (state === 'success') return <path d="m5 12 4.2 4.2L19 6.5" />;
   if (state === 'error') return <path d="M7 7l10 10M17 7 7 17" />;
+  // Four drizzle graduations; they light in turn while pending (see motion.css).
   return <>
-    <circle cx="12" cy="12" r="7.5" opacity=".25" />
-    <path d="M12 4.5a7.5 7.5 0 0 1 7.5 7.5" />
+    <path className="sr-status-icon__tick" d="M6 5v14" />
+    <path className="sr-status-icon__tick" d="M10 11v8" />
+    <path className="sr-status-icon__tick" d="M14 5v14" />
+    <path className="sr-status-icon__tick" d="M18 11v8" />
   </>;
 }
