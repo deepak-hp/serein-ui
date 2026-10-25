@@ -3,7 +3,7 @@
 .navigation-material-example__header[data-sr-material="expressive"] { margin: 12px; border-radius: 12px; }
 .navigation-material-example__wordmark { display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
 .navigation-material-example__links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 20px; }
-.navigation-material-example__links a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-size: 14px; font-weight: 650; text-decoration: none; }
+.navigation-material-example__links a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-size: 15px; font-weight: 600; text-decoration: none; }
 .navigation-material-example__links a[aria-current="page"] { color: var(--sr-color-signal-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .navigation-material-example__content { padding: 48px 20px; }
 .navigation-material-example h1 { margin: 0 0 12px; font-size: 32px; letter-spacing: -.04em; }

@@ -1,16 +1,19 @@
 import { useState, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
+import { Drizzle } from './measurement';
 
 const s = stylex.create({
-  scroll: { overflowX: 'auto', maxWidth: '100%', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line)', borderRadius: 'var(--sr-radius-panel)', backgroundColor: 'var(--sr-color-surface-overlay)', boxShadow: 'var(--sr-shadow-raised)', ':focus-visible': { outline: '2px solid var(--sr-color-focus)', outlineOffset: 3 } },
-  table: { width: '100%', borderCollapse: 'collapse', color: 'var(--sr-color-ink)', fontSize: 14, lineHeight: 1.6, textAlign: 'left', fontVariantNumeric: 'tabular-nums' },
-  caption: { textAlign: 'left', padding: 16, fontWeight: 650, fontSize: 16 },
-  head: { backgroundColor: 'var(--sr-color-surface-raised)', fontWeight: 650, padding: '10px 16px', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line-strong)' },
+  scroll: { overflowX: 'auto', maxWidth: '100%', borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--sr-color-line)', borderRadius: 'var(--sr-radius-panel)', backgroundColor: 'var(--sr-color-surface-overlay)', boxShadow: 'var(--sr-shadow-raised)', ':focus-visible': { outline: '2px solid var(--sr-color-focus)', outlineOffset:'var(--sr-size-focus-offset)' } },
+  table: { width: '100%', borderCollapse: 'collapse', color: 'var(--sr-color-ink)', fontSize:15, lineHeight:'22px', textAlign: 'left', fontVariantNumeric: 'tabular-nums' },
+  caption: { textAlign: 'left', padding: 16, fontWeight:600, fontSize:17, lineHeight:'24px' },
+  // Column headers are labels of data: the measure style.
+  head: { backgroundColor: 'var(--sr-color-surface-raised)', color: 'var(--sr-color-ink-muted)', fontFamily: 'var(--sr-font-family-mono)', fontSize: 12, lineHeight: '16px', fontWeight: 400, letterSpacing: '0.04em', textTransform: 'uppercase', padding: '10px 16px', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line-strong)' },
   cell: { padding: '14px 16px', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line)', overflowWrap: 'anywhere' },
   lastCell: { borderBottomWidth: 0 },
   row: { ':hover': { backgroundColor: 'var(--sr-color-surface-raised)' } },
-  sort: { display: 'inline-flex', alignItems: 'center', gap: 8, minHeight: 36, padding: '4px 0', borderWidth: 0, backgroundColor: 'transparent', color: 'inherit', fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', cursor: 'pointer', textAlign: 'left' },
+  sort: { display: 'inline-flex', alignItems: 'center', gap: 8, minHeight: 36, padding: '4px 0', borderWidth: 0, backgroundColor: 'transparent', color: 'inherit', fontFamily: 'inherit', fontSize: 'inherit', lineHeight: 'inherit', fontWeight: 'inherit', letterSpacing: 'inherit', textTransform: 'inherit', cursor: 'pointer', textAlign: 'left' },
   empty: { textAlign: 'center', padding: 32, color: 'var(--sr-color-ink-muted)' },
+  loading: { display: 'inline-flex', alignItems: 'center', gap: 10 },
 });
 
 export type TableSort = { key: string; direction: 'asc' | 'desc' } | null;
@@ -49,7 +52,7 @@ export function DataTable<Row>({ caption, rows, columns, rowKey, sort: controlle
       <thead><tr>{columns.map(column => <th key={column.key} scope="col" aria-sort={column.sortValue ? sort?.key === column.key ? sort.direction === 'asc' ? 'ascending' : 'descending' : 'none' : undefined} {...stylex.props(s.head)}>
         {column.sortValue ? <button type="button" aria-label={`Sort by ${column.header}, ${sort?.key === column.key && sort.direction === 'asc' ? 'descending' : 'ascending'}`} onClick={() => changeSort(column.key)} {...stylex.props(s.sort)}>{column.header}<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d={sort?.key === column.key ? sort.direction === 'asc' ? 'm5 15 7-7 7 7' : 'm5 9 7 7 7-7' : 'm8 9 4-4 4 4M8 15l4 4 4-4'} /></svg></button> : column.header}
       </th>)}</tr></thead>
-      <tbody>{loading || !displayed.length ? <tr><td colSpan={Math.max(columns.length, 1)} {...stylex.props(s.empty)}>{loading ? 'Loading results…' : emptyMessage}</td></tr> : displayed.map((row, rowIndex) => <tr key={rowKey(row)} {...stylex.props(s.row)}>{columns.map(column => <td key={column.key} {...stylex.props(s.cell, rowIndex === displayed.length - 1 && s.lastCell)}>{column.cell(row)}</td>)}</tr>)}</tbody>
+      <tbody>{loading || !displayed.length ? <tr><td colSpan={Math.max(columns.length, 1)} {...stylex.props(s.empty)}>{loading ? <span {...stylex.props(s.loading)}><Drizzle />Loading results…</span> : emptyMessage}</td></tr> : displayed.map((row, rowIndex) => <tr key={rowKey(row)} {...stylex.props(s.row)}>{columns.map(column => <td key={column.key} {...stylex.props(s.cell, rowIndex === displayed.length - 1 && s.lastCell)}>{column.cell(row)}</td>)}</tr>)}</tbody>
     </table>
   </div>;
 }

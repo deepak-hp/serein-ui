@@ -74,6 +74,19 @@
       },
       "$description": "Pressed fill for neutral controls and menu items."
     },
+    "scrim": {
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0431,
+          0.0471,
+          0.0549
+        ],
+        "alpha": 0.48,
+        "hex": "#0b0c0e"
+      },
+      "$description": "Backdrop behind dialogs, drawers and the command palette. Never behind text you need to read."
+    },
     "ink": {
       "$value": {
         "colorSpace": "srgb",

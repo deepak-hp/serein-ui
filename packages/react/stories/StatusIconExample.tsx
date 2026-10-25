@@ -22,7 +22,7 @@ export function StatusIconExample({ motion, onMotionChange, ...icon }: Props) {
       <span style={{ color: colour, display: 'flex', alignItems: 'center' }}><StatusIcon key={`${icon.state}-${replay}`} {...icon} /></span>
       <span style={{ fontSize: 16, fontWeight: 600 }}>{labels[icon.state]}</span>
     </div>
-    <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--sr-color-ink-muted)' }}>
+    <p style={{ fontSize: 15, lineHeight: '22px', color: 'var(--sr-color-ink-muted)' }}>
       {icon.state === 'idle' ? 'Idle is intentionally still. The action has not started.' : icon.state === 'pending' ? 'Pending continues until the operation resolves. The icon and text identify the state even without animation.' : 'The result is shown once the operation finishes. The animation plays once.'}
     </p>
     {icon.state !== 'idle' && <>

@@ -4,11 +4,12 @@ import { Tabs as BaseTabs } from '@base-ui/react/tabs';
 
 const s = stylex.create({
   root: { minWidth: 0 },
-  list: { display: 'flex', flexWrap: 'wrap', gap: 4, padding: 4, borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line)' },
-  tab: { minHeight: 48, padding: '10px 16px', backgroundColor: 'transparent', color: 'var(--sr-color-ink-muted)', borderWidth: 0, borderStyle: 'solid', borderBottomWidth: 2, borderColor: 'transparent', borderRadius: 'var(--sr-radius-control)', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, cursor: 'pointer', ':hover': { backgroundColor: 'var(--sr-color-surface-raised)' }, ':focus-visible': { outline: '2px solid var(--sr-color-focus)', outlineOffset: 3 } },
-  active: { color: 'var(--sr-color-ink)', backgroundColor: 'var(--sr-color-signal-soft)', borderBottomColor: 'var(--sr-color-signal-ink)' },
+  // Tabs sit on a hairline; the active tab is ink with a 2px signal mark, like the active graduation on a scale.
+  list: { display: 'flex', flexWrap: 'wrap', gap: 'var(--sr-space-5)', borderBottomWidth: 1, borderBottomStyle: 'solid', borderBottomColor: 'var(--sr-color-line)' },
+  tab: { minHeight: 48, padding: '10px 2px', marginBottom: -1, backgroundColor: 'transparent', color: { default: 'var(--sr-color-ink-muted)', ':hover': 'var(--sr-color-ink)' }, borderWidth: 0, borderStyle: 'solid', borderBottomWidth: 2, borderColor: 'transparent', borderRadius: 0, fontFamily: 'inherit', fontSize:15, lineHeight:'20px', fontWeight:500, cursor: 'pointer', ':focus-visible': { outline: '2px solid var(--sr-color-focus)', outlineOffset:'var(--sr-size-focus-offset)' } },
+  active: { color: 'var(--sr-color-ink)', borderBottomColor: 'var(--sr-color-signal)' },
   disabled: { opacity: .5, cursor: 'not-allowed' },
-  panel: { padding: '24px 4px', color: 'var(--sr-color-ink)', fontSize: 14, lineHeight: 1.7 },
+  panel: { padding: '24px 4px', color: 'var(--sr-color-ink)', fontSize:15, lineHeight:'22px' },
 });
 
 export type TabsProps = {
