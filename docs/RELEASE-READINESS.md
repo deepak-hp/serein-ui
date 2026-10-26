@@ -149,3 +149,14 @@ This was prepared on branch `release/0.1.0` at the owner's request. All six `@se
 - `pnpm audit --prod` finds no known vulnerabilities. The development tooling has 11 advisories: Storybook 10.6.0 dev server, `@vitest/mocker` and jsdom's `undici`. None ship in a package or affect the built Storybook site. The patched versions are still inside the 14-day install cooldown (Storybook 10.6.2 clears on 26 October, Vitest 4.1.12 and undici 8.12.2 on 29 October). The Next.js fixture's pinned `next@16.4.0` has a known advisory; it is test-only, and 16.4.1 clears on 28 October.
 
 Native screen-reader, zoom and disabled-user reviews remain open. `0.1.0` makes no stability or conformance claim beyond pre-1.0 semver.
+
+## 0.1.0 npm publication — 26 October 2026
+
+- **Publication:** the owner created the `serein-ui` npm organization and ran `pnpm -r publish` as `deepakhp`, with two-factor authentication required for writes. They published from a clean checkout of `main` at `edc6cb5`, whose Release checks and Pages deployment had passed. The dry run beforehand listed exactly the six packages.
+- **Registry:** `npm view` shows `@serein-ui/react`, `tokens`, `css`, `fonts`, `format` and `icons` at `0.1.0`, all with `dist-tags.latest = 0.1.0`. The packages took a few minutes to become publicly visible.
+- **Integrity:** the registry tarball for `@serein-ui/react` matches the integrity value reported at publication (`sha512-i5ldO/qG…uxU71DhrRA8Yw==`). With `SEREIN_PACKAGE_TARBALL` set to that downloaded archive, `check:consumer` passed: strict public types, the accessible-name contract and a compiler-free JS/CSS bundle.
+- **New-user install:** a fresh Vite 8 / React 19.3 app ran `npm install @serein-ui/react` and used only the README's imports and theme classes.
+  - The strict TypeScript build passed (`skipLibCheck: false`), and the fonts were bundled.
+  - Chromium rendered it correctly in light and dark, following the system theme, with no console errors.
+  - axe flagged only the test page's own missing `<h1>`.
+- **Tag and release:** the annotated tag `v0.1.0` points at `edc6cb5`, and the [GitHub release v0.1.0](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0) is marked latest.
