@@ -28,7 +28,7 @@ This is the durable source of scope and progress. Checked items require evidence
 - [x] Observe hosted Linux CI passing: [run 37526475891](https://github.com/deepak-hp/ritam-ui/actions/runs/37526475891) on `cd7280a`. Subsequent changes require their own passing run before merge.
 - [x] Audit direct/transitive dependency findings and document actionable residual risks.
 - [x] Establish versioning, changelog, supported environments and upgrade policy.
-- [ ] Publish `0.1.0` of all six `@serein-ui/*` packages to npm on the `latest` tag. The release was prepared on 26 October 2026 at the owner's request. The owner publishes from their own account by following [RELEASING.md](RELEASING.md#npm-release). Tick this only after the registry and clean-consumer checks in that procedure pass.
+- [x] Publish `0.1.0` of all six `@serein-ui/*` packages to npm on the `latest` tag. The owner published from `edc6cb5` on 26 October 2026. The registry and clean-consumer checks passed, and the commit is tagged as [GitHub release v0.1.0](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0). See [the receipt](RELEASE-READINESS.md#010-npm-publication--26-october-2026).
 - [x] Distribute the beta through a [GitHub prerelease](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) with an exact-source archive, checksum and unsigned source metadata; the fresh download passed checksum and clean-consumer verification. See [the delivery receipt](validation/2026-10-21-beta-distribution.md).
 
 ## 3. Professional discovery and examples
@@ -87,7 +87,7 @@ Reuse a recorded observation only for the same wrapper, composition and environm
 - [x] Apply the approved MIT license and package third-party attribution (7 October 2026).
 - [x] Verify GitHub administration access and review source/history for private research and credential patterns before public-source publication (13 October 2026; bounded scan, not a guarantee).
 - [x] Make the reviewed source public and enable a verified private vulnerability-reporting channel (GitHub settings verified 13 October 2026).
-- [ ] Confirm npm scope ownership and publication authentication. The owner creates or confirms the `serein-ui` npm organization and signs in with two-factor authentication (step 1 of [the npm release](RELEASING.md#npm-release)). The last identity check, on 13 October, returned HTTP 401.
+- [x] Confirm npm scope ownership and publication authentication. The owner created the `serein-ui` npm organization (`npm org ls serein-ui`: deepakhp, owner) and publishes as `deepakhp` with two-factor authentication required for writes (26 October 2026).
 - [x] Release notes, installation guide and rollback/release procedure.
 - [x] Prepare truthful README pitch, launch post drafts and demonstration outline.
 - [x] Update beta announcements and reviewer invitations with verified public destinations and current limits. The owner-selected GitHub call is published; other channels remain drafts. See [launch materials](LAUNCH-DRAFTS.md).
@@ -110,4 +110,4 @@ Reuse a recorded observation only for the same wrapper, composition and environm
 Completed local implementation plan: [release readiness](superpowers/plans/2026-09-28-release-readiness.md).
 Fresh evidence: [release candidate record](RELEASE-READINESS.md). Historical and current results: [verification](../packages/react/docs/VERIFICATION.md).
 
-Release status: **`0.1.0` prepared for npm. The source, documentation and the verified GitHub beta download are public; npm publication waits on the owner**. Local verification, revision-specific hosted checks and deployment evidence are recorded in the evidence document. npm publication access and manual/human gates remain open. No accessibility conformance or stable production-release claim is made.
+Release status: **`0.1.0` is published on npm (`latest`), with a matching [GitHub release](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0); the source and documentation are public**. Local verification, revision-specific hosted checks and deployment evidence are recorded in the evidence document. Manual and human accessibility gates remain open. No accessibility conformance or stable production-release claim is made.
