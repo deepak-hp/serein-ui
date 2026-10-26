@@ -1,11 +1,10 @@
 {
   "name": "@serein-ui/react",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0",
   "description": "React web component library with typed components, compiled CSS, accessibility guidance, and AI integration materials.",
   "license": "MIT",
   "publishConfig": {
-    "access": "public",
-    "tag": "beta"
+    "access": "public"
   },
   "repository": {
     "type": "git",

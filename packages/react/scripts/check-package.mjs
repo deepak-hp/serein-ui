@@ -5,8 +5,9 @@ import { join } from 'node:path';
 import { findNpmCli } from './npm-cli.mjs';
 const pkg = JSON.parse(await readFile('package.json', 'utf8'));
 const entry = await readFile('dist/index.js', 'utf8');
-const license = await readFile('LICENSE', 'utf8');
-const rootLicense = await readFile('../../LICENSE', 'utf8');
+// Compare license text, not line endings: a Windows checkout may convert the root copy to CRLF.
+const license = (await readFile('LICENSE', 'utf8')).replace(/\r\n/g, '\n');
+const rootLicense = (await readFile('../../LICENSE', 'utf8')).replace(/\r\n/g, '\n');
 const notices = await readFile('THIRD_PARTY_NOTICES.md', 'utf8');
 assert.ok(/^['"]use client['"];\s/.test(entry), 'Compiled React entry needs a preserved client-component directive');
 assert.ok(!entry.includes('stylex.create('), 'Published entry must contain compiled styles');
@@ -14,10 +15,10 @@ for (const target of Object.values(pkg.exports).flatMap(value => typeof value ==
 assert.deepEqual(pkg.sideEffects, ['**/*.css'], 'Styles must survive tree shaking');
 assert.ok(pkg.peerDependencies.react && pkg.peerDependencies['react-dom'], 'React must remain a peer dependency');
 assert.ok(!pkg.dependencies.react && !pkg.dependencies['react-dom'], 'Do not ship another React instance');
-assert.equal(pkg.version, '0.1.0-beta.1', 'The public beta package must use the approved prerelease version');
-assert.notEqual(pkg.private, true, 'The public beta package must be publishable');
-assert.equal(pkg.license, 'MIT', 'The public beta package must declare the approved MIT license');
-assert.deepEqual(pkg.publishConfig, { access: 'public', tag: 'beta' }, 'The public beta must publish publicly under the beta tag');
+assert.equal(pkg.version, '0.1.0', 'The package must use the approved release version');
+assert.notEqual(pkg.private, true, 'The package must be publishable');
+assert.equal(pkg.license, 'MIT', 'The package must declare the approved MIT license');
+assert.deepEqual(pkg.publishConfig, { access: 'public' }, 'The package must publish publicly under the default latest tag');
 assert.equal(license, rootLicense, 'The packaged license must match the repository license');
 assert.match(license, /Copyright \(c\) 2026 Deepak HP/, 'The MIT license must name the approved copyright holder and year');
 assert.match(notices, /Anek Latin[\s\S]*OFL-1\.1/, 'Third-party notices must identify the bundled Anek Latin font and its OFL-1.1 terms');

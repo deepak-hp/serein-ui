@@ -1,8 +1,13 @@
 {
   "name": "@serein-ui/tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Serein design tokens (DTCG 2025.10 source) as CSS variables, JS/TS, JSON, a Tailwind v4 theme, Swift and Kotlin.",
   "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/deepak-hp/serein-ui.git", "directory": "packages/tokens" },
+  "homepage": "https://github.com/deepak-hp/serein-ui/tree/main/packages/tokens#readme",
+  "bugs": { "url": "https://github.com/deepak-hp/serein-ui/issues" },
+  "keywords": ["serein", "design-system", "design-tokens", "dtcg", "tailwind", "css-variables"],
+  "publishConfig": { "access": "public" },
   "type": "module",
   "sideEffects": [
     "*.css"

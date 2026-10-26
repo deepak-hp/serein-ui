@@ -129,3 +129,23 @@ The merged-source package was prepared from clean commit `c5c6e4f`; the supplied
 The [GitHub beta](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1) is published with five assets. All freshly downloaded bytes matched the prepared files and all checksum entries verified. The exact downloaded `.tgz` passed the isolated consumer check without changing its hash. The downloaded reviewer ZIP verified all 56 files and passed 16/16 playback checks. [Reviewer announcement #5](https://github.com/deepak-hp/serein-ui/issues/5) now links the verified destinations. See [the complete delivery receipt](validation/2026-10-21-beta-distribution.md).
 
 The beta tag and published assets identify `c5c6e4f`; subsequent documentation does not replace them. npm publication, native accessibility checks and independent human review remain open. The packet does not count as completed human review.
+
+## 0.1.0 npm candidate — 26 October 2026
+
+This was prepared on branch `release/0.1.0` at the owner's request. All six `@serein-ui/*` packages are at `0.1.0`, with `publishConfig.access` set to `public` on the default `latest` tag. The checks below ran locally on Windows with Node 26.3.1 and pnpm 10.33.2. Hosted CI on Node 24 must pass on the merged `main` commit before anything is published.
+
+- `pnpm build`, `pnpm typecheck` and `pnpm test` pass: React 101, tokens 73, format 54, icons 6 and css 4 tests.
+- `check:release` passes everything in one run:
+  - package and consumer checks, SSR and hydration
+  - AI contract and freshness
+  - 170 Storybook tests with axe in each of the four runs (light and dark, reduced motion on and off)
+  - the Storybook build and the starter app
+  - live docs and MCP checks
+  - layout, search and date-layout specimens
+
+  The first attempt had two story files fail to load ("Failed to fetch dynamically imported module", in the reduced-motion run). Neither was an assertion failure, and the immediate full re-run passed.
+- The Next.js App Router fixture, installed from the packed `0.1.0` tarball, passes the production build and verification: SSR, CSS, hydration, keyboard form flow, retry, themes, narrow viewport and axe.
+- `pnpm -r publish --dry-run` lists exactly the six packages. Each carries its licence (fonts: an OFL pointer plus `OFL.txt`), and the `workspace:` peer range in `@serein-ui/css` is rewritten to `^0.1.0`.
+- `pnpm audit --prod` finds no known vulnerabilities. The development tooling has 11 advisories: Storybook 10.6.0 dev server, `@vitest/mocker` and jsdom's `undici`. None ship in a package or affect the built Storybook site. The patched versions are still inside the 14-day install cooldown (Storybook 10.6.2 clears on 26 October, Vitest 4.1.12 and undici 8.12.2 on 29 October). The Next.js fixture's pinned `next@16.4.0` has a known advisory; it is test-only, and 16.4.1 clears on 28 October.
+
+Native screen-reader, zoom and disabled-user reviews remain open. `0.1.0` makes no stability or conformance claim beyond pre-1.0 semver.

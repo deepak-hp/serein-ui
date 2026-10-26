@@ -1,8 +1,13 @@
 {
   "name": "@serein-ui/fonts",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Self-hosted Serein fonts: Anek Latin (variable weight and width) and Chivo Mono. No third-party font CDN.",
   "license": "OFL-1.1",
+  "repository": { "type": "git", "url": "git+https://github.com/deepak-hp/serein-ui.git", "directory": "packages/fonts" },
+  "homepage": "https://github.com/deepak-hp/serein-ui/tree/main/packages/fonts#readme",
+  "bugs": { "url": "https://github.com/deepak-hp/serein-ui/issues" },
+  "keywords": ["serein", "design-system", "fonts", "anek-latin", "chivo-mono", "woff2"],
+  "publishConfig": { "access": "public" },
   "type": "module",
   "sideEffects": [
     "*.css"

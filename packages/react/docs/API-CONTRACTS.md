@@ -1,6 +1,6 @@
 # Component contracts
 
-The package is an MIT-licensed React web library with verified GitHub prerelease archive `serein-ui-react-0.1.0-beta.1.tgz`; npm publication is deferred. Install that verified archive or a locally packed tarball, then import components and their types from `@serein-ui/react` and import `@serein-ui/react/styles.css` once. Styles are precompiled; consumers do not configure StyleX. Use the generated Agent API reference for the exact props of each component.
+The package is an MIT-licensed React web library. Install it with `npm install @serein-ui/react`, then import components and their types from `@serein-ui/react` and import `@serein-ui/react/styles.css` once. Styles are precompiled; consumers do not configure StyleX. Use the generated Agent API reference for the exact props of each component.
 
 ## Values and forms
 

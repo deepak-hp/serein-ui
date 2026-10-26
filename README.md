@@ -4,7 +4,7 @@ A precise, calm, accessible design system for web, mobile and desktop, built so 
 
 Serein is designed like an instrument: **fine graduations, exact readouts, and one vivid vermilion signal**, set in Anek Latin with Chivo Mono for measurements. [DESIGN.md](DESIGN.md) records the language; the token files in [`tokens/`](tokens) are its source of truth.
 
-Explore the documentation and components in [Storybook](https://deepak-hp.github.io/serein-ui/). npm publication and human accessibility review remain open.
+Explore the documentation and components in [Storybook](https://deepak-hp.github.io/serein-ui/). Human accessibility review remains open.
 
 ## Packages
 
@@ -17,9 +17,13 @@ Explore the documentation and components in [Storybook](https://deepak-hp.github
 | [`@serein-ui/icons`](packages/icons) | 46 authored icons on a 20px grid: SVG, strings and React. |
 | [`@serein-ui/format`](packages/format) | Indian-first money and number formatting (₹1,00,000, true minus sign). |
 
-Only `@serein-ui/react` is distributed today (as a GitHub prerelease archive); it bundles what it needs from the others.
+All six packages are on npm. `@serein-ui/react` bundles what it needs from the others, so most apps install only that.
 
 ## Use it
+
+```sh
+npm install @serein-ui/react
+```
 
 ```tsx
 import '@serein-ui/react/fonts.css';
@@ -27,7 +31,7 @@ import '@serein-ui/react/styles.css';
 import { Button, Readout } from '@serein-ui/react';
 ```
 
-Set `data-theme="light"` or `"dark"` on `<html>` (omit it to follow the system) and `class="sr-theme"` on `<body>`. See the [library setup](packages/react/README.md) and the [beta download instructions](docs/BETA-EVALUATION.md).
+Set `data-theme="light"` or `"dark"` on `<html>` (omit it to follow the system) and `class="sr-theme"` on `<body>`. See the [library setup](packages/react/README.md).
 
 ## Develop
 

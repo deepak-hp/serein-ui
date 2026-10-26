@@ -6,12 +6,18 @@ import { spawnSync } from 'node:child_process';
 const appRoot = path.resolve(import.meta.dirname, '..');
 const trialRoot = path.resolve(appRoot, '..', '..'); // packages/react
 const repositoryRoot = path.resolve(trialRoot, '..', '..');
-const filename = 'serein-ui-react-0.1.0-beta.1.tgz';
+const frozen = process.argv[2] === '--frozen';
+// The frozen mode replays the reviewed beta archive; the default packs whatever version the library declares.
+const frozenVersion = '0.1.0-beta.1';
+const { version: sourceVersion } = JSON.parse(await readFile(path.join(trialRoot, 'package.json'), 'utf8'));
+const version = frozen ? frozenVersion : sourceVersion;
+const filename = `serein-ui-react-${version}.tgz`;
 const expectedSha256 = 'e7fefb1a74be80df55384ca446db9995359d7d2ae560676bf94d5c23f53cc470';
 const vendorDirectory = path.join(appRoot, 'vendor');
 const destination = path.join(vendorDirectory, filename);
 const provenancePath = path.join(vendorDirectory, 'provenance.json');
 const lockfilePath = path.join(appRoot, 'package-lock.json');
+const manifestPath = path.join(appRoot, 'package.json');
 
 function run(command, args, cwd) {
   const result = spawnSync(command, args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
@@ -29,12 +35,20 @@ async function sha512Integrity(file) {
   return `sha512-${createHash('sha512').update(await readFile(file)).digest('base64')}`;
 }
 
-async function updateLockfileIntegrity(integrity) {
+async function pointInstallAtArchive(integrity) {
+  const specifier = `file:vendor/${filename}`;
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  manifest.dependencies['@serein-ui/react'] = specifier;
+  await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+
   const lockfile = JSON.parse(await readFile(lockfilePath, 'utf8'));
   const packageEntry = lockfile.packages?.['node_modules/@serein-ui/react'];
   if (!packageEntry) {
     throw new Error('package-lock.json does not contain the installed @serein-ui/react entry.');
   }
+  lockfile.packages[''].dependencies['@serein-ui/react'] = specifier;
+  packageEntry.version = version;
+  packageEntry.resolved = specifier;
   packageEntry.integrity = integrity;
   await writeFile(lockfilePath, `${JSON.stringify(lockfile, null, 2)}\n`);
 }
@@ -55,7 +69,7 @@ async function prepareFrozenArchive() {
   await copyFile(source, destination);
   return {
     mode: 'frozen-reviewed-archive',
-    package: '@serein-ui/react@0.1.0-beta.1',
+    package: `@serein-ui/react@${version}`,
     archiveSha256: actualSha256,
     archiveIntegrity: await sha512Integrity(destination),
     reviewedSourceCommit: 'd8f8c54',
@@ -86,7 +100,7 @@ async function prepareCurrentSource() {
 
   return {
     mode: 'packed-current-source',
-    package: '@serein-ui/react@0.1.0-beta.1',
+    package: `@serein-ui/react@${version}`,
     archiveSha256: await sha256(destination),
     archiveIntegrity: await sha512Integrity(destination),
     sourceCommit,
@@ -100,12 +114,12 @@ if (process.argv[2] && process.argv[2] !== '--frozen') {
 }
 
 await mkdir(vendorDirectory, { recursive: true });
-const provenance = process.argv[2] === '--frozen'
+const provenance = frozen
   ? await prepareFrozenArchive()
   : await prepareCurrentSource();
-await updateLockfileIntegrity(provenance.archiveIntegrity);
+await pointInstallAtArchive(provenance.archiveIntegrity);
 await writeFile(provenancePath, `${JSON.stringify({ ...provenance, node: process.version }, null, 2)}\n`);
 console.log(`Prepared ${destination}`);
 console.log(`SHA-256 ${provenance.archiveSha256}`);
-console.log('Updated package-lock.json with the prepared archive integrity.');
+console.log('Pointed package.json and package-lock.json at the prepared archive.');
 console.log(`Provenance ${provenancePath}`);

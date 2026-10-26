@@ -83,7 +83,8 @@ async function main() {
     const packageRoot = path.join(appRoot, 'node_modules', '@serein-ui', 'react');
     const packageManifest = JSON.parse(await readFile(path.join(packageRoot, 'package.json'), 'utf8'));
     assert.equal(packageManifest.name, '@serein-ui/react');
-    assert.equal(packageManifest.version, '0.1.0-beta.1');
+    const { package: prepared } = JSON.parse(await readFile(path.join(appRoot, 'vendor', 'provenance.json'), 'utf8'));
+    assert.equal(`@serein-ui/react@${packageManifest.version}`, prepared, 'The installed package is the archive setup prepared');
     assert.equal((await lstat(packageRoot)).isSymbolicLink(), false, 'Serein is an installed package directory');
 
     const response = await fetch(origin);

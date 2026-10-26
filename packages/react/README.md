@@ -6,13 +6,11 @@ The library exports React components and hooks. Start with **Storybook → Start
 
 ## Try it
 
-For a GitHub beta download, use the archive and checksum from the [Serein prereleases](https://github.com/deepak-hp/serein-ui/releases). Verify the SHA-256 using the [beta instructions](https://github.com/deepak-hp/serein-ui/blob/main/docs/BETA-EVALUATION.md), then install the file in your application:
-
 ```sh
-npm install /absolute/path/to/serein-ui-react-<version>.tgz
+npm install @serein-ui/react
 ```
 
-Use Node 22 or newer with React and React DOM `^19.3.0`. npm registry publication is deferred.
+Use Node 22 or newer with React and React DOM `^19.3.0`. Import `@serein-ui/react/fonts.css`, then `@serein-ui/react/styles.css`, once at your app's entry point. The styles are precompiled, so you don't need a StyleX compiler.
 
 To start a new app from this checkout, run `pnpm create:app "../my-app"` from `packages/react`. The destination must be empty. This builds and vendors the current package, creates a React/Vite app and installs its dependencies. Use `--no-install` to generate the files and archive first. See [starter instructions](docs/STARTER.md).
 

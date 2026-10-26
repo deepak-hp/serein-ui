@@ -1,6 +1,6 @@
 # Serein — AI integration
 
-Status: Serein is an MIT-licensed React web library. GitHub prerelease `@serein-ui/react` version `0.1.0-beta.1` is available; npm publication is deferred. Use this exact package name and do not claim native mobile support.
+Status: Serein is an MIT-licensed React web library. Install it with `npm install @serein-ui/react`. Use this exact package name and do not claim native mobile support.
 
 ## Quick start for any coding assistant
 
@@ -10,7 +10,7 @@ Panels sit on `--sr-color-surface-raised` with a `--sr-color-line` hairline; men
 
 Read `llms-full.txt` and `contract.json` in this directory. These are generated from the installed package's TypeScript declarations and CSS tokens on every build. Read `examples/README.md` when a local workflow recipe fits the task; those reviewed files are client-side demonstrations, not package exports or backend integrations. Read stories for usage, `docs/FOUNDATIONS.md` for the implemented visual system, and `docs/ACCESSIBILITY.md` for obligations and known limits. Never invent props or components.
 
-For the released candidate, download `serein-ui-react-0.1.0-beta.1.tgz`, `SHA256SUMS` and unsigned `SOURCE.json` from the [GitHub prerelease](https://github.com/deepak-hp/serein-ui/releases/tag/v0.1.0-beta.1), verify the checksum, and follow [the evaluation installation instructions](https://github.com/deepak-hp/serein-ui/blob/main/docs/BETA-EVALUATION.md). For a local checkout, run `pnpm install`, `pnpm build`, then `pnpm storybook` from the repository root. Import `@serein-ui/react/fonts.css` and then `@serein-ui/react/styles.css` once. The consumer does not need a StyleX compiler.
+For a local checkout, run `pnpm install`, `pnpm build`, then `pnpm storybook` from the repository root. Import `@serein-ui/react/fonts.css` and then `@serein-ui/react/styles.css` once. The consumer does not need a StyleX compiler.
 
 Set `data-theme="light"` or `"dark"` on `<html>` and class `sr-theme` on `<body>`. The theme is document-wide, including portals. Do not apply the theme solely to a nested wrapper. Only use supported, documented props.
 
